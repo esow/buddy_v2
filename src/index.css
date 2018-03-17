@@ -1,5 +1,19 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Heebo', sans-serif;
+  background-color: #191b1b;
+  overflow-x: hidden;
 }
+.buddygg::before {
+  background-color: #101111;
+  position:absolute;
+  content: " ";
+  transform:rotate(-4deg);
+  height: 800px;
+  left: -5%;
+  top:-10%;
+  width:110%;
+  z-index: -1;
+}
+

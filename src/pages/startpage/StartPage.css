@@ -1,0 +1,36 @@
+.start-page {
+	max-width: 700px;
+	margin: auto;
+}
+.welcome-text{
+	color: #ffffff;
+	font-family: Heebo;
+	font-size: 2.5em;
+	font-style: normal;
+	font-stretch: normal;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 40px;
+}
+.welcome-text p {
+	margin: -5px;
+}
+.welcome-text span {
+	color: #F6B352;
+}
+.page-content {
+	margin-top: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.page-content > p {
+	color: #c9aa71;
+	font-family: Heebo;
+	font-size: 20px;
+	text-align: center;
+}
+.page-content span {
+	font-weight: bold;
+}
