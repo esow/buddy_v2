@@ -1,0 +1,50 @@
+.summoner-pane {
+	width: 391px;
+  	height: 543px;
+	background: #ffffff;
+	margin: auto;
+	margin-top: 100px;
+	margin-bottom: 50px;
+	border-radius: 10px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.summoner-pane > img {
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	margin-top: -50px;
+	border: 7px solid #ffffff;
+}
+.summoner-pane > .summoner-name {
+	font-weight: bold;
+	font-size: 1.3em;
+	color: #191b1b;
+	margin-top: 5px;
+}
+.summoner-pane > .summoner-rank {
+	margin-top: 5px;
+	padding: 3px 12px;
+	border-radius: 5px;
+	border: 1px solid #747474;
+	background: #8b8b8b;
+	color: #ffffff;
+}
+.summoner-pane button {
+	margin-top: auto;
+	width: 100%;
+	height: 50px;
+	font-family: 'Heebo', sans-serif;
+	font-size: 1em;
+	font-weight: bold;
+	background-color: #0eaac8;	
+	border: none;
+	color: white;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+.summoner-pane button:hover {
+	background-color: #0fc0e4;	
+}
