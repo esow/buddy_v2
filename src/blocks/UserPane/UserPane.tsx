@@ -1,14 +1,14 @@
 import * as React from "react";
-import "./SummonerPane.css";
+import "./UserPane.css";
 
-export interface SummonerPaneProps {
+export interface UserPaneProps {
 	avatar: string;
 	summonerName: string;
 	rank: string;
 }
 
-export default class SummonerPane extends React.Component<SummonerPaneProps, any> {
-	static defaultProps: Partial<SummonerPaneProps> = {
+export default class UserPane extends React.Component<UserPaneProps, any> {
+	static defaultProps: Partial<UserPaneProps> = {
 		// tslint:disable-next-line:max-line-length
 		avatar: "https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f6/Jolly_Penguin_profileicon.png/revision/latest?cb=20170505005803",
 		summonerName: "Lethly",

@@ -1,16 +1,16 @@
 import * as React from "react";
-import "./SummonerSearch.css";
+import "./UserSearch.css";
 import { FormEvent } from "react";
 import { Redirect } from "react-router";
 
-export interface SummonerSearchProps {
+export interface UserSearchProps {
 }
-export interface SummonerSearchState {
+export interface UserSearchState {
 	fireRedirect: boolean;
 }
 
-export default class SummonerSearch extends React.Component<SummonerSearchProps, SummonerSearchState> {
-	constructor(props: SummonerSearchProps) {
+export default class UserSearch extends React.Component<UserSearchProps, UserSearchState> {
+	constructor(props: UserSearchProps) {
 		super(props);
 		this.state = {
 			fireRedirect: false
@@ -28,7 +28,7 @@ export default class SummonerSearch extends React.Component<SummonerSearchProps,
 		return (
 			<>
 				<form className="summoner-search" onSubmit={this.submit}>
-					<input type="search" placeholder="Your Summoner Name" />
+					<input type="search" placeholder="Your User Name" />
 					<select name="region" id="region-select">
 						<option value="euw">EUW</option>
 						<option value="na">NA</option>

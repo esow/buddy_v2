@@ -1,5 +1,5 @@
 import * as React from "react";
-import SummonerSearch from "../../components/SummonerSearch/SummonerSearch";
+import UserSearch from "../../components/UserSearch/UserSearch";
 import "./StartPage.css";
 
 export interface StartPageProps {
@@ -15,7 +15,7 @@ export default class StartPage extends React.Component<StartPageProps, any> {
 						<p>Find people to play with, easily.</p>
 						<p>People who <span>speak your language</span>.</p>
 					</div>
-					<SummonerSearch />
+					<UserSearch />
 				</div>
 			</div>
 		);
