@@ -1,8 +1,11 @@
 import * as React from "react";
-import UserSearch from "../../components/UserSearch/UserSearch";
 import "./StartPage.css";
+import { RouteComponentProps } from "react-router";
+import { Route } from "react-router-dom";
+import FindUserContainer from "../../containers/FindUserContainer";
+import UserPaneContainer from "../../containers/UserPaneContainer";
 
-export interface StartPageProps {
+export interface StartPageProps extends RouteComponentProps<any> {
 }
 
 export default class StartPage extends React.Component<StartPageProps, any> {
@@ -10,12 +13,13 @@ export default class StartPage extends React.Component<StartPageProps, any> {
 		return (
 			<div className="start-page">
 				<div className="page-content">
-					<p><span>Buddy.GG</span> - League of Legends</p>
+					<p><span>Buddy.GG</span> - Fortnite</p>
 					<div className="welcome-text">
 						<p>Find people to play with, easily.</p>
 						<p>People who <span>speak your language</span>.</p>
 					</div>
-					<UserSearch />
+					<FindUserContainer />
+					<Route path={`${this.props.match.url}:userId`} component={UserPaneContainer} />
 				</div>
 			</div>
 		);

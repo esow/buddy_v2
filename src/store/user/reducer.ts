@@ -8,7 +8,7 @@ export const initialState: UserState = {
 export const userReducer: Reducer<UserState> = (state: UserState = initialState, action) => {
 	switch ((action as UserActions).type) {
 		case "USER_RECEIVED":
-			return { ...state, user: action.user };
+			return { ...state, user: action.payload.user };
 		default:
 			return state;
 	}

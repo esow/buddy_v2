@@ -1,9 +1,10 @@
 import * as React from "react";
 import "./UserSearch.css";
 import { FormEvent } from "react";
-import { Redirect } from "react-router";
+import history from "../../utils/history";
 
 export interface UserSearchProps {
+	onSubmit: (user: any) => void;
 }
 export interface UserSearchState {
 	fireRedirect: boolean;
@@ -19,27 +20,23 @@ export default class UserSearch extends React.Component<UserSearchProps, UserSea
 
 	submit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		this.setState({ fireRedirect: true });
+		this.props.onSubmit("test");
+		history.push("/123");
 	}
 
 	render() {
-		const { fireRedirect } = this.state;
-
 		return (
 			<>
 				<form className="summoner-search" onSubmit={this.submit}>
-					<input type="search" placeholder="Your User Name" />
+					<input type="search" placeholder="Insert your username" />
 					<select name="region" id="region-select">
-						<option value="euw">EUW</option>
-						<option value="na">NA</option>
-						<option value="kr">KR</option>
+						<option value="euw">PC</option>
+						<option value="na">PS4</option>
+						<option value="kr">XBOX</option>
 					</select>
 					<button>Lets find some friends!</button>
 				</form>
 
-				{fireRedirect && (
-					<Redirect to={"/summoner/1"} />
-				)}
 			</>
 		);
 	}

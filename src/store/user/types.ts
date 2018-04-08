@@ -1,13 +1,8 @@
 import { Action } from "redux";
+import { User } from "../../utils/mocks";
 
 export interface UserState {
 	user: User | null;
-}
-
-export interface User {
-	name: string;
-	rank: string;
-	avatar: string;
 }
 
 export interface UserReceivedAction extends Action {

@@ -2,13 +2,14 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import "./index.css";
 import BuddyGG from "./BuddyGG";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Router } from "react-router-dom";
 import store from "./configureStore";
 import { Provider } from "react-redux";
+import history from "./utils/history";
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Router>
+		<Router history={history}>
 			<BuddyGG />
 		</Router>
 	</Provider>,

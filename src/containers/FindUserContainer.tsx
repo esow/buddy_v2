@@ -3,6 +3,8 @@ import { UserState } from "../store/user/types";
 import { ApplicationState, ConnectedReduxProps } from "../store/index";
 import { connect } from "react-redux";
 import { userReceived } from "../store/user/actions";
+import UserSearch from "../components/UserSearch/UserSearch";
+import { userMOCK } from "../utils/mocks";
 
 export interface FindUserContainerProps extends ConnectedReduxProps<UserState> {
 }
@@ -11,15 +13,14 @@ type AllProps = FindUserContainerProps & UserState;
 
 class FindUserContainer extends React.Component<AllProps, any> {
 
-	test = () => {
-		this.props.dispatch(userReceived({ name: "test" }));
+	fetchUser = () => {
+		this.props.dispatch(userReceived(userMOCK));
 	}
-	render() {
-		const { user } = this.props;
 
+	render() {
 		return (
 			<div>
-				{user}
+				<UserSearch onSubmit={this.fetchUser} />
 			</div>
 		);
 	}
