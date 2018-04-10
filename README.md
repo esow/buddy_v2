@@ -7,7 +7,8 @@ New version of buddy.gg!
 root
 │   
 └───src  
-│   │   BuddyGG.tsx		# Root component
+│   │
+│   │───BuddyGG.tsx		# Root component
 │   │
 │   └───index.tsx		# Entry   
 │   │
