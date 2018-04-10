@@ -5,6 +5,8 @@ export interface UserPaneProps {
 	avatar?: string;
 	username: string;
 	platform: string;
+	gamesPlayed: number;
+	gamesWon: number;
 }
 
 export default class UserPane extends React.Component<UserPaneProps, any> {
@@ -16,12 +18,14 @@ export default class UserPane extends React.Component<UserPaneProps, any> {
 	};
 
 	render() {
-		const { avatar, username, platform } = this.props;
+		const { avatar, username, platform, gamesPlayed, gamesWon } = this.props;
 		return (
 			<div className="summoner-pane">
 				<img src={avatar} alt="Avatar" />
 				<div className="summoner-name">{username}</div>
 				<div className="summoner-rank">{platform}</div>
+				<p>Games played: {gamesPlayed}</p>
+				<p>Games won: {gamesWon}</p>
 				<button>Find matches!</button>
 			</div>
 		);
