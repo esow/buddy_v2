@@ -14,10 +14,14 @@ root
 │   └───components		# Small components
 │   │    
 │   └───blocks			# Collection of smaller components
-│   │    
-│   └───pages			# Components representing pages. Consists of components
-│   │    		  	  and blocks
-│   └───utils
+│   │       
+│   └───containers		# Collection of containers connected to the redux store
+│   │
+│   └───pages			# All main pages. Consists of components and blocks
+│   │
+│   └───store			# Contains everything related to the redux store
+│   │
+│   └───utils			# Utility stuff
 ```
 
 ## How to run

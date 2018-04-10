@@ -1,5 +1,5 @@
 import * as React from "react";
-import UserPane from "../blocks/UserPane/UserPane";
+import UserPane from "../components/UserPane/UserPane";
 import { ApplicationState } from "../store/index";
 import { connect } from "react-redux";
 import { UserState } from "../store/user/types";
