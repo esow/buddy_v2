@@ -14,7 +14,7 @@ export default class StartPage extends React.Component<StartPageProps, any> {
 		return (
 			<div className="start-page">
 				<div className="page-content">
-					<ServerStatsPaneContainer />
+					<ServerStatsPaneContainer timer={null} />
 					<p><span>Buddy.GG</span> - Fortnite</p>
 					<div className="welcome-text">
 						<p>Find people to play with, easily.</p>
