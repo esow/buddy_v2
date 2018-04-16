@@ -1,19 +1,11 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Heebo', sans-serif;
-  background-color: #191b1b;
-  overflow-x: hidden;
-}
-.buddygg::before {
-  background-color: #101111;
-  position:absolute;
-  content: " ";
-  transform:rotate(-4deg);
-  height: 800px;
-  left: -5%;
-  top:-10%;
-  width:110%;
-  z-index: -1;
+html {
+  height: 100%;
+  font-family: 'Luckiest Guy', sans-serif;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ecca5c+0,db8d29+100 */
+  background: #ecca5c; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #ecca5c 0%, #db8d29 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #ecca5c 0%,#db8d29 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #ecca5c 0%,#db8d29 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecca5c', endColorstr='#db8d29',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 

@@ -19,7 +19,7 @@ class FindUserContainer extends React.Component<AllProps, any> {
 	render() {
 		return (
 			<div>
-				<UserSearch onSubmit={this.fetchUser} />
+				<UserSearch onSubmit={this.fetchUser} isLoading={this.props.isFetching} />
 			</div>
 		);
 	}

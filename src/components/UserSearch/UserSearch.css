@@ -1,3 +1,6 @@
+form { 
+	margin-top: 20px; 
+}
 .summoner-search > *:first-child {
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
@@ -7,11 +10,9 @@
 	border-bottom-right-radius: 5px;
 }
 .summoner-search > * {
-	background-color: transparent;
 	height: 45px;
-	border: 1px solid #575e5e;
-	color: #575e5e;
-	font-family: 'Heebo', sans-serif;
+	border: 1px solid #444;
+	color: #444;
 	padding-left: 20px;	
 	padding-right: 20px;
 	font-size: 1em;	
@@ -19,22 +20,22 @@
 }
 .summoner-search input {
 	min-width: 300px;
+	background-color: white;
 }
 .summoner-search select {
 	margin-left: -1px;
-}
-.summoner-search option {
-	background-color: #101111;
-	border: 2px solid #575e5e;
+	background-color: white;	
 }
 .summoner-search button {
+	width: 215px;
 	margin-left: -1px;
-	border: 1px solid #0eaac8;
-	color: #0eaac8;
+	border: 1px solid#444;
+	background-color: #496d89;
+	color: white;	
+}
+.summoner-search button.loading {
+	background-color: #5a86a8;
 }
 .summoner-search button:hover {
-	margin-left: -1px;
-	border: 1px solid #0eaac8;
-	background-color: #0eaac8;
-	color: white;
+	background-color: #5a86a8;
 }
