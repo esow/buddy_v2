@@ -6,11 +6,12 @@ export function loadStats() {
 		return BuddyApi.getStats().then(stats => {
 			dispatch(loadStatsSuccess(stats));
 		}).catch(error => {
+			// TODO add error handling 
 			throw (error);
 		});
 	};
 }
 
-export function loadStatsSuccess(stats: any) {
+export function loadStatsSuccess(stats: { [key: string]: number }) {
 	return { type: types.STATS_RECEIVED, payload: stats };
 }

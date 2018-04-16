@@ -2,7 +2,7 @@ class BuddyApi {
 
 	static devServer: String = "https://lolbuddy.herokuapp.com/api";
 
-	static getStats() {
+	static getStats(): Promise<{ [key: string]: number }> {
 		const request = new Request(`${BuddyApi.devServer}/stats`, {
 			method: "GET",
 		});
