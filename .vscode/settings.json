@@ -1,1 +1,6 @@
-{}
+{
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": false,
+    "tslint.autoFixOnSave": true,
+    "editor.tabSize": 4,
+}
