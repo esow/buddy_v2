@@ -26,7 +26,7 @@ class ServerStatsPaneContainer extends React.Component<AllProps, any> {
 	}
 
 	render() {
-		const players = this.props.playersOnline != null ? this.props.playersOnline.total : 0;
+		const players = this.props.playersOnline !== undefined ? this.props.playersOnline : 0;
 		return (
 			<div >
 				<ServerStatsPane playersOnline={players} />

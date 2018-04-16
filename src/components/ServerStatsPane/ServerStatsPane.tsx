@@ -6,8 +6,6 @@ export interface ServerStatsPaneProps {
 }
 
 export default class ServerStatsPane extends React.Component<ServerStatsPaneProps, any> {
-	static defaultProps: Partial<ServerStatsPaneProps> = {
-	};
 
 	render() {
 		const { playersOnline } = this.props;

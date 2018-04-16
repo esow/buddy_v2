@@ -5,12 +5,12 @@ export const STATS_RECEIVED = "STATS_RECEIVED";
 export interface StatsReceivedAction extends Action {
 	type: "STATS_RECEIVED";
 	payload: {
-		playersOnline: ServerStatsState
+		playersOnline: { [key: string]: number }
 	};
 }
 
 export interface ServerStatsState {
-	playersOnline: { [key: string]: number } | null;
+	playersOnline?: number;
 }
 
 export type ServerStatsActions = StatsReceivedAction;
