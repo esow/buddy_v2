@@ -3,10 +3,10 @@ import "./UserPane.css";
 
 export interface UserPaneProps {
 	avatar?: string;
-	username: string;
-	platform: string;
-	gamesPlayed: number;
-	gamesWon: number;
+	username?: string;
+	platform?: string;
+	gamesPlayed?: number;
+	gamesWon?: number;
 }
 
 export default class UserPane extends React.Component<UserPaneProps, any> {

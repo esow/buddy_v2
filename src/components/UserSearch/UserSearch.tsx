@@ -4,35 +4,61 @@ import { FormEvent } from "react";
 import history from "../../utils/history";
 
 export interface UserSearchProps {
-	onSubmit: (user: any) => void;
+	onSubmit: (platform: string, username: string) => void;
 }
 export interface UserSearchState {
-	fireRedirect: boolean;
+	platform: string;
+	username: string;
 }
 
 export default class UserSearch extends React.Component<UserSearchProps, UserSearchState> {
 	constructor(props: UserSearchProps) {
 		super(props);
 		this.state = {
-			fireRedirect: false
+			platform: "PC",
+			username: ""
 		};
 	}
 
 	submit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		this.props.onSubmit("test");
-		history.push("/123");
+		const username = this.state.username;
+		const platform = this.state.platform.toLowerCase();
+		this.props.onSubmit(platform, username);
+		history.push(`/${platform}/${username}`);
+	}
+
+	onChangeUsername = (event: any) => {
+		this.setState({
+			username: event.target.value
+		});
+	}
+
+	onChangePlatform = (event: any) => {
+		this.setState({
+			platform: event.target.value
+		});
 	}
 
 	render() {
 		return (
 			<>
 				<form className="summoner-search" onSubmit={this.submit}>
-					<input type="search" placeholder="Insert your username" />
-					<select name="region" id="region-select">
-						<option value="euw">PC</option>
-						<option value="na">PS4</option>
-						<option value="kr">XBOX</option>
+					<input
+						type="search"
+						placeholder="Insert your username"
+						value={this.state.username}
+						onChange={this.onChangeUsername}
+					/>
+					<select
+						name="region"
+						id="region-select"
+						value={this.state.platform}
+						onChange={this.onChangePlatform}
+					>
+						<option value="PC">PC</option>
+						<option value="PS4">PS4</option>
+						<option value="XBOX">XBOX</option>
 					</select>
 					<button>Lets find some friends!</button>
 				</form>
