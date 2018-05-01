@@ -1,5 +1,5 @@
 import { User } from "../utils/mocks";
-import { AuthResponse } from "../store/auth/types";
+import { AuthSessionDTO } from "../store/model/auth";
 
 class BuddyApi {
 
@@ -16,7 +16,7 @@ class BuddyApi {
 	}
 
 	// Get a session id and token
-	static getAuthTokens(): Promise<AuthResponse> {
+	static getAuthTokens(): Promise<AuthSessionDTO> {
 		return BuddyApi.getRequest(`auth/request`);
 	}
 

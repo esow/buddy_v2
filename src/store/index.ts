@@ -5,7 +5,7 @@ import { Dispatch } from "react-redux";
 import { ServerStatsState } from "./ServerStats/types";
 import { serverStatsReducer } from "./ServerStats/reducer";
 import { authReducer } from "./auth/reducer";
-import { AuthState } from "./auth/types";
+import { AuthState } from "./auth/reducer";
 
 export interface ApplicationState {
 	user: UserState;

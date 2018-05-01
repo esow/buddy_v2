@@ -1,19 +1,30 @@
 import { Reducer } from "redux";
-import { AuthState, AuthActions, FETCH_AUTH_SUCCESS, FETCH_AUTH_FAILED } from "./types";
+import { getType } from "typesafe-actions";
+import { $call } from "utility-types";
+import { loadAuthSuccess, loadAuthFailed } from "./actions";
+import { AuthSessionDTO } from "../model/auth";
 
-// TODO change to immutable.js to get even more type safety
+// inferring union type of actions
+import * as actions from "./actions";
+const returnsOfActions = Object.values(actions).map($call);
+export type AuthAction = typeof returnsOfActions[number];
+
+export interface AuthState {
+	readonly auth?: AuthSessionDTO;
+	readonly error?: String;
+}
+
 export const initialState: AuthState = {
 	auth: undefined,
 	error: undefined,
 };
 
-export const authReducer: Reducer<AuthState> = (state: AuthState = initialState, action: AuthActions) => {
+export const authReducer: Reducer<AuthState> = (state: AuthState = initialState, action: AuthAction) => {
 	switch (action.type) {
-		case FETCH_AUTH_SUCCESS:
+		case getType(loadAuthSuccess):
 			return { ...state, auth: action.payload.authResponse };
-		case FETCH_AUTH_FAILED:
+		case getType(loadAuthFailed):
 			return { ...state, error: "Could not load auth tokens" };
-
 		default:
 			return state;
 	}

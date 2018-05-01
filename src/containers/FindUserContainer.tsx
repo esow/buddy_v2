@@ -4,7 +4,7 @@ import { ApplicationState, ConnectedReduxProps } from "../store/index";
 import { connect } from "react-redux";
 import { loadUser } from "../store/user/actions";
 import UserSearch from "../components/UserSearch/UserSearch";
-import { loadAuth } from "../store/auth/actions";
+import { loadAuth } from "../store/auth/api";
 
 export interface FindUserContainerProps extends ConnectedReduxProps<UserState> {
 }
