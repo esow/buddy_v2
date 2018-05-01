@@ -1,29 +1,35 @@
 import { User } from "../utils/mocks";
+import { AuthResponse } from "../store/auth/types";
+
 class BuddyApi {
 
-	static devServer: String = "https://lolbuddy.herokuapp.com/api";
+	private static devServer: String = "https://lolbuddy.herokuapp.com/api";
 
+	// Get server statistics
 	static getStats(): Promise<{ [key: string]: number }> {
-		const request = new Request(`${BuddyApi.devServer}/stats`, {
-			method: "GET",
-		});
-
-		return BuddyApi.fetchWithError(request);
+		return BuddyApi.getRequest(`stats`);
 	}
 
+	// Get a Fortnite player
 	static getUser(platform: string, username: string): Promise<User> {
-		const request = new Request(`${BuddyApi.devServer}/fortnite/${platform}/${username}`, {
-			method: "GET",
-		});
-
-		return BuddyApi.fetchWithError(request);
+		return BuddyApi.getRequest(`fortnite/${platform}/${username}`);
 	}
 
-	static fetchWithError(request: Request) {
+	// Get a session id and token
+	static getAuthTokens(): Promise<AuthResponse> {
+		return BuddyApi.getRequest(`auth/request`);
+	}
+
+	private static getRequest(url: string): Promise<any> {
+		const request = new Request(`${BuddyApi.devServer}/${url}`, {
+			method: "GET",
+		});
+		return BuddyApi.fetchParseJson(request);
+	}
+
+	private static fetchParseJson(request: Request) {
 		return fetch(request).then(response => {
 			return response.json();
-		}).catch(error => {
-			return error;
 		});
 
 	}
