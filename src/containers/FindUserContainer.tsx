@@ -4,6 +4,7 @@ import { ApplicationState, ConnectedReduxProps } from "../store/index";
 import { connect } from "react-redux";
 import { loadUser } from "../store/user/actions";
 import UserSearch from "../components/UserSearch/UserSearch";
+import { loadAuth } from "../store/auth/api";
 
 export interface FindUserContainerProps extends ConnectedReduxProps<UserState> {
 }
@@ -11,6 +12,10 @@ export interface FindUserContainerProps extends ConnectedReduxProps<UserState> {
 type AllProps = FindUserContainerProps & UserState;
 
 class FindUserContainer extends React.Component<AllProps, any> {
+
+	componentDidMount() {
+		this.props.dispatch(loadAuth());
+	}
 
 	fetchUser = (platform: string, username: string) => {
 		this.props.dispatch(loadUser(platform, username));
