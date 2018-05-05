@@ -30,3 +30,7 @@ root
 Install dependencies using <code>npm install</code>
 
 Run Webpack dev server using <code>npm run start</code>
+
+## Storybook
+
+Start storybook by running <code>npm run storybook</code>
