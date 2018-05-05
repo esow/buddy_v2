@@ -7,6 +7,7 @@
     "@types/react-router": "^4.0.23",
     "@types/react-router-dom": "^4.2.5",
     "@types/react-router-redux": "^5.0.12",
+    "@types/storybook__react": "^3.0.7",
     "gh-pages": "^1.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -29,15 +30,23 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.3",
+    "@storybook/addon-links": "^3.4.3",
+    "@storybook/addons": "^3.4.3",
+    "@storybook/react": "^3.4.3",
     "@types/jest": "^22.2.0",
     "@types/node": "^9.4.7",
     "@types/react": "^16.0.40",
     "@types/react-dom": "^16.0.4",
-    "typescript": "^2.7.2",
-    "tslint-react": "3.3.3"
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0",
+    "tslint-react": "3.3.3",
+    "typescript": "^2.8.3"
   },
   "homepage": "https://esow.github.io/buddy_v2"
 }
