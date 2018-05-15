@@ -1,9 +1,10 @@
 import * as React from "react";
 import "./StartPage.css";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, Route } from "react-router";
 import FindUserContainer from "../../containers/FindUserContainer";
+import UserPaneContainer from "../../containers/UserPaneContainer";
 
-export interface StartPageProps extends RouteComponentProps<any> {
+export interface StartPageProps extends RouteComponentProps<StartPageProps> {
 }
 
 export default class StartPage extends React.Component<StartPageProps, any> {
@@ -14,7 +15,7 @@ export default class StartPage extends React.Component<StartPageProps, any> {
 					<p className="buddy" >Buddy<span>GG</span></p>
 					<p>FORTNITE</p>
 					<FindUserContainer />
-					{/* <Route path={`${this.props.match.url}:userId`} component={UserPaneContainer} /> */}
+					<Route path={`${this.props.match.url}:platform/:username`} component={UserPaneContainer} />
 				</div>
 			</div>
 		);

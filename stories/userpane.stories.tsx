@@ -3,6 +3,12 @@ import { storiesOf } from "@storybook/react";
 import UserPane from "../src/blocks/UserPane/UserPane";
 
 storiesOf("User Pane", module)
-	.add("No data", () => (
-		<UserPane>Hello Button</UserPane>)
+	.add("Data", () => (
+		<UserPane
+			platform={"pc"}
+			username={"esow"}
+			top5finishes={10}
+			top3finishes={6}
+			top1finishes={3}
+		/>)
 	);
