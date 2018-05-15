@@ -3,21 +3,40 @@ import UserPane from "../blocks/UserPane/UserPane";
 import { ApplicationState } from "../store/index";
 import { connect } from "react-redux";
 import { UserState } from "../store/user/types";
+import { RouteComponentProps } from "react-router";
 
-export interface UserPaneContainerProps {
+export interface UserPaneContainerProps { }
+
+interface RouterParams {
+	platform: string;
+	username: string;
 }
-type AllProps = UserPaneContainerProps & UserState;
+
+type AllProps = UserPaneContainerProps & UserState & RouteComponentProps<RouterParams>;
 
 class UserPaneContainer extends React.Component<AllProps, any> {
-	constructor(props: AllProps) {
-		super(props);
-		this.state = { user: {} };
-	}
 	render() {
-		const username = this.props.user ? this.props.user.data.username : "No username found";
+		const { platform, username } = this.props.match.params;
+		const user = this.props.user;
+		const {
+			top5finishes,
+			top3finishes,
+			top1finishes
+		} = user ? user.data.duo : {
+			top5finishes: 0,
+			top3finishes: 0,
+			top1finishes: 0
+		};
+
 		return (
 			<div>
-				<UserPane username={username} />
+				<UserPane
+					platform={platform}
+					username={username}
+					top5finishes={top5finishes}
+					top3finishes={top3finishes}
+					top1finishes={top1finishes}
+				/>
 			</div>
 		);
 	}
