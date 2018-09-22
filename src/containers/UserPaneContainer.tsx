@@ -1,9 +1,9 @@
 import * as React from "react";
 import UserPane from "../blocks/UserPane/UserPane";
-import { ApplicationState } from "../store/index";
 import { connect } from "react-redux";
-import { UserState } from "../store/user/types";
 import { RouteComponentProps } from "react-router";
+import { RootState } from "../store/root-reducer";
+import { UserState } from "../store/user/reducer";
 
 export interface UserPaneContainerProps { }
 
@@ -22,7 +22,7 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 			top5finishes,
 			top3finishes,
 			top1finishes
-		} = user ? user.data.duo : {
+		} = user ? user.duo : {
 			top5finishes: 0,
 			top3finishes: 0,
 			top1finishes: 0
@@ -42,5 +42,5 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 	}
 }
 
-const mapStateToProps = (state: ApplicationState) => state.user;
+const mapStateToProps = (state: RootState) => state.user;
 export default connect(mapStateToProps)(UserPaneContainer);
