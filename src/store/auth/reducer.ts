@@ -1,13 +1,13 @@
 import { Reducer } from "redux";
 import { getType } from "typesafe-actions";
-import { $call } from "utility-types";
+import { $Call } from "utility-types";
 import { loadAuthSuccess, loadAuthFailed } from "./actions";
 import { AuthSessionDTO } from "../model/auth";
 
 // inferring union type of actions
 import * as actions from "./actions";
-const returnsOfActions = Object.values(actions).map($call);
-export type AuthAction = typeof returnsOfActions[number];
+const returnsOfActions = Object.values(actions);
+export type AuthAction = $Call<typeof returnsOfActions[number]>;
 
 export interface AuthState {
 	readonly auth?: AuthSessionDTO;
