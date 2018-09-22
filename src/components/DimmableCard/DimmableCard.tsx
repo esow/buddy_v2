@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Dimmer, Card, Button, Segment, Image } from "semantic-ui-react";
+import "./DimmableCard.css";
+import { Dimmer, Card, Button, Segment, Image, Icon } from "semantic-ui-react";
 
 export interface DimmableCardProps {
 	imageSrc: string;
@@ -25,12 +26,16 @@ export default class DimmableCard extends React.Component<DimmableCardProps, { a
 					onMouseEnter={this.handleShow}
 					onMouseLeave={this.handleHide}
 				>
-
+					<Image src={this.props.imageSrc} />
 					<Card.Content>
-						<Image src={this.props.imageSrc} />
-						<Card.Header>{this.props.title}</Card.Header>
-						<Card.Meta>{this.props.playerCount} Players looking for a buddy</Card.Meta>
+						<p>
+							<Card.Header>{this.props.title}</Card.Header>
+						</p>
 					</Card.Content>
+					<Card.Meta extra>
+						<Icon name="user" />
+						{this.props.playerCount} Players looking for a buddy
+					</Card.Meta>
 
 					<Dimmer active={active}>
 						<Button primary>Find a Buddy!</Button>
