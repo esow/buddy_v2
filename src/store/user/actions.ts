@@ -1,38 +1,18 @@
-import { ActionCreator } from "redux";
-import {
-	LoadUserSuccessAction,
-	LOAD_USER_SUCCESS,
-	LOAD_USER_FAILED,
-	LoadUserFailedAction,
-	LOAD_USER_REQUEST,
-	LoadUserRequestAction
-} from "./types";
 import { User } from "../../utils/mocks";
 import BuddyApi from "../../api/BuddyApi";
+import { createAsyncAction } from "typesafe-actions";
 
-export const loadUserSuccess: ActionCreator<LoadUserSuccessAction> = (user: User) => ({
-	type: LOAD_USER_SUCCESS,
-	payload: {
-		user: user
-	}
-});
-
-export const loadUserRequest: ActionCreator<LoadUserRequestAction> = () => ({
-	type: LOAD_USER_REQUEST
-});
-
-export const loadUserFailed: ActionCreator<LoadUserFailedAction> = () => ({
-	type: LOAD_USER_FAILED
-});
+export const fetchUser = createAsyncAction("FETCH_USER_REQUEST", "FETCH_USER_SUCCESS", "FETCH_USER_ERROR")
+	<void, User, Error>();
 
 export function loadUser(platform: string, username: string) {
 	return function (dispatch: any) {
-		dispatch(loadUserRequest());
+		dispatch(fetchUser.request());
 		return BuddyApi.getUser(platform, username)
 			.then(user => {
-				dispatch(loadUserSuccess(user));
+				dispatch(fetchUser.success(user.data));
 			}).catch(_ => {
-				dispatch(loadUserFailed());
+				dispatch(fetchUser.failure(new Error()));
 			});
 	};
 }
