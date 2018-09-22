@@ -1,24 +1,24 @@
 import * as React from "react";
-import { UserState } from "../store/user/types";
-import { ApplicationState, ConnectedReduxProps } from "../store/index";
 import { connect } from "react-redux";
 import { loadUser } from "../store/user/actions";
 import UserSearch from "../components/UserSearch/UserSearch";
-import { loadAuth } from "../store/auth/api";
+import { loadAuth } from "../store/auth/actions";
+import { RootState } from "../store/root-reducer";
 
-export interface FindUserContainerProps extends ConnectedReduxProps<UserState> {
+export interface DispatchProps {
+	loadAuth: typeof loadAuth;
+	loadUser: typeof loadUser;
 }
 
-type AllProps = FindUserContainerProps & UserState;
-
-class FindUserContainer extends React.Component<AllProps, any> {
+// type Props = UserState & DispatchProps;
+class FindUserContainer extends React.Component<any, any> {
 
 	componentDidMount() {
-		this.props.dispatch(loadAuth());
+		this.props.loadAuth();
 	}
 
 	fetchUser = (platform: string, username: string) => {
-		this.props.dispatch(loadUser(platform, username));
+		this.props.loadUser(platform, username);
 	}
 
 	render() {
@@ -30,5 +30,9 @@ class FindUserContainer extends React.Component<AllProps, any> {
 	}
 }
 
-const mapStateToProps = (state: ApplicationState) => state.user;
-export default connect(mapStateToProps)(FindUserContainer);
+const mapStateToProps = (state: RootState) => state.user;
+
+export default connect(mapStateToProps, {
+	loadAuth: loadAuth,
+	loadUser: loadUser
+})(FindUserContainer);

@@ -4,7 +4,7 @@ import { RouteComponentProps, Route } from "react-router";
 import FindUserContainer from "../../containers/FindUserContainer";
 import UserPaneContainer from "../../containers/UserPaneContainer";
 
-export interface StartPageProps extends RouteComponentProps<StartPageProps> {
+export interface StartPageProps extends RouteComponentProps {
 }
 
 export default class StartPage extends React.Component<StartPageProps, any> {
