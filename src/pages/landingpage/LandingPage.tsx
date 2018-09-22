@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./LandingPage.css";
 import GameSelector from "../../components/GameSelector/GameSelector";
+import Footer from "../../blocks/Footer/Footer";
 
 export interface LandingPageProps {
 }
@@ -18,6 +19,7 @@ export default class LandingPage extends React.Component<LandingPageProps, any> 
 					<p>FORTNITE</p>
 					<GameSelector listOfGames={listOfGames} />
 				</div>
+                <Footer />
 			</div>
 		);
 	}
