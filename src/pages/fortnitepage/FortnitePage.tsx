@@ -3,7 +3,6 @@ import "./FortnitePage.css";
 import { RouteComponentProps, Route } from "react-router";
 import FindUserContainer from "../../containers/FindUserContainer";
 import UserPaneContainer from "../../containers/UserPaneContainer";
-import Footer from "../../blocks/Footer/Footer";
 
 export interface FortnitePageProps extends RouteComponentProps {
 }
@@ -18,7 +17,6 @@ export default class FortnitePage extends React.Component<FortnitePageProps, any
 					<FindUserContainer />
 					<Route path={`${this.props.match.url}:platform/:username`} component={UserPaneContainer} />
 				</div>
-				<Footer />
 			</div>
 		);
 	}

@@ -1,6 +1,8 @@
 import * as React from "react";
 import FortnitePage from "./pages/fortnitepage/FortnitePage";
 import { Route } from "react-router-dom";
+import "./BuddyGG.css";
+import Footer from "./blocks/Footer/Footer";
 
 export interface BuddyGGProps {
 }
@@ -10,6 +12,7 @@ export default class BuddyGG extends React.Component<BuddyGGProps, any> {
 		return (
 			<div className="buddygg" >
 				<Route path="/" component={FortnitePage} />
+                <Footer />
 			</div>
 		);
 	}
