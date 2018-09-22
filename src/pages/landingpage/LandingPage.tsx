@@ -2,6 +2,7 @@ import * as React from "react";
 import "./LandingPage.css";
 import GameSelector from "../../components/GameSelector/GameSelector";
 import Footer from "../../blocks/Footer/Footer";
+import { Image } from "semantic-ui-react";
 
 export interface LandingPageProps {
 }
@@ -15,11 +16,10 @@ export default class LandingPage extends React.Component<LandingPageProps, any> 
 		return (
 			<div className="landing-page">
 				<div className="page-content">
-					<p className="buddy" >Buddy<span>GG</span></p>
-					<p>FORTNITE</p>
+					<Image centered style={{ width: 297, height: 246 }} src="/BUDDYGG-LOGO-3.png" />
 					<GameSelector listOfGames={listOfGames} />
 				</div>
-                <Footer />
+				<Footer />
 			</div>
 		);
 	}
