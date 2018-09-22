@@ -1,24 +1,24 @@
 import * as React from "react";
-import "./StartPage.css";
+import "./FortnitePage.css";
 import { RouteComponentProps, Route } from "react-router";
 import FindUserContainer from "../../containers/FindUserContainer";
 import UserPaneContainer from "../../containers/UserPaneContainer";
 import Footer from "../../blocks/Footer/Footer";
 
-export interface StartPageProps extends RouteComponentProps {
+export interface FortnitePageProps extends RouteComponentProps {
 }
 
-export default class StartPage extends React.Component<StartPageProps, any> {
+export default class FortnitePage extends React.Component<FortnitePageProps, any> {
 	render() {
 		return (
-			<div className="start-page">
+			<div className="fortnite-page">
 				<div className="page-content">
 					<p className="buddy" >Buddy<span>GG</span></p>
 					<p>FORTNITE</p>
 					<FindUserContainer />
 					<Route path={`${this.props.match.url}:platform/:username`} component={UserPaneContainer} />
 				</div>
-                <Footer />
+				<Footer />
 			</div>
 		);
 	}
