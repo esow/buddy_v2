@@ -28,9 +28,9 @@ export default class BarChart extends React.Component<BarChartProps, any> {
 		const min = 0;
 		const max = Math.max(...[top5, top3, top1]);
 
-		const top5new = ((top5 - min) / (max - min)) * 250;
-		const top3new = ((top3 - min) / (max - min)) * 250;
-		const top1new = ((top1 - min) / (max - min)) * 250;
+		const top5new = top5 === 0 ? 0 : ((top5 - min) / (max - min)) * 250;
+		const top3new = top3 === 0 ? 0 : ((top3 - min) / (max - min)) * 250;
+		const top1new = top1 === 0 ? 0 : ((top1 - min) / (max - min)) * 250;
 
 		const styles = {
 			top5: {
