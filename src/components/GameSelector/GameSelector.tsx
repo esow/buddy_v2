@@ -18,6 +18,7 @@ export default class GameSelector extends React.Component<GameSelectorProps, any
 		return (
 			<Card.Group centered>
 				{
+					// tslint:disable-next-line:typedef
 					this.props.listOfGames.map(function (elem) {
 						return (
 							// tslint:disable-next-line:jsx-key
