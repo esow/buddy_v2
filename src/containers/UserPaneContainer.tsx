@@ -27,6 +27,7 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 			top3finishes: 0,
 			top1finishes: 0
 		};
+		const gamesPlayed = user ? user.total.totalGamesPlayed : 0;
 
 		return (
 			<div>
@@ -36,6 +37,7 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 					top5finishes={top5finishes}
 					top3finishes={top3finishes}
 					top1finishes={top1finishes}
+					gamesPlayed={gamesPlayed}
 				/>
 			</div>
 		);
