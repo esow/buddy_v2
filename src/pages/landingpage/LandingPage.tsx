@@ -31,10 +31,17 @@ class LandingPage extends React.Component<LandingPageProps & ServerStatsState, a
 	render() {
 		const listOfGames = [
 			{
-				imageSrc: "/GameSelectorFortnite-640x360.png", title: "Fortnite - Battle Royale",
-				playerCount: this.props.fortnitePlayerOnline ? this.props.fortnitePlayerOnline : NaN
+				imageSrc: "/GameSelectorFortnite-640x360.png",
+				title: "Fortnite - Battle Royale",
+				playerCount: this.props.fortnitePlayerOnline ? this.props.fortnitePlayerOnline : NaN,
+				destination: "/fortnitebr"
 			},
-			{ imageSrc: "/GameSelectorLeagueOfLegends-640x360.png", title: "League of Legends", playerCount: 1 }];
+			{
+				imageSrc: "/GameSelectorLeagueOfLegends-640x360.png",
+				title: "League of Legends",
+				playerCount: 1,
+				destination: "/leagueoflegends"
+			}];
 		return (
 			<div className="landing-page">
 				<div className="page-content">
