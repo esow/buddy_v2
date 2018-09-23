@@ -8,7 +8,6 @@ import { User } from "../utils/mocks";
 import { connectToSocket } from "../store/matching/actions";
 import { AuthState } from "../store/auth/reducer";
 import { MatchingState } from "../store/matching/reducer";
-import { Button } from "semantic-ui-react";
 import { loadUser } from "../store/user/actions";
 
 export interface UserPaneContainerProps {
@@ -33,6 +32,7 @@ interface ConnectedProps {
 type AllProps = UserPaneContainerProps & ConnectedProps & RouteComponentProps<RouterParams> & DispatchEvents;
 
 class UserPaneContainer extends React.Component<AllProps, any> {
+<<<<<<< HEAD
 	getUserStats = (user: User) => {
 		return {
 			totalGamesWon: user.total.gamesWon,
@@ -54,6 +54,8 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 			squadTop6Finishes: user.squad.top6finishes,
 		};
 	}
+=======
+>>>>>>> inital socket setup
 
 	componentDidMount() {
 		if (this.props.user.user == null) {
@@ -61,7 +63,12 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 		}
 	}
 
+<<<<<<< HEAD
 	connectSocket = () => {
+=======
+	connectSocket = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+>>>>>>> inital socket setup
 		const sessionId = this.props.auth.auth ? this.props.auth.auth.session_id : "";
 		const users = {
 			"name": "Lethly",
@@ -133,6 +140,7 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 	render() {
 
 		const { platform, username } = this.props.match.params;
+<<<<<<< HEAD
 
 		if (this.props.user && this.props.user.user) {
 			const userStats = this.getUserStats(this.props.user.user);
@@ -144,9 +152,9 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 						username={username}
 						stats={userStats}
 					/>
-                    <form className="summoner-search" onSubmit={this.connectSocket}>
-                        <Button> Find some freinds GOGO </Button>
-                    </form>
+					<form className="summoner-search" onSubmit={this.connectSocket}>
+						<Button> Find some freinds GOGO </Button>
+					</form>
 				</div>
 			);
 		} else {
@@ -154,6 +162,35 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 				<div />
 			);
 		}
+=======
+
+		const user = this.props.user;
+		const {
+			top5finishes,
+			top3finishes,
+			top1finishes
+		} = user.user ? user.user.duo : {
+			top5finishes: 0,
+			top3finishes: 0,
+			top1finishes: 0
+		};
+
+		return (
+			<div>
+
+				<UserPane
+					platform={platform}
+					username={username}
+					top5finishes={top5finishes}
+					top3finishes={top3finishes}
+					top1finishes={top1finishes}
+				/>
+				<form className="summoner-search" onSubmit={this.connectSocket}>
+					<Button> Find some freinds GOGO </Button>
+				</form>
+			</div >
+		);
+>>>>>>> inital socket setup
 	}
 }
 
@@ -163,4 +200,8 @@ const mapStateToProps = (state: RootState) => ({
 	matching: state.matching
 });
 export default connect(mapStateToProps, { connectToSocket: connectToSocket, loadUser: loadUser }
+<<<<<<< HEAD
 )(UserPaneContainer);
+=======
+)(UserPaneContainer);
+>>>>>>> inital socket setup
