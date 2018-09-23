@@ -1,11 +1,13 @@
 import * as React from "react";
 import "./DimmableCard.css";
+import history from "../../utils/history";
 import { Dimmer, Card, Button, Segment, Image, Icon } from "semantic-ui-react";
 
 export interface DimmableCardProps {
 	imageSrc: string;
 	title: string;
 	playerCount: Number;
+	destination: string;
 }
 
 export default class DimmableCard extends React.Component<DimmableCardProps, { active: boolean }> {
@@ -38,7 +40,7 @@ export default class DimmableCard extends React.Component<DimmableCardProps, { a
 					</Card.Meta>
 
 					<Dimmer active={active}>
-						<Button primary>Find a Buddy!</Button>
+						<Button primary onClick={() => { history.push(this.props.destination); }}>Find a Buddy!</Button>
 					</Dimmer>
 				</Dimmer.Dimmable>
 			</Card>
