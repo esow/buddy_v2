@@ -1,6 +1,8 @@
-form { 
-	margin-top: 20px; 
+.summoner-search {
+	margin-top: 20px;
+    display: inline-block;
 }
+
 .summoner-search > *:first-child {
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
@@ -13,9 +15,9 @@ form {
 	height: 45px;
 	border: 1px solid #444;
 	color: #444;
-	padding-left: 20px;	
+	padding-left: 20px;
 	padding-right: 20px;
-	font-size: 1em;	
+	font-size: 1em;
 	outline: none;
 }
 .summoner-search input {
@@ -24,14 +26,14 @@ form {
 }
 .summoner-search select {
 	margin-left: -1px;
-	background-color: white;	
+	background-color: white;
 }
 .summoner-search button {
-	width: 215px;
+	min-width: 215px;
 	margin-left: -1px;
 	border: 1px solid#444;
 	background-color: #496d89;
-	color: white;	
+	color: white;
 }
 .summoner-search button.loading {
 	background-color: #5a86a8;
