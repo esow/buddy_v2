@@ -1,13 +1,5 @@
-<<<<<<< HEAD:src/pages/landingpage/LandingPage.css
 .landing-page {
 	/* max-width: 700px; */
-||||||| merged common ancestors
-.start-page {
-	max-width: 700px;
-=======
-.start-page {
-	/* max-width: 700px; */
->>>>>>> add simplistic semantic-ui twitter/github icon footer:src/pages/startpage/StartPage.css
 	margin: auto;
     min-height: 100vh;
 	flex-direction: column;
