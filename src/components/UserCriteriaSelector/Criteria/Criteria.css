@@ -1,0 +1,25 @@
+.criteria{ 
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+  }
+.criteria-content{
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+.criteria-positions {
+	max-width: 400px;
+  }
+.no-margin{
+  margin: 0 !important;
+}
+.no-padding{
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+#criteria-header {
+  border: solid black;
+  left: 0%;
+}
