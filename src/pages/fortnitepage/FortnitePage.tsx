@@ -15,7 +15,7 @@ export default class FortnitePage extends React.Component<FortnitePageProps, any
 					<p className="buddy" >Buddy<span>GG</span></p>
 					<p>FORTNITE</p>
 					<FindUserContainer />
-					<Route path={`${this.props.match.url}:platform/:username`} component={UserPaneContainer} />
+					<Route path={`${this.props.match.url}/:platform/:username`} component={UserPaneContainer} />
 				</div>
 			</div>
 		);
