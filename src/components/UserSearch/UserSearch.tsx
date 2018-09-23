@@ -28,7 +28,7 @@ export default class UserSearch extends React.Component<UserSearchProps, UserSea
 		const platform = this.state.platform.toLowerCase();
 		if (!username) { return; }
 		this.props.onSubmit(platform, username);
-		history.push(`fortnitebr/${platform}/${username}`);
+		history.replace(`/fortnitebr/${platform}/${username}`);
 	}
 
 	onChangeUsername = (event: any) => {
