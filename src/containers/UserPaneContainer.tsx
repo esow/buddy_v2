@@ -8,8 +8,7 @@ import { User } from "../utils/mocks";
 import { connectToSocket } from "../store/matching/actions";
 import { AuthState } from "../store/auth/reducer";
 import { MatchingState } from "../store/matching/reducer";
-import Button from "../components/Button/Button";
-import { FormEvent } from "react";
+import { Button } from "semantic-ui-react";
 import { loadUser } from "../store/user/actions";
 
 export interface UserPaneContainerProps {
@@ -62,8 +61,7 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 		}
 	}
 
-	connectSocket = (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
+	connectSocket = () => {
 		const sessionId = this.props.auth.auth ? this.props.auth.auth.session_id : "";
 		const users = {
 			"name": "Lethly",
@@ -146,7 +144,6 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 						username={username}
 						stats={userStats}
 					/>
-
                     <form className="summoner-search" onSubmit={this.connectSocket}>
                         <Button> Find some freinds GOGO </Button>
                     </form>
@@ -165,4 +162,5 @@ const mapStateToProps = (state: RootState) => ({
 	auth: state.auth,
 	matching: state.matching
 });
-export default connect(mapStateToProps, { connectToSocket: connectToSocket, loadUser: loadUser })(UserPaneContainer);
+export default connect(mapStateToProps, { connectToSocket: connectToSocket, loadUser: loadUser }
+)(UserPaneContainer);
