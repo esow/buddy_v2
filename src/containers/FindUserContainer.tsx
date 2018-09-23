@@ -34,5 +34,5 @@ const mapStateToProps = (state: RootState) => state.user;
 
 export default connect(mapStateToProps, {
 	loadAuth: loadAuth,
-	loadUser: loadUser
+	loadUser: loadUser,
 })(FindUserContainer);
