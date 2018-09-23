@@ -1,5 +1,5 @@
 import * as React from "react";
-import LandingPage from "./pages/landingpage/LandingPage";
+import FortnitePage from "./pages/fortnitepage/FortnitePage";
 import { Route } from "react-router-dom";
 
 export interface BuddyGGProps {
@@ -9,7 +9,7 @@ export default class BuddyGG extends React.Component<BuddyGGProps, any> {
 	render() {
 		return (
 			<div className="buddygg" >
-				<Route path="/" component={LandingPage} />
+				<Route path="/" component={FortnitePage} />
 			</div>
 		);
 	}

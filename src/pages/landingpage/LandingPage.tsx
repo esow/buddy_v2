@@ -3,15 +3,37 @@ import "./LandingPage.css";
 import GameSelector from "../../components/GameSelector/GameSelector";
 import Footer from "../../blocks/Footer/Footer";
 import { Image } from "semantic-ui-react";
+import { ServerStatsState } from "../../store/ServerStats/reducer";
+import { RootState } from "../../store/root-reducer";
+import { connect } from "react-redux";
+import { loadStats } from "../../store/ServerStats/actions";
 
 export interface LandingPageProps {
+	loadStats: typeof loadStats;
+	timer: NodeJS.Timer | null;
 }
 
-export default class LandingPage extends React.Component<LandingPageProps, any> {
+class LandingPage extends React.Component<LandingPageProps & ServerStatsState, any> {
+
+	componentDidMount() {
+		this.setState({ timer: setInterval(() => this.getOnlinePlayers(), 10000) });
+		this.getOnlinePlayers();
+	}
+
+	componentWillUnmount() {
+		this.setState({ timer: null });
+	}
+
+	getOnlinePlayers() {
+		return this.props.loadStats();
+	}
 
 	render() {
 		const listOfGames = [
-			{ imageSrc: "/GameSelectorFortnite-640x360.png", title: "Fortnite - Battle Royale", playerCount: 4274 },
+			{
+				imageSrc: "/GameSelectorFortnite-640x360.png", title: "Fortnite - Battle Royale",
+				playerCount: this.props.fortnitePlayerOnline ? this.props.fortnitePlayerOnline : NaN
+			},
 			{ imageSrc: "/GameSelectorLeagueOfLegends-640x360.png", title: "League of Legends", playerCount: 1 }];
 		return (
 			<div className="landing-page">
@@ -23,4 +45,10 @@ export default class LandingPage extends React.Component<LandingPageProps, any> 
 			</div>
 		);
 	}
+
 }
+
+const mapStateToProps = (state: RootState) => state.serverStats;
+export default connect(mapStateToProps, {
+	loadStats: loadStats
+})(LandingPage);

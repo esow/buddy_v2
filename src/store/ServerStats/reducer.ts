@@ -6,6 +6,7 @@ export type StatsAction = ActionType<typeof stats>;
 
 export interface ServerStatsState {
 	playersOnline?: number;
+	fortnitePlayerOnline?: number;
 }
 
 const reducer: Reducer<ServerStatsState> =
@@ -18,7 +19,7 @@ const reducer: Reducer<ServerStatsState> =
 				// var totalPlayers = Object.keys(response).reduce((p, c) => (p + response[c]), 0);
 				var totalPlayers = 40;
 
-				return { ...state, playersOnline: totalPlayers };
+				return { ...state, playersOnline: totalPlayers, fortnitePlayerOnline: 20 };
 			default:
 				return state;
 		}
