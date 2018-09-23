@@ -4,6 +4,7 @@ import AgeGroup from "./Criteria/AgeGroup";
 import Languages from "./Criteria/Languages";
 import VoiceChat from "./Criteria/VoiceChat";
 import Comment from "./Criteria/Comment";
+import "./UserCriteriaSelector.css";
 
 export interface UserCriteriaSelectorPaneProps {
 }
@@ -15,7 +16,7 @@ export default class UserCriteriaSelectorPane extends React.Component<UserCriter
 		const handle = () => true;
 
 		return (
-			<div >
+			<div className="userCriteria">
 				<Languages
 					handleChange={handle}
 					languageOptions={[]}

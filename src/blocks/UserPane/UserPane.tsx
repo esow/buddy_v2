@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./UserPane.css";
 import FortniteStatistics from "../../components/Statistics/FortniteStatistics";
+import UserCriteriaSelectorPane from "../../components/UserCriteriaSelector/UserCriteriaSelector";
 
 export interface UserPaneProps {
 	platform: string;
@@ -55,6 +56,7 @@ export default class UserPane extends React.Component<UserPaneProps, any> {
 			<div className="summoner-pane">
 				<div className="column user-input">
 					<div className="header">{user.username}</div>
+                    <UserCriteriaSelectorPane />
 				</div>
 				<div className="column statistics">
 					<div className="header">Duo stats</div>

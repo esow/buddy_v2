@@ -4,6 +4,7 @@ import { loadUser } from "../store/user/actions";
 import UserSearch from "../components/UserSearch/UserSearch";
 import { loadAuth } from "../store/auth/actions";
 import { RootState } from "../store/root-reducer";
+import "./FindUserContainer.css";
 
 export interface DispatchProps {
 	loadAuth: typeof loadAuth;
@@ -23,7 +24,7 @@ class FindUserContainer extends React.Component<any, any> {
 
 	render() {
 		return (
-			<div>
+			<div className="findUserContainer">
 				<UserSearch onSubmit={this.fetchUser} isLoading={this.props.isFetching} />
 			</div>
 		);
