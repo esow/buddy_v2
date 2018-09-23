@@ -1,24 +1,28 @@
+
+import { ActionType, getType } from "typesafe-actions";
+import * as stats from "./actions";
 import { Reducer } from "redux";
-import {
-	ServerStatsState, ServerStatsActions, STATS_RECEIVED,
-	// StatsReceivedAction 
-} from "./types";
+export type StatsAction = ActionType<typeof stats>;
 
-export const initialState: ServerStatsState = {
-	playersOnline: undefined
-};
+export interface ServerStatsState {
+	playersOnline?: number;
+	fortnitePlayerOnline?: number;
+}
 
-export const serverStatsReducer: Reducer<ServerStatsState> = (state: ServerStatsState = initialState, action) => {
-	switch ((action as ServerStatsActions).type) {
-		case STATS_RECEIVED:
-			// var actualAction = (action as StatsReceivedAction);
-			// var response = actualAction.payload.playersOnline;
-			// Calculate the total number of online players
-			// var totalPlayers = Object.keys(response).reduce((p, c) => (p + response[c]), 0);
-			var totalPlayers = 40;
+const reducer: Reducer<ServerStatsState> =
+	(state: ServerStatsState = { playersOnline: undefined }, action: StatsAction) => {
+		switch (action.type) {
+			case getType(stats.fetchStats.success):
+				// var actualAction = (action as StatsReceivedAction);
+				// var response = actualAction.payload.playersOnline;
+				// Calculate the total number of online players
+				// var totalPlayers = Object.keys(response).reduce((p, c) => (p + response[c]), 0);
+				var totalPlayers = 40;
 
-			return { ...state, playersOnline: totalPlayers };
-		default:
-			return state;
-	}
-};
+				return { ...state, playersOnline: totalPlayers, fortnitePlayerOnline: 20 };
+			default:
+				return state;
+		}
+	};
+
+export default reducer;
