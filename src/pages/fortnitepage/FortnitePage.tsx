@@ -4,7 +4,7 @@ import { RouteComponentProps, Route } from "react-router";
 import FindUserContainer from "../../containers/FindUserContainer";
 import UserPaneContainer from "../../containers/UserPaneContainer";
 
-export interface FortnitePageProps extends RouteComponentProps {
+export interface FortnitePageProps extends RouteComponentProps<any, any> {
 }
 
 export default class FortnitePage extends React.Component<FortnitePageProps, any> {
