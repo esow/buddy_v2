@@ -1,0 +1,12 @@
+  .main-content2{
+    height: 100vh;
+    padding-top: 10vh;
+    display: flex;
+    justify-content: center;
+  }
+  .width-control2{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
