@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./UserPane.css";
-import Statistics from "../../components/Statistics/Statistics";
+import FortniteStatistics from "../../components/Statistics/FortniteStatistics";
 
 export interface UserPaneProps {
 	platform: string;
@@ -58,7 +58,7 @@ export default class UserPane extends React.Component<UserPaneProps, any> {
 				</div>
 				<div className="column statistics">
 					<div className="header">Duo stats</div>
-					<Statistics
+					<FortniteStatistics
 						wins={user.stats.duoGamesWon}
 						played={user.stats.duoGamesPlayed}
 						kdratio={user.stats.duoKillDeathRatio}

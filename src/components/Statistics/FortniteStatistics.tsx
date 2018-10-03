@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Icon, Statistic } from "semantic-ui-react";
 
-interface StatisticProps {
+interface FortniteStatisticProps {
 	wins: Number;
 	played: Number;
 	kdratio: Number;
@@ -9,7 +9,7 @@ interface StatisticProps {
 	top12: Number;
 }
 
-const Statistics: React.SFC<StatisticProps> = (props) => {
+const FortniteStatistics: React.SFC<FortniteStatisticProps> = (props) => {
 	return (
 		<Statistic.Group widths="one" size={"tiny"}>
 			<Statistic>
@@ -40,4 +40,4 @@ const Statistics: React.SFC<StatisticProps> = (props) => {
 	);
 };
 
-export default Statistics;
+export default FortniteStatistics;
