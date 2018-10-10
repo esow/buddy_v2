@@ -12,27 +12,46 @@ interface LeagueStatisticProps {
 }
 
 const LeagueStatistics: React.SFC<LeagueStatisticProps> = (props) => {
+
+	var badgeSrc: string;
+
+	if (props.league === "Challenger") {
+		badgeSrc = "/ChallengerBadge.png";
+	} else if (props.league === "Master") {
+		badgeSrc = "/MasterBadge.png";
+	} else if (props.league === "Diamond") {
+		badgeSrc = "/DiamondBadge.png";
+	} else if (props.league === "Platinum") {
+		badgeSrc = "/PlatinumBadge.png";
+	} else if (props.league === "Gold") {
+		badgeSrc = "/GoldBadge.png";
+	} else if (props.league === "Silver") {
+		badgeSrc = "/SilverBadge.png";
+	} else if (props.league === "Bronze") {
+		badgeSrc = "/BronzeBadge.png";
+	} else { badgeSrc = "/BlankBadge.png"; }
+
 	return (
+
 		<Statistic.Group widths="one" >
 
 			<Statistic>
-				<Statistic.Label><Image centered circular src={props.iconSrc} /></Statistic.Label>
+				<Statistic.Label><Image centered circular size="small" src={props.iconSrc} /></Statistic.Label>
+			</Statistic>
+
+			<Statistic>
+				<Statistic.Label>
+					<Image centered circular size="tiny" src={badgeSrc} />
+					{props.league} {props.division}
+				</Statistic.Label>
 			</Statistic>
 
 			<Statistic>
 				<Statistic.Value text>
-					{props.division}<br />
-					{props.league}
-				</Statistic.Value>
-				<Statistic.Label>League</Statistic.Label>
-			</Statistic>
-
-			<Statistic>
-				<Statistic.Value>
-					<Image.Group >
-						<Image centered circular src={props.mostPlayed1Src} />
-						<Image centered circular src={props.mostPlayed2Src} />
-						<Image centered circular src={props.mostPlayed3Src} />
+					<Image.Group centered>
+						<Image src={props.mostPlayed1Src} />
+						<Image src={props.mostPlayed2Src} />
+						<Image src={props.mostPlayed3Src} />
 					</Image.Group>
 				</Statistic.Value>
 				<Statistic.Label>Most played champions</Statistic.Label>
