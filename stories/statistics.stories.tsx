@@ -16,6 +16,6 @@ storiesOf("Statistics", module)
 			mostPlayed1Src="/Leona.png"
 			mostPlayed2Src="/Nautilus.png"
 			mostPlayed3Src="/Thresh.png"
-			positionsSrc="/top.png"
+			positionSrc="/top.png"
 		/>)
 	);
