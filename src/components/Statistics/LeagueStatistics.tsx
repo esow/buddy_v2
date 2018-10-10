@@ -8,7 +8,7 @@ interface LeagueStatisticProps {
 	mostPlayed1Src: string;
 	mostPlayed2Src: string;
 	mostPlayed3Src: string;
-	positionsSrc: string;
+	positionSrc: string;
 }
 
 const LeagueStatistics: React.SFC<LeagueStatisticProps> = (props) => {
@@ -36,7 +36,7 @@ const LeagueStatistics: React.SFC<LeagueStatisticProps> = (props) => {
 		<Statistic.Group widths="one" >
 
 			<Statistic>
-				<Statistic.Label><Image centered circular size="small" src={props.iconSrc} /></Statistic.Label>
+				<Statistic.Label><Image centered circular size="tiny" src={props.iconSrc} /></Statistic.Label>
 			</Statistic>
 
 			<Statistic>
@@ -47,19 +47,23 @@ const LeagueStatistics: React.SFC<LeagueStatisticProps> = (props) => {
 			</Statistic>
 
 			<Statistic>
-				<Statistic.Value text>
+				<Statistic.Label>
 					<Image.Group centered>
-						<Image src={props.mostPlayed1Src} />
-						<Image src={props.mostPlayed2Src} />
-						<Image src={props.mostPlayed3Src} />
+						<Image size="mini" src={props.mostPlayed1Src} />
+						<Image size="mini" src={props.mostPlayed2Src} />
+						<Image size="mini" src={props.mostPlayed3Src} />
 					</Image.Group>
-				</Statistic.Value>
-				<Statistic.Label>Most played champions</Statistic.Label>
+					Most played<br />
+					champions
+				</Statistic.Label>
 			</Statistic>
 
 			<Statistic>
-				<Statistic.Value><Image centered src={props.positionsSrc} /></Statistic.Value>
-				<Statistic.Label>Most played positions</Statistic.Label>
+				<Statistic.Value><Image centered src={props.positionSrc} /></Statistic.Value>
+				<Statistic.Label>
+					Most played<br />
+					position
+				</Statistic.Label>
 			</Statistic>
 
 		</Statistic.Group>
