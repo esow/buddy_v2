@@ -5,7 +5,7 @@ import { loadStats } from "../store/ServerStats/actions";
 import { RootState } from "../store/root-reducer";
 
 export interface ServerStatsPaneContainerProps {
-	timer: NodeJS.Timer | null;
+	timer: any | null;
 }
 
 class ServerStatsPaneContainer extends React.Component<any, any> {

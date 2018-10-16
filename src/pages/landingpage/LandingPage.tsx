@@ -10,7 +10,7 @@ import { loadStats } from "../../store/ServerStats/actions";
 
 export interface LandingPageProps {
 	loadStats: typeof loadStats;
-	timer: NodeJS.Timer | null;
+	timer: any | null;
 }
 
 class LandingPage extends React.Component<LandingPageProps & ServerStatsState, any> {
