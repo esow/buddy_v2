@@ -5,11 +5,13 @@
 	background: #ffdbaa;
     padding: 3vh;
 	margin: auto;
+	margin-bottom: 3vh;
 	margin-top: 3vh;
 	border-radius: 10px;
 	border: 1px black solid;
 	display: flex;
 	align-items: center;
+    padding-bottom: 10vh;
 }
 
 .column {

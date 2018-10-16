@@ -13,11 +13,12 @@ export default class Comment extends Component<CommentProps> {
             <div>
                 <Divider inverted horizontal>Comments</Divider>
                 <Form.TextArea
-                    maxLength="100"
+                    className="comment-form"
                     onChange={this.props.handleChange}
                     value={this.props.comment}
                     placeholder="Additional information (max. 100 characters)"
                 />
+
             </div>
         );
     }
