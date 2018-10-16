@@ -7,6 +7,7 @@ export interface GameSelectorProps {
 		imageSrc: string;
 		title: string;
 		playerCount: Number;
+        destination: string;
 	}[];
 
 }
@@ -27,6 +28,7 @@ export default class GameSelector extends React.Component<GameSelectorProps, any
 								imageSrc={elem.imageSrc}
 								title={elem.title}
 								playerCount={elem.playerCount}
+								destination={elem.destination}
 							/>
 						);
 					})
