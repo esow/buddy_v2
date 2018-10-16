@@ -5,7 +5,7 @@ import ".././MatchTable.css";
 export default function MatchTileHeader() {
     return (
         <div className="match-tile">
-            <Grid className="grid match-tile-header" columns="equal" verticalAlign="middle" divided>
+            <Grid className="grid match-tile-header" columns="12" verticalAlign="middle" divided>
                 <Grid.Column>
                     <h4> Profile </h4>
                 </Grid.Column>

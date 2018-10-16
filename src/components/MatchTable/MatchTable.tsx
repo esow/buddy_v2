@@ -6,7 +6,13 @@ import { Component } from "react";
 import * as React from "react";
 
 export interface MatchTableProps {
-    matches: any[];
+    matches: 
+    {
+        id: number;
+        region: string; 
+        name: string
+        comment: string;
+    }[];
     requestMatch: (player: any) => void;
 }
 
@@ -24,7 +30,8 @@ export default class MatchTable extends Component<MatchTableProps> {
                     <MatchTileHeader />
                     <div className={noMatches ? "" : "hidden"} >
                         <div className="match-tile empty">
-                            <h4>You don't have any matches yet!</h4>
+                            <h4>You don't have any matches yet. Try changing your search 
+                                criteria or wait a bit until someone else signs up.</h4>
                         </div>
                     </div>
 
@@ -37,7 +44,7 @@ export default class MatchTable extends Component<MatchTableProps> {
                         animation="vertical flip"
                         className="no-margin"
                     >
-                        {this.props.matches.map((match: any) =>
+                        {this.props.matches.map((match) =>
                             <List.Item key={match.id}>
                                 <MatchTile requestMatch={this.props.requestMatch} match={match} />
                             </List.Item>

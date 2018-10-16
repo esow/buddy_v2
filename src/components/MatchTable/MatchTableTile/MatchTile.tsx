@@ -3,7 +3,12 @@ import { Component } from "react";
 import * as React from "react";
 import ".././MatchTable.css";
 
-export default class MatchTile extends Component<any, any> {
+export interface MatchTileProps {
+    match: {region: String; name: String, comment: String; };
+    requestMatch: any;
+}
+
+export default class MatchTile extends Component<MatchTileProps, any> {
     requestMatch = () => {
         this.props.requestMatch(this.props.match);
     }
