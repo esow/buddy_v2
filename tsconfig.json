@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "paths": {
+      "*": [
+        "types/*"
+      ]
+    },
     "outDir": "build/dist",
     "module": "es2015",
     "target": "es2015",
