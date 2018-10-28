@@ -28,9 +28,24 @@ export function connectToSocket(auth: AuthSessionDTO, player: any) {
 			});
 
 		channel.on("initial_matches", (response) => {
-			console.log("initial_matches:");
 			dispatch(initialMatch(response));
-
 		});
+
+		channel.on("new_match", (response) => {
+			dispatch(initialMatch(response));
+		});
+
+		channel.on("remove_player", (response) => {
+			dispatch(initialMatch(response));
+		});
+
+		channel.on("match_requested", (response) => {
+			dispatch(initialMatch(response));
+		});
+
+		channel.on("request_response", (response) => {
+			dispatch(initialMatch(response));
+		});
+
 	};
 }
