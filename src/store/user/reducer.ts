@@ -1,17 +1,17 @@
 import { ActionType, getType } from "typesafe-actions";
 import * as users from "./actions";
-import { User } from "../../utils/mocks";
 import { Reducer } from "redux";
+import { FortnitePlayerStats } from "../../models/FornitePlayerStats";
 export type UserAction = ActionType<typeof users>;
 
 export type UserState = {
-	user: User | null;
+	stats: FortnitePlayerStats | null;
 	error: string | null;
 	isFetching: boolean;
 };
 
 const initialState = {
-	user: null,
+	stats: null,
 	error: null,
 	isFetching: false
 };
