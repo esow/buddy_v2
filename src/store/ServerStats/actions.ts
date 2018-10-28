@@ -1,17 +1,16 @@
 import BuddyApi from "../../api/BuddyApi";
-import * as types from "./types";
+import { createAsyncAction } from "typesafe-actions";
+
+export const fetchStats = createAsyncAction("FETCH_STATS_REQUEST", "FETCH_STATS_SUCCESS", "FETCH_STATS_ERROR")
+	<void, { [key: string]: number }, Error>();
 
 export function loadStats() {
 	return function (dispatch: any) {
 		return BuddyApi.getStats().then(stats => {
-			dispatch(loadStatsSuccess(stats));
+			dispatch(fetchStats.success(stats));
 		}).catch(error => {
-			// TODO add error handling 
-			throw (error);
+			// TODO add error handling
+			dispatch(fetchStats.failure(new Error(error)));
 		});
 	};
-}
-
-export function loadStatsSuccess(stats: { [key: string]: number }) {
-	return { type: types.STATS_RECEIVED, payload: stats };
 }

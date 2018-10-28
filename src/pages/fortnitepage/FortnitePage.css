@@ -1,0 +1,26 @@
+.fortnite-page {
+	font-family: 'Luckiest Guy', sans-serif;
+    margin: auto;
+}
+
+.page-content {
+    margin: auto;
+	align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.page-content > p.buddy {
+	font-size: 4em;
+}
+
+.page-content > p {
+	color: white;
+	font-size: 5em;
+	text-align: center;
+	margin: -40px;
+}
+
+.page-content > p > span{
+	color: #ffdbaa;
+}

@@ -1,22 +1,32 @@
+import { ActionType, getType } from "typesafe-actions";
+import * as users from "./actions";
+import { User } from "../../utils/mocks";
 import { Reducer } from "redux";
-import { UserState, UserActions, LOAD_USER_SUCCESS, LOAD_USER_FAILED, LOAD_USER_REQUEST } from "./types";
+export type UserAction = ActionType<typeof users>;
 
-export const initialState: UserState = {
+export type UserState = {
+	user: User | null;
+	error: string | null;
+	isFetching: boolean;
+};
+
+const initialState = {
 	user: null,
 	error: null,
 	isFetching: false
 };
 
-export const userReducer: Reducer<UserState> = (state: UserState = initialState, action) => {
-	switch ((action as UserActions).type) {
-		case LOAD_USER_REQUEST:
+const reducer: Reducer<UserState> = (state = initialState, action: UserAction) => {
+	switch (action.type) {
+		case getType(users.fetchUser.request):
 			return { ...state, isFetching: true };
-		case LOAD_USER_SUCCESS:
-			return { ...state, isFetching: false, user: action.payload.user };
-		case LOAD_USER_FAILED:
-			return { ...state, isFethcing: false, error: "No user found!" };
+		case getType(users.fetchUser.success):
+			return { ...state, isFetching: false, user: action.payload };
+		case getType(users.fetchUser.failure):
+			return { ...state, isFetching: false, error: "No user found!" };
 
 		default:
 			return state;
 	}
 };
+export default reducer;

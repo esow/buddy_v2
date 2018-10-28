@@ -1,17 +1,14 @@
 import * as React from "react";
-import { ApplicationState, ConnectedReduxProps } from "../store/index";
 import { connect } from "react-redux";
 import ServerStatsPane from "../components/ServerStatsPane/ServerStatsPane";
-import { ServerStatsState } from "../store/ServerStats/types";
 import { loadStats } from "../store/ServerStats/actions";
+import { RootState } from "../store/root-reducer";
 
-export interface ServerStatsPaneContainerProps extends ConnectedReduxProps<ServerStatsState> {
-	timer: NodeJS.Timer | null;
+export interface ServerStatsPaneContainerProps {
+	timer: any | null;
 }
 
-type AllProps = ServerStatsPaneContainerProps & ServerStatsState;
-
-class ServerStatsPaneContainer extends React.Component<AllProps, any> {
+class ServerStatsPaneContainer extends React.Component<any, any> {
 
 	componentDidMount() {
 		this.setState({ timer: setInterval(() => this.getOnlinePlayers(), 10000) });
@@ -35,5 +32,5 @@ class ServerStatsPaneContainer extends React.Component<AllProps, any> {
 	}
 }
 
-const mapStateToProps = (state: ApplicationState) => state.serverStats;
+const mapStateToProps = (state: RootState) => state;
 export default connect(mapStateToProps)(ServerStatsPaneContainer);

@@ -20,7 +20,6 @@
         "forin": true,
         "indent": [
             true,
-            "tabs",
             4
         ],
         "interface-name": [

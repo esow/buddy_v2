@@ -1,18 +1,30 @@
 
 export interface User {
-	data: {
-		username: string,
-		total: {
-			totalGamesWin: number,
-			totalGamesPlayed: number
-		},
-		duo: {
-			top5finishes: number,
-			top3finishes: number,
-			top1finishes: number,
-			killDeathRatio: number,
-			gamesWon: number,
-			gamesPlayed: number
-		}
+
+	username: string;
+	total: {
+		gamesWon: number,
+		gamesPlayed: number
+	};
+	solo: {
+		top25finishes: number,
+		top10finishes: number,
+		killDeathRatio: number,
+		gamesWon: number,
+		gamesPlayed: number
+	};
+	duo: {
+		top12finishes: number,
+		top5finishes: number,
+		killDeathRatio: number,
+		gamesWon: number,
+		gamesPlayed: number
+	};
+	squad: {
+		top6finishes: number,
+		top3finishes: number,
+		killDeathRatio: number,
+		gamesWon: number,
+		gamesPlayed: number
 	};
 }

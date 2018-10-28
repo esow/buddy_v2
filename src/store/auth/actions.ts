@@ -1,10 +1,18 @@
-import { createAction } from "typesafe-actions";
-import { AuthSessionDTO } from "../model/auth";
-import { FETCH_AUTH_SUCCESS, FETCH_AUTH_FAILED } from "./types";
+import { createAsyncAction } from "typesafe-actions";
+import { AuthSessionDTO } from "./types";
+import BuddyApi from "../../api/BuddyApi";
+import { Dispatch } from "redux";
 
-export const loadAuthSuccess = createAction(FETCH_AUTH_SUCCESS, (authResponse: AuthSessionDTO) => ({
-	type: FETCH_AUTH_SUCCESS,
-	payload: { authResponse: authResponse },
-}));
+export const fetchAuth = createAsyncAction("FETCH_AUTH_REQUEST", "FETCH_AUTH_SUCCESS", "FETCH_AUTH_ERROR")
+	<void, AuthSessionDTO, Error>();
 
-export const loadAuthFailed = createAction(FETCH_AUTH_FAILED);
+export function loadAuth() {
+	return function (dispatch: Dispatch<any>) {
+		return BuddyApi.getAuthTokens()
+			.then(authResponse => {
+				dispatch(fetchAuth.success(authResponse));
+			}).catch(_ => {
+				dispatch(fetchAuth.failure(new Error));
+			});
+	};
+}

@@ -1,0 +1,8 @@
+.footer {
+    width: 100vw;
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    margin-bottom: 1vh;
+    margin-right: 1vw;
+}

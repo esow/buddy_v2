@@ -2,7 +2,7 @@ import * as React from "react";
 import "./UserSearch.css";
 import { FormEvent } from "react";
 import history from "../../utils/history";
-import Button from "../Button/Button";
+import { Button } from "semantic-ui-react";
 
 export interface UserSearchProps {
 	onSubmit: (platform: string, username: string) => void;
@@ -28,7 +28,7 @@ export default class UserSearch extends React.Component<UserSearchProps, UserSea
 		const platform = this.state.platform.toLowerCase();
 		if (!username) { return; }
 		this.props.onSubmit(platform, username);
-		history.push(`/${platform}/${username}`);
+		history.replace(`/fortnitebr/${platform}/${username}`);
 	}
 
 	onChangeUsername = (event: any) => {
@@ -62,7 +62,7 @@ export default class UserSearch extends React.Component<UserSearchProps, UserSea
 					<option value="PS4">PS4</option>
 					<option value="XBOX">XBOX</option>
 				</select>
-				<Button loading={this.props.isLoading}> Lets find some friends! </Button>
+                <Button primary loading={this.props.isLoading}> Lets find some friends! </Button>
 			</form>
 		);
 	}
