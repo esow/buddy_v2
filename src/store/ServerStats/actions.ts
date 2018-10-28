@@ -9,7 +9,7 @@ export function loadStats() {
 		return BuddyApi.getStats().then(stats => {
 			dispatch(fetchStats.success(stats));
 		}).catch(error => {
-			// TODO add error handling 
+			// TODO add error handling
 			dispatch(fetchStats.failure(new Error(error)));
 		});
 	};

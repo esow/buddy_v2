@@ -33,13 +33,13 @@ class LandingPage extends React.Component<LandingPageProps & ServerStatsState, a
 			{
 				imageSrc: "/GameSelectorFortnite-640x360.png",
 				title: "Fortnite - Battle Royale",
-				playerCount: this.props.fortnitePlayerOnline ? this.props.fortnitePlayerOnline : NaN,
+				playerCount: this.props.fortnitePlayersOnline ? this.props.fortnitePlayersOnline : 0,
 				destination: "/fortnitebr"
 			},
 			{
 				imageSrc: "/GameSelectorLeagueOfLegends-640x360.png",
 				title: "League of Legends",
-				playerCount: 1,
+				playerCount: this.props.lolPlayersOnline ? this.props.lolPlayersOnline : 0,
 				destination: "/leagueoflegends"
 			}];
 		return (
