@@ -5,21 +5,21 @@ import { Reducer } from "redux";
 export type StatsAction = ActionType<typeof stats>;
 
 export interface ServerStatsState {
-	playersOnline?: number;
-	fortnitePlayerOnline?: number;
+	lolPlayersOnline?: number;
+	fortnitePlayersOnline?: number;
 }
 
 const reducer: Reducer<ServerStatsState> =
-	(state: ServerStatsState = { playersOnline: undefined }, action: StatsAction) => {
+	(state: ServerStatsState = { lolPlayersOnline: undefined, fortnitePlayersOnline: undefined }, action: StatsAction) => {
 		switch (action.type) {
 			case getType(stats.fetchStats.success):
-				// var actualAction = (action as StatsReceivedAction);
-				// var response = actualAction.payload.playersOnline;
-				// Calculate the total number of online players
-				// var totalPlayers = Object.keys(response).reduce((p, c) => (p + response[c]), 0);
-				var totalPlayers = 40;
+				var response = action.payload.players_online;
+				var lol = response.fortnite;
+				var fortnite = response.fortnite;
+				var lolPlayers = Object.keys(lol).reduce((sum, k) => (sum + lol[k]), 0);
+				var fortnitePlayers = Object.keys(fortnite).reduce((sum, k) => (sum + fortnite[k]), 0);
 
-				return { ...state, playersOnline: totalPlayers, fortnitePlayerOnline: 20 };
+				return { ...state, lolPlayersOnline: lolPlayers, fortnitePlayerOnline: fortnitePlayers };
 			default:
 				return state;
 		}
