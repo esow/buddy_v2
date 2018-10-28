@@ -1,9 +1,9 @@
-import { User } from "../../utils/mocks";
 import BuddyApi from "../../api/BuddyApi";
 import { createAsyncAction } from "typesafe-actions";
+import { FortnitePlayerStats } from "../../models/FornitePlayerStats";
 
 export const fetchUser = createAsyncAction("FETCH_USER_REQUEST", "FETCH_USER_SUCCESS", "FETCH_USER_ERROR")
-	<void, User, Error>();
+	<void, FortnitePlayerStats, Error>();
 
 export function loadUser(platform: string, username: string) {
 	return function (dispatch: any) {
