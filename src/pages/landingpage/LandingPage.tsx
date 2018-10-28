@@ -45,7 +45,7 @@ class LandingPage extends React.Component<LandingPageProps & ServerStatsState, a
 		return (
 			<div className="landing-page">
 				<div className="page-content">
-					<Image centered style={{ width: 297, height: 246 }} src="/BUDDYGG-LOGO-3.png" />
+					<Image centered style={{ width: 460, height: 230 }} src="/BUDDYGG-LOGO-3.png" />
 					<GameSelector listOfGames={listOfGames} />
 				</div>
 				<Footer />
