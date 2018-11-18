@@ -2,9 +2,9 @@ import * as React from "react";
 import { Icon, Statistic } from "semantic-ui-react";
 
 interface FortniteStatisticProps {
-	wins: Number;
+	winRatio: Number;
 	played: Number;
-	kdratio: Number;
+	kdRatio: Number;
 	top5: Number;
 	top12: Number;
 }
@@ -13,8 +13,8 @@ const FortniteStatistics: React.SFC<FortniteStatisticProps> = (props) => {
 	return (
 		<Statistic.Group widths="one" size={"tiny"}>
 			<Statistic>
-				<Statistic.Value>{props.wins}</Statistic.Value>
-				<Statistic.Label><Icon name="winner" color="yellow" />Wins</Statistic.Label>
+				<Statistic.Value>{(props.winRatio).toPrecision(2)}%</Statistic.Value>
+				<Statistic.Label><Icon name="winner" color="yellow" />Win Ratio</Statistic.Label>
 			</Statistic>
 
 			<Statistic>
@@ -33,7 +33,7 @@ const FortniteStatistics: React.SFC<FortniteStatisticProps> = (props) => {
 			</Statistic>
 
 			<Statistic>
-				<Statistic.Value>{(props.kdratio).toPrecision(3)}</Statistic.Value>
+				<Statistic.Value>{(props.kdRatio).toPrecision(2)}</Statistic.Value>
 				<Statistic.Label><Icon name="bullseye" color="red" />K/D-Ratio</Statistic.Label>
 			</Statistic>
 		</Statistic.Group>
