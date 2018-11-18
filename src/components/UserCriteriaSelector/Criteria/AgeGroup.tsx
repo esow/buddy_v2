@@ -1,50 +1,46 @@
-import { Form, Checkbox, Divider } from "semantic-ui-react";
+import { Form, Divider } from "semantic-ui-react";
 import * as React from "react";
 import { Component } from "react";
+import { RadioGroup, Radio } from "react-radio-group";
 
 interface AgeGroupProps {
-  handleChange: (input: String) => void;
+  handleChange: (event: any, data: String) => void;
+  value: String;
+}
+interface State {
   value: String;
 }
 
-export default class AgeGroup extends Component<AgeGroupProps> {
+export default class AgeGroup extends Component<AgeGroupProps, State> {
+  constructor(props: AgeGroupProps) {
+    super(props);
+    // Don't call this.setState() here!
+    this.state = { value: this.props.value };
+  }
 
-  setAgeInterval1 = () => this.props.handleChange("interval1");
-  setAgeInterval2 = () => this.props.handleChange("interval2");
-  setAgeInterval3 = () => this.props.handleChange("interval3");
+  handleChange = (value: String) => {
+    this.setState({ value: value });
+  }
 
   render() {
     return (
       <div>
         <Divider inverted horizontal>Age group</Divider>
-        <Form.Group inline>
-          <Form.Field>
-            <Checkbox
-              radio
-              label="13-16"
-              value="interval1"
-              checked={this.props.value === "interval1"}
-              onChange={this.setAgeInterval1}
-            />
-          </Form.Field>
-          <Form.Field>
-            <Checkbox
-              radio
-              label="17-21"
-              value="interval2"
-              checked={this.props.value === "interval2"}
-              onChange={this.setAgeInterval2}
-            />
-          </Form.Field>
-          <Form.Field>
-            <Checkbox
-              radio
-              label="22+"
-              value="interval3"
-              checked={this.props.value === "interval3"}
-              onChange={this.setAgeInterval3}
-            />
-          </Form.Field>
+        <Form.Group inline className="centered-form-field">
+          <RadioGroup name="ageGroups" selectedValue={this.state.value} onChange={this.handleChange}>
+            <Form.Field>
+              <Radio value="interval1" />
+              13-16
+                        </Form.Field>
+            <Form.Field>
+              <Radio value="interval2" />
+              16-21
+                    </Form.Field>
+            <Form.Field>
+              <Radio value="interval3" />
+              22+
+                    </Form.Field>
+          </RadioGroup>
         </Form.Group>
       </div>
     );

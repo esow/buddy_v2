@@ -6,6 +6,7 @@ import { RootState } from "../store/root-reducer";
 import { UserState } from "../store/user/reducer";
 import { loadUser } from "../store/user/actions";
 import { FortnitePlayerStats } from "../models/FornitePlayerStats";
+import { DropdownProps } from "semantic-ui-react";
 
 export interface UserPaneContainerProps {
 }
@@ -55,6 +56,37 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 		}
 	}
 
+	handleVoiceChat = (state: boolean) => {
+		if (this.props.user.stats != null) {
+			this.props.user.stats.voiceChat = state;
+		}
+
+	}
+
+	handleAgeGroup = (age: string) => {
+		if (this.props.user.stats != null) {
+			this.props.user.stats.ageGroup = age;
+		}
+	}
+
+	handleLanguage = (_: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => {
+		if (this.props.user.stats != null) {
+			if (this.props.user.stats.languages && this.props.user.stats.languages.length >= 5) {
+				return;
+			}
+			if (data.value != null) {
+				this.props.user.stats.languages = data.value as string[];
+			}
+		}
+	}
+
+	handleComment = (event: React.FormEvent<HTMLTextAreaElement>) => {
+		console.log("database" + event.currentTarget.value);
+		if (this.props.user.stats != null) {
+			this.props.user.stats.comment += event.currentTarget.value;
+		}
+	}
+
 	render() {
 
 		const { platform, username } = this.props.match.params;
@@ -68,13 +100,19 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 						platform={platform}
 						username={username}
 						stats={userStats}
+						handleLanguage={this.handleLanguage}
+						handleVoice={this.handleVoiceChat}
+						handleAge={this.handleAgeGroup}
+						handleComment={this.handleComment}
+						selectedLanguages={this.props.user.stats.languages}
+						selectedVoice={this.props.user.stats.voiceChat}
+						selectedAge={this.props.user.stats.ageGroup}
+						comment={this.props.user.stats.comment}
 					/>
 				</div>
 			);
 		} else {
-			return (
-				<div />
-			);
+			return null;
 		}
 	}
 }

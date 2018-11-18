@@ -102,7 +102,7 @@ class CriteriaList extends React.Component<CriteriaListProps, any> {
                         <Label id="criteria-header" color="orange" floating>Filters</Label>
                         {/* <AgeGroups onChange={this.onChangeAgeGroup} ageGroups={this.state.ageGroups} /> */}
                         <AllLanguages onChange={this.onChangeAllLanguages} ignoreLanguage={false} />
-                        <VoiceChat onChange={this.onChangeVoiceChat} voiceChat={true} />
+                        <VoiceChat onChange={this.onChangeVoiceChat} checked={true} />
                     </Segment>
                 </Form>
             </div>

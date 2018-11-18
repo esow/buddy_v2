@@ -25,9 +25,9 @@ export interface GameInfo {
 }
 
 export interface FortnitePlayerStats {
-	name: string;
-	id: string;
-	game: string;
+	name: String;
+	id: String;
+	game: String;
 
 	total: {
 		gamesWon: number,
@@ -54,7 +54,7 @@ export interface FortnitePlayerStats {
 		gamesWon: number,
 		gamesPlayed: number
 	};
-	voiceChat: boolean[];
+	voiceChat: boolean;
 	ageGroup: string;
 	comment: string;
 	languages: string[];
