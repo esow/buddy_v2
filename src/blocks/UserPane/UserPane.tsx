@@ -99,33 +99,35 @@ export default class UserPane extends React.Component<UserPaneProps, UserInputSt
 	render() {
 		const user = this.props;
 		return (
-			<div className="summoner-pane">
-				<div className="column user-input">
-					<div className="header">{user.username}</div>
-					<div className="userCriteria">
-						<UserCriteriaSelectorPane
-							selectedAge={this.props.selectedAge}
-							selectedLanguages={this.props.selectedLanguages}
-							selectedComment={this.props.comment}
-							selectedVoice={"yes"}
-							handleChange={this.handleInputChange}
-						/>
-					</div>
-				</div>
-				<div className="column statistics">
-					<div className="header">Duo stats</div>
-					<FortniteStatistics
-						winRatio={this.calculateWinRatio(user.stats.duoGamesWon, user.stats.duoGamesPlayed)}
-						played={user.stats.duoGamesPlayed}
-						kdRatio={user.stats.duoKillDeathRatio}
-						top5={user.stats.duoTop5Finishes}
-						top12={user.stats.duoTop12Finishes}
-					/>
-				</div>
-				<form className="summoner-search" onSubmit={this.connectToSocket}>
-					<Button> Find some freinds GOGO </Button>
-				</form>
-			</div>
+            <div className="user-pane">
+                <div className="summoner-pane">
+                    <div className="column user-input">
+                        <div className="header">{user.username}</div>
+                        <div className="userCriteria">
+                            <UserCriteriaSelectorPane
+                                selectedAge={this.props.selectedAge}
+                                selectedLanguages={this.props.selectedLanguages}
+                                selectedComment={this.props.comment}
+                                selectedVoice={"yes"}
+                                handleChange={this.handleInputChange}
+                            />
+                        </div>
+                    </div>
+                    <div className="column statistics">
+                        <div className="header">Duo stats</div>
+                        <FortniteStatistics
+                            winRatio={this.calculateWinRatio(user.stats.duoGamesWon, user.stats.duoGamesPlayed)}
+                            played={user.stats.duoGamesPlayed}
+                            kdRatio={user.stats.duoKillDeathRatio}
+                            top5={user.stats.duoTop5Finishes}
+                            top12={user.stats.duoTop12Finishes}
+                        />
+                    </div>
+                </div>
+                <form className="find-friends" onSubmit={this.connectToSocket}>
+                    <Button primary>Find friends!</Button>
+                </form>
+            </div>
 		);
 	}
 }
