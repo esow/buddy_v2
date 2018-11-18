@@ -1,13 +1,11 @@
 .fortnite-page {
 	font-family: 'Luckiest Guy', sans-serif;
-    margin: auto;
-}
-
-.page-content {
-    margin: auto;
-	align-items: center;
-    justify-content: center;
-    flex: 1;
+	background: #ecca5c; /* Old browsers */
+    background: -moz-linear-gradient(45deg, #ecca5c 0%, #db8d29 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #ecca5c 0%, #db8d29 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, #ecca5c 0%, #db8d29 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    min-height: 100vh;
+	min-width: 100vw;
 }
 
 .page-content > p.buddy {

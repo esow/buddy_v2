@@ -1,7 +1,6 @@
 import * as React from "react";
 import "./LandingPage.css";
 import GameSelector from "../../components/GameSelector/GameSelector";
-import Footer from "../../blocks/Footer/Footer";
 import { Image } from "semantic-ui-react";
 import { ServerStatsState } from "../../store/ServerStats/reducer";
 import { RootState } from "../../store/root-reducer";
@@ -48,7 +47,6 @@ class LandingPage extends React.Component<LandingPageProps & ServerStatsState, a
 					<Image centered style={{ width: 460, height: 230 }} src="/BUDDYGG-LOGO-3.png" />
 					<GameSelector listOfGames={listOfGames} />
 				</div>
-				<Footer />
 			</div>
 		);
 	}
