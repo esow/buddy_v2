@@ -1,5 +1,4 @@
 import * as React from "react";
-import history from "../utils/history";
 import UserPane from "../blocks/UserPane/UserPane";
 import { connect } from "react-redux";
 import { RouteComponentProps } from "react-router";
@@ -9,7 +8,7 @@ import { loadUser, editUserInput } from "../store/user/actions";
 import { FortnitePlayerStats } from "../models/FornitePlayerStats";
 import { loadAuth } from "../store/auth/actions";
 import { FormEvent } from "react";
-import { connectToSocket } from "../store/matching/actions";
+import { connectToSocket, leaveChannel } from "../store/matching/actions";
 import { AuthState } from "../store/auth/reducer";
 import { MatchingState } from "../store/matching/reducer";
 import { UserInputState } from "../blocks/UserPane/UserPane";
@@ -26,6 +25,7 @@ interface DispatchEvents {
 	loadUser: typeof loadUser;
 	loadAuth: typeof loadAuth;
 	connectToSocket: typeof connectToSocket;
+	leaveChannel: typeof leaveChannel;
 	editUserInput: typeof editUserInput;
 }
 
@@ -61,11 +61,18 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 	}
 
 	componentDidMount() {
-		this.props.loadAuth();
+
+		if (this.props.auth.auth == null) {
+			this.props.loadAuth();
+		}
 		if (this.props.user.stats == null) {
 			const { platform, username } = this.props.match.params;
 			this.props.loadUser(platform, username);
 		}
+		if (this.props.matching.channel !== undefined) {
+			this.props.leaveChannel(this.props.matching.channel);
+		}
+
 	}
 
 	connectSocket = (player: UserInputState, e: FormEvent<HTMLFormElement>) => {
@@ -79,10 +86,9 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 		};
 
 		this.props.editUserInput(data);
-		if (this.props.auth.auth && this.props.matching.channel == null && this.props.user.stats) {
+		if (this.props.auth.auth && this.props.matching.channel === undefined && this.props.user.stats) {
 			console.log(this.props.user.stats);
-			this.props.connectToSocket(this.props.auth.auth, this.props.user.stats);
-			history.push("/matching/fortnite");
+			this.props.connectToSocket(this.props.auth.auth, this.props.user.stats, this.props.matching.socket);
 		}
 	}
 
@@ -123,6 +129,7 @@ export default connect(mapStateToProps, {
 	loadUser: loadUser,
 	loadAuth: loadAuth,
 	connectToSocket: connectToSocket,
+	leaveChannel: leaveChannel,
 	editUserInput: editUserInput
 }
 )(UserPaneContainer);
