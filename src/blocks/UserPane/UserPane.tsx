@@ -75,6 +75,14 @@ export default class UserPane extends React.Component<UserPaneProps, UserInputSt
 		}
 	};
 
+    calculateWinRatio = (won: number, played: number) => {
+        if (played === 0 || won === 0) {
+            return 0;
+        } else {
+            return 100 * won / played;
+        }
+    }
+
 	handleInputChange = (from: string, value: any) => {
 
 		const nextState = {
@@ -107,9 +115,9 @@ export default class UserPane extends React.Component<UserPaneProps, UserInputSt
 				<div className="column statistics">
 					<div className="header">Duo stats</div>
 					<FortniteStatistics
-						wins={user.stats.duoGamesWon}
+						winRatio={this.calculateWinRatio(user.stats.duoGamesWon, user.stats.duoGamesPlayed)}
 						played={user.stats.duoGamesPlayed}
-						kdratio={user.stats.duoKillDeathRatio}
+						kdRatio={user.stats.duoKillDeathRatio}
 						top5={user.stats.duoTop5Finishes}
 						top12={user.stats.duoTop12Finishes}
 					/>
