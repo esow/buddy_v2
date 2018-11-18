@@ -14,7 +14,7 @@ const reducer: Reducer<ServerStatsState> =
 		switch (action.type) {
 			case getType(stats.fetchStats.success):
 				var response = action.payload.players_online;
-				var lol = response.fortnite;
+				var lol = response.lol;
 				var fortnite = response.fortnite;
 				var lolPlayers = Object.keys(lol).reduce((sum, k) => (sum + lol[k]), 0);
 				var fortnitePlayers = Object.keys(fortnite).reduce((sum, k) => (sum + fortnite[k]), 0);
