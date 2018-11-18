@@ -27,7 +27,12 @@
 .summoner-search select {
 	margin-left: -1px;
 	background-color: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+      background: url("/dropdown_arrow.png") white no-repeat 110% !important;
 }
+
 .summoner-search button {
 	min-width: 215px;
 	margin-left: -1px;
