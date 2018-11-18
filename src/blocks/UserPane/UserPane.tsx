@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./UserPane.css";
 import FortniteStatistics from "../../components/Statistics/FortniteStatistics";
+import { DropdownProps } from "semantic-ui-react";
 import UserCriteriaSelectorPane from "../../components/UserCriteriaSelector/UserCriteriaSelector";
 
 export interface UserPaneProps {
@@ -25,6 +26,15 @@ export interface UserPaneProps {
 		squadTop3Finishes: number;
 		squadTop6Finishes: number;
 	};
+	handleLanguage: (_: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => void;
+	handleVoice: (state: boolean) => void;
+	handleAge: (data: string) => void;
+	handleComment: (event: React.FormEvent<HTMLTextAreaElement>) => void;
+	selectedLanguages: string[];
+	selectedVoice: boolean;
+	selectedAge: string;
+	comment: string;
+
 }
 
 export default class UserPane extends React.Component<UserPaneProps, any> {
@@ -56,7 +66,10 @@ export default class UserPane extends React.Component<UserPaneProps, any> {
 			<div className="summoner-pane">
 				<div className="column user-input">
 					<div className="header">{user.username}</div>
-                    <UserCriteriaSelectorPane />
+					<div className="userCriteria">
+						<UserCriteriaSelectorPane />
+
+					</div>
 				</div>
 				<div className="column statistics">
 					<div className="header">Duo stats</div>
