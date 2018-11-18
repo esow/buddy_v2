@@ -35,7 +35,8 @@ export class FortnitePage extends React.Component<AllProps, any> {
 	connectSocket = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (this.props.auth.auth && this.props.matching.channel == null && this.props.user.stats) {
-			this.props.connectToSocket(this.props.auth.auth, this.props.user);
+
+			this.props.connectToSocket(this.props.auth.auth, this.props.user.stats);
 		}
 	}
 

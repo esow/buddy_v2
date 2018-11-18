@@ -1,43 +1,48 @@
-import { Form, Checkbox, Divider } from "semantic-ui-react";
+import { Form, Divider } from "semantic-ui-react";
 import * as React from "react";
 import { Component } from "react";
-
+import { RadioGroup, Radio } from "react-radio-group";
 interface VoiceChatProps {
-    handleChange: () => void;
-    voicechat: boolean[];
+    handleChange: (event: any, data: any) => void;
+    voicechat: String;
 }
 
-export default class VoiceChat extends Component<VoiceChatProps> {
+interface State {
+    voicechat: String;
+}
+
+export default class VoiceChat extends Component<VoiceChatProps, State> {
+    constructor(props: VoiceChatProps) {
+        super(props);
+        // Don't call this.setState() here!
+        this.state = { voicechat: this.props.voicechat };
+    }
+
+    handleChange = (value: String) => {
+        this.setState({ voicechat: value });
+    }
+
     render() {
         return (
             <div>
                 <Divider inverted horizontal>Voice chat?</Divider>
                 <Form.Group inline className="centered-form-field">
-                    <Form.Field>
-                        <Checkbox
-                            radio
-                            label="YES"
-                            checked={this.props.voicechat.length === 1 && this.props.voicechat[0] === true}
-                            onChange={this.props.handleChange}
-                        />
+                    <RadioGroup name="voiceChat" selectedValue={this.state.voicechat} onChange={this.handleChange}>
+                        <Form.Field>
+                            <Radio value="yes" />
+                            YES
+                        </Form.Field>
+                        <Form.Field>
+                            <Radio value="no" />
+                            NO
                     </Form.Field>
-                    <Form.Field>
-                        <Checkbox
-                            radio
-                            label="NO"
-                            checked={this.props.voicechat.length === 1 && this.props.voicechat[0] === false}
-                            onChange={this.props.handleChange}
-                        />
+                        <Form.Field>
+                            <Radio value="w/e" />
+                            I don't care
                     </Form.Field>
-                    <Form.Field>
-                        <Checkbox
-                            radio
-                            label="I don't care"
-                            checked={this.props.voicechat.length === 2}
-                            onChange={this.props.handleChange}
-                        />
-                    </Form.Field>
+                    </RadioGroup>
                 </Form.Group>
+
             </div>
         );
     }

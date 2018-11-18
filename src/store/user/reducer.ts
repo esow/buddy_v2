@@ -21,10 +21,16 @@ const reducer: Reducer<UserState> = (state = initialState, action: UserAction) =
 		case getType(users.fetchUser.request):
 			return { ...state, isFetching: true };
 		case getType(users.fetchUser.success):
-			return { ...state, isFetching: false, user: action.payload };
+			action.payload.comment = "tests";
+			return { ...state, isFetching: false, stats: action.payload };
 		case getType(users.fetchUser.failure):
 			return { ...state, isFetching: false, error: "No user found!" };
-
+		case getType(users.editUser):
+			if (state.stats != null) {
+				state.stats[action.payload.label] = action.payload.data;
+				return { ...state, stats: state.stats };
+			}
+			return state;
 		default:
 			return state;
 	}
