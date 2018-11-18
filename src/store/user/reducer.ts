@@ -21,13 +21,15 @@ const reducer: Reducer<UserState> = (state = initialState, action: UserAction) =
 		case getType(users.fetchUser.request):
 			return { ...state, isFetching: true };
 		case getType(users.fetchUser.success):
-			action.payload.comment = "tests";
 			return { ...state, isFetching: false, stats: action.payload };
 		case getType(users.fetchUser.failure):
 			return { ...state, isFetching: false, error: "No user found!" };
-		case getType(users.editUser):
+		case getType(users.editUserInput):
 			if (state.stats != null) {
-				state.stats[action.payload.label] = action.payload.data;
+				state.stats.comment = action.payload.comment;
+				state.stats.languages = action.payload.languages;
+				state.stats.ageGroup = action.payload.ageGroup;
+				state.stats.voiceChat = action.payload.voiceChat;
 				return { ...state, stats: state.stats };
 			}
 			return state;

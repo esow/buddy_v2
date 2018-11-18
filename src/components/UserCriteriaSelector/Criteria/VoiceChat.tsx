@@ -20,6 +20,7 @@ export default class VoiceChat extends Component<VoiceChatProps, State> {
 
     handleChange = (value: String) => {
         this.setState({ voicechat: value });
+        this.props.handleChange("voice", value);
     }
 
     render() {

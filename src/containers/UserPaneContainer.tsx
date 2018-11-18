@@ -1,12 +1,18 @@
 import * as React from "react";
+import history from "../utils/history";
 import UserPane from "../blocks/UserPane/UserPane";
 import { connect } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import { RootState } from "../store/root-reducer";
 import { UserState } from "../store/user/reducer";
-import { loadUser } from "../store/user/actions";
+import { loadUser, editUserInput } from "../store/user/actions";
 import { FortnitePlayerStats } from "../models/FornitePlayerStats";
-import { DropdownProps } from "semantic-ui-react";
+import { loadAuth } from "../store/auth/actions";
+import { FormEvent } from "react";
+import { connectToSocket } from "../store/matching/actions";
+import { AuthState } from "../store/auth/reducer";
+import { MatchingState } from "../store/matching/reducer";
+import { UserInputState } from "../blocks/UserPane/UserPane";
 
 export interface UserPaneContainerProps {
 }
@@ -18,10 +24,15 @@ interface RouterParams {
 
 interface DispatchEvents {
 	loadUser: typeof loadUser;
+	loadAuth: typeof loadAuth;
+	connectToSocket: typeof connectToSocket;
+	editUserInput: typeof editUserInput;
 }
 
 interface ConnectedProps {
 	user: UserState;
+	auth: AuthState;
+	matching: MatchingState;
 }
 
 type AllProps = UserPaneContainerProps & ConnectedProps & RouteComponentProps<RouterParams> & DispatchEvents;
@@ -50,40 +61,28 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 	}
 
 	componentDidMount() {
+		this.props.loadAuth();
 		if (this.props.user.stats == null) {
 			const { platform, username } = this.props.match.params;
 			this.props.loadUser(platform, username);
 		}
 	}
 
-	handleVoiceChat = (state: boolean) => {
-		if (this.props.user.stats != null) {
-			this.props.user.stats.voiceChat = state;
-		}
+	connectSocket = (player: UserInputState, e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 
-	}
+		const data = {
+			voiceChat: [true],
+			ageGroup: player.age,
+			comment: player.comment,
+			languages: player.language
+		};
 
-	handleAgeGroup = (age: string) => {
-		if (this.props.user.stats != null) {
-			this.props.user.stats.ageGroup = age;
-		}
-	}
-
-	handleLanguage = (_: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => {
-		if (this.props.user.stats != null) {
-			if (this.props.user.stats.languages && this.props.user.stats.languages.length >= 5) {
-				return;
-			}
-			if (data.value != null) {
-				this.props.user.stats.languages = data.value as string[];
-			}
-		}
-	}
-
-	handleComment = (event: React.FormEvent<HTMLTextAreaElement>) => {
-		console.log("database" + event.currentTarget.value);
-		if (this.props.user.stats != null) {
-			this.props.user.stats.comment += event.currentTarget.value;
+		this.props.editUserInput(data);
+		if (this.props.auth.auth && this.props.matching.channel == null && this.props.user.stats) {
+			console.log(this.props.user.stats);
+			this.props.connectToSocket(this.props.auth.auth, this.props.user.stats);
+			history.push("/matching/fortnite");
 		}
 	}
 
@@ -100,14 +99,11 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 						platform={platform}
 						username={username}
 						stats={userStats}
-						handleLanguage={this.handleLanguage}
-						handleVoice={this.handleVoiceChat}
-						handleAge={this.handleAgeGroup}
-						handleComment={this.handleComment}
 						selectedLanguages={this.props.user.stats.languages}
 						selectedVoice={this.props.user.stats.voiceChat}
 						selectedAge={this.props.user.stats.ageGroup}
 						comment={this.props.user.stats.comment}
+						connectToSocket={this.connectSocket}
 					/>
 				</div>
 			);
@@ -119,7 +115,14 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 
 const mapStateToProps = (state: RootState) => ({
 	user: state.user,
+	auth: state.auth,
+	matching: state.matching
 });
 
-export default connect(mapStateToProps, { loadUser: loadUser }
+export default connect(mapStateToProps, {
+	loadUser: loadUser,
+	loadAuth: loadAuth,
+	connectToSocket: connectToSocket,
+	editUserInput: editUserInput
+}
 )(UserPaneContainer);
