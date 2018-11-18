@@ -5,8 +5,13 @@ import { FortnitePlayerStats } from "../../models/FornitePlayerStats";
 export const fetchUser = createAsyncAction("FETCH_USER_REQUEST", "FETCH_USER_SUCCESS", "FETCH_USER_ERROR")
 	<void, FortnitePlayerStats, Error>();
 
-export const editUser = createAction("EDIT_PLAYER", resolve => {
-	return (data: { label: string, data: string }) => resolve(data);
+export const editUserInput = createAction("EDIT_USER_INPUT", resolve => {
+	return (data: {
+		voiceChat: boolean[];
+		ageGroup: string;
+		comment: string;
+		languages: string[];
+	}) => resolve(data);
 });
 
 export function loadUser(platform: string, username: string) {
@@ -14,7 +19,9 @@ export function loadUser(platform: string, username: string) {
 		dispatch(fetchUser.request());
 		return BuddyApi.getUser(platform, username)
 			.then(user => {
+				user.data.name = user.data.username;
 				dispatch(fetchUser.success(user.data));
+
 			}).catch(_ => {
 				dispatch(fetchUser.failure(new Error()));
 			});
