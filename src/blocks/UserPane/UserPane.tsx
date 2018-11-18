@@ -1,8 +1,8 @@
 import * as React from "react";
 import "./UserPane.css";
 import FortniteStatistics from "../../components/Statistics/FortniteStatistics";
-import { DropdownProps } from "semantic-ui-react";
 import UserCriteriaSelectorPane from "../../components/UserCriteriaSelector/UserCriteriaSelector";
+import { Button, } from "semantic-ui-react";
 
 export interface UserPaneProps {
 	platform: string;
@@ -26,18 +26,33 @@ export interface UserPaneProps {
 		squadTop3Finishes: number;
 		squadTop6Finishes: number;
 	};
-	handleLanguage: (_: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => void;
-	handleVoice: (state: boolean) => void;
-	handleAge: (data: string) => void;
-	handleComment: (event: React.FormEvent<HTMLTextAreaElement>) => void;
 	selectedLanguages: string[];
-	selectedVoice: boolean;
+	selectedVoice: boolean[];
 	selectedAge: string;
 	comment: string;
-
+	connectToSocket: any;
 }
 
-export default class UserPane extends React.Component<UserPaneProps, any> {
+export interface UserInputState {
+	language: string[];
+	comment: string;
+	voice: string;
+	age: string;
+}
+
+export default class UserPane extends React.Component<UserPaneProps, UserInputState> {
+
+	constructor(props: UserPaneProps) {
+		super(props);
+		// Don't call this.setState() here!
+		this.state = {
+			age: this.props.selectedAge,
+			language: this.props.selectedLanguages,
+			voice: "yes",
+			comment: this.props.comment
+		};
+	}
+
 	static defaultProps: Partial<UserPaneProps> = {
 		stats: {
 			totalGamesWon: 0,
@@ -60,6 +75,19 @@ export default class UserPane extends React.Component<UserPaneProps, any> {
 		}
 	};
 
+	handleInputChange = (from: string, value: any) => {
+
+		const nextState = {
+			...this.state,
+			[from]: value,
+		};
+		this.setState(nextState);
+	}
+
+	connectToSocket = (e: React.FormEvent<HTMLFormElement>) => {
+		this.props.connectToSocket(this.state, e);
+	}
+
 	render() {
 		const user = this.props;
 		return (
@@ -67,8 +95,13 @@ export default class UserPane extends React.Component<UserPaneProps, any> {
 				<div className="column user-input">
 					<div className="header">{user.username}</div>
 					<div className="userCriteria">
-						<UserCriteriaSelectorPane />
-
+						<UserCriteriaSelectorPane
+							selectedAge={this.props.selectedAge}
+							selectedLanguages={this.props.selectedLanguages}
+							selectedComment={this.props.comment}
+							selectedVoice={"yes"}
+							handleChange={this.handleInputChange}
+						/>
 					</div>
 				</div>
 				<div className="column statistics">
@@ -81,6 +114,9 @@ export default class UserPane extends React.Component<UserPaneProps, any> {
 						top12={user.stats.duoTop12Finishes}
 					/>
 				</div>
+				<form className="summoner-search" onSubmit={this.connectToSocket}>
+					<Button> Find some freinds GOGO </Button>
+				</form>
 			</div>
 		);
 	}

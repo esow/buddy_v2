@@ -17,6 +17,29 @@ export function connectToSocket(auth: AuthSessionDTO, player: FortnitePlayerStat
 		let socket = configureChannel(auth);
 
 		player.id = auth.session_id;
+		player.game = "fortnite";
+		player.criteria = {
+			"ageGroups": {
+				"interval1": true,
+				"interval2": true,
+				"interval3": true
+			},
+			"voiceChat": {
+				"YES": true,
+				"NO": true
+			},
+			"ignoreLanguage": false
+		};
+		player.gameInfo = {
+			"platform": "pc",
+			"gamesPlayed": 1,
+			"gameCriteria": {
+				"minGamesPlayed": 1
+			}
+		};
+
+		console.log(player);
+
 		let channel = socket.channel(`players:${auth.session_id}`, {
 			payload: player
 		});

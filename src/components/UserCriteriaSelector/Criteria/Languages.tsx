@@ -5,9 +5,13 @@ import { languages } from "../../../resources/Languages";
 
 interface Props {
     selectedLanguages: string[];
-    handleChange: (event: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => void;
+    handleChange: (from: string, data: any) => void;
 }
 export default class Languages extends Component<Props, any> {
+
+    handleChange = (_: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => {
+        this.props.handleChange("language", data.value);
+    }
 
     render() {
         return (
@@ -22,7 +26,7 @@ export default class Languages extends Component<Props, any> {
                     selection
                     value={this.props.selectedLanguages}
                     options={languages}
-                    onChange={this.props.handleChange}
+                    onChange={this.handleChange}
                     closeOnChange
                 />
             </div>

@@ -16,11 +16,12 @@ export interface Criteria {
 }
 
 export interface GameCriteria {
+	minGamesPlayed: number;
 }
 
 export interface GameInfo {
 	platform: string;
-	region: string;
+	gamesPlayed: number;
 	gameCriteria: GameCriteria;
 }
 
@@ -54,7 +55,7 @@ export interface FortnitePlayerStats {
 		gamesWon: number,
 		gamesPlayed: number
 	};
-	voiceChat: boolean;
+	voiceChat: boolean[];
 	ageGroup: string;
 	comment: string;
 	languages: string[];

@@ -4,7 +4,7 @@ import { Component } from "react";
 import { RadioGroup, Radio } from "react-radio-group";
 
 interface AgeGroupProps {
-  handleChange: (event: any, data: String) => void;
+  handleChange: (from: String, data: String) => void;
   value: String;
 }
 interface State {
@@ -20,6 +20,7 @@ export default class AgeGroup extends Component<AgeGroupProps, State> {
 
   handleChange = (value: String) => {
     this.setState({ value: value });
+    this.props.handleChange("age", value);
   }
 
   render() {

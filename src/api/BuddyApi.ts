@@ -1,5 +1,4 @@
 import { AuthSessionDTO } from "../store/auth/types";
-import { FortnitePlayerStats } from "../models/FornitePlayerStats";
 
 class BuddyApi {
 
@@ -11,7 +10,7 @@ class BuddyApi {
 	}
 
 	// Get a Fortnite player
-	static getUser(platform: string, username: string): Promise<{ data: FortnitePlayerStats }> {
+	static getUser(platform: string, username: string): Promise<{ data: any }> {
 		return BuddyApi.getRequest(`fortnite/${platform}/${username}`);
 	}
 

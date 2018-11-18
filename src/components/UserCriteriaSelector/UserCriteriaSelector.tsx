@@ -5,54 +5,42 @@ import Languages from "./Criteria/Languages";
 import VoiceChat from "./Criteria/VoiceChat";
 import Comment from "./Criteria/Comment";
 import "./UserCriteriaSelector.css";
-import { connect } from "react-redux";
-import { RootState } from "../../store/root-reducer";
 
 export interface UserCriteriaSelectorPaneProps {
 }
 
 export interface ConnectedProps {
 	selectedLanguages: string[];
+	selectedVoice: string;
+	selectedAge: string;
+	selectedComment: string;
+	handleChange: (from: string, data: any) => void;
 }
 
-export class UserCriteriaSelectorPane extends React.Component<UserCriteriaSelectorPaneProps & ConnectedProps, any> {
+export default class UserCriteriaSelectorPane
+	extends React.Component<UserCriteriaSelectorPaneProps & ConnectedProps, any> {
 
 	render() {
-
-		const handle = (event: any, data: any) => {
-			console.log(event);
-			console.log(data);
-		};
 
 		return (
 			<div className="userCriteria">
 				<Languages
 					selectedLanguages={this.props.selectedLanguages}
-					handleChange={handle}
+					handleChange={this.props.handleChange}
 				/>
 				<VoiceChat
-					handleChange={handle}
-					voicechat={"yes"}
+					handleChange={this.props.handleChange}
+					voicechat={this.props.selectedVoice}
 				/>
 				<AgeGroup
-					handleChange={handle}
-					value="interval1"
+					handleChange={this.props.handleChange}
+					value={this.props.selectedAge}
 				/>
 				<Comment
-					handleChange={handle}
-					comment=""
+					handleChange={this.props.handleChange}
+					comment={this.props.selectedComment}
 				/>
 			</div>
 		);
 	}
 }
-
-const mapStateToProps = (state: RootState) => {
-	if (state.user.stats != null) {
-		return { selectedLanguages: state.user.stats.languages };
-	} else {
-		return { selectedLanguages: [] };
-	}
-};
-
-export default connect(mapStateToProps, {})(UserCriteriaSelectorPane);
