@@ -1,13 +1,5 @@
 html, body {
-    height: 100%;
-    margin: 0;
     font-family: 'Roboto', sans-serif;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ecca5c+0,db8d29+100 */
-    background: #9E9E9E; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #9E9E9E 0%, #212121 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg, #9E9E9E 0%,#212121 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(45deg, #9E9E9E 0%,#212121 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecca5c', endColorstr='#db8d29',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
-
- 

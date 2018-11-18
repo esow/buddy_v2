@@ -1,13 +1,13 @@
 .landing-page {
 	/* max-width: 700px; */
-	margin: auto;
-	align-items: center;
+	background: #9E9E9E; /* Old browsers */
+    background: -moz-linear-gradient(45deg, #9E9E9E 0%, #212121 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #9E9E9E 0%,#212121 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, #9E9E9E 0%,#212121 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	min-height: 100vh;
+	min-width: 100vw;
 }
-.page-content {
-	align-items: center;
-    justify-content: center;
-    flex: 1;
-}
+
 .page-content > p.buddy {
 	font-size: 4em;
 }
