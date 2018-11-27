@@ -7,14 +7,14 @@ import * as React from "react";
 import { FortnitePlayerStats } from "../../models/FornitePlayerStats";
 
 export interface MatchTableProps {
-    matches: FortnitePlayerStats[];
+    matches?: FortnitePlayerStats[];
     requestMatch: (player: any) => void;
 }
 
 export default class MatchTable extends Component<MatchTableProps, any> {
 
     render() {
-        const noMatches = (this.props.matches.length === 0);
+        const noMatches = (this.props.matches === undefined || this.props.matches.length === 0);
         const state = { hide: 0, show: 500 };
 
         const { hide, show } = state;
@@ -38,7 +38,8 @@ export default class MatchTable extends Component<MatchTableProps, any> {
                         animation="vertical flip"
                         className="no-margin"
                     >
-                        {this.props.matches.map((match: any) =>
+
+                        {this.props.matches && this.props.matches.map((match: any) =>
                             <List.Item key={match.id}>
                                 <MatchTile requestMatch={this.props.requestMatch} match={match} />
                             </List.Item>

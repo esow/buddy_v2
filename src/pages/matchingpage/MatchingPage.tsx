@@ -7,6 +7,9 @@ import RequestingMatchModal from "../../components/Modals/RequestingMatchModal";
 import "./MatchingPage.css";
 import MatchRequestModal from "../../components/Modals/MatchRequestModal";
 import MatchResponseModal from "../../components/Modals/MatchResponseModal";
+import { RootState } from "../../store/root-reducer";
+import { MatchingState } from "../../store/matching/reducer";
+import { connect } from "react-redux";
 
 interface State {
     status?: string;
@@ -18,11 +21,18 @@ interface State {
     showModal: number;
 
 }
-export default class MatchingPage extends Component<any, State> {
+interface ConnectedProps {
+    matching: MatchingState;
+}
+
+interface MatchingPageProps {
+    criteria: any;
+}
+class MatchingPage extends Component<MatchingPageProps & ConnectedProps, State> {
     constructor(props: any) {
         super(props);
         this.state = {
-            showModal: 3,
+            showModal: 0,
             status: undefined,
             timeLeft: 50,
             ignore: true,
@@ -92,7 +102,7 @@ export default class MatchingPage extends Component<any, State> {
             <div className="main-content2">
                 <div className="width-control2">
                     <CriteriaList onChangeCriteria={() => true} criteria={this.props.criteria} />
-                    <MatchTable matches={[]} requestMatch={() => true} />
+                    <MatchTable matches={this.props.matching.matches} requestMatch={() => true} />
 
                     <Notification
                         ignore={this.state.ignore && this.state.title !== ""}
@@ -133,3 +143,9 @@ export default class MatchingPage extends Component<any, State> {
         );
     }
 }
+
+const mapStateToProps = (state: RootState) => ({
+    matching: state.matching
+});
+
+export default connect(mapStateToProps, {})(MatchingPage);
