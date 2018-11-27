@@ -24,6 +24,12 @@ export const removeMatch = createAction("REMOVE_MATCH", resolve => {
 	return (match: FortnitePlayerStats) => resolve(match);
 });
 
+export function requestMatch(channel: any, player: any) {
+	return function () {
+		channel.push("request_match", player);
+	};
+}
+
 export function leaveChannel(channel: any) {
 	return function (dispatch: any) {
 		channel.leave().receive("ok", () => {
