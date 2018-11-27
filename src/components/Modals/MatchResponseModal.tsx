@@ -1,11 +1,28 @@
 import { Button, Modal, Icon } from "semantic-ui-react";
 import { Component } from "react";
 import * as React from "react";
+import { FortnitePlayerStats } from "../../models/FornitePlayerStats";
 
-export default class MatchResponseModal extends Component<any, any> {
+interface MatchResponseModalProps {
+    open: boolean;
+    handleClose: () => void;
+    response: string;
+    player: FortnitePlayerStats;
+}
+
+export default class MatchResponseModal extends Component<MatchResponseModalProps, { open: boolean }> {
+
+    constructor(Props: any) {
+        super(Props);
+        this.state = { open: this.props.open };
+    }
+
+    handleClose = () => {
+        this.setState({ open: false });
+        this.props.handleClose();
+    }
 
     render() {
-        const player = this.props.player;
         let responseHeader;
         let icon;
         let message;
@@ -63,36 +80,33 @@ export default class MatchResponseModal extends Component<any, any> {
 
         return (
             <div>
-                {player &&
+                <Modal
+                    size="small"
+                    closeOnRootNodeClick={false}
+                    dimmer={"blurring"}
+                    className="modal"
+                    open={this.state.open}
+                    onClose={this.props.handleClose}
+                >
 
-                    <Modal
-                        size="small"
-                        closeOnRootNodeClick={false}
-                        dimmer={"blurring"}
-                        className="modal"
-                        open={this.props.open}
-                        onClose={this.props.handleClose}
-                    >
-
-                        <Modal.Header> <h2> {responseHeader} </h2> </Modal.Header>
-                        <Modal.Content>
-                            <Modal.Description>
-                                <div className="response-message">
-                                    <div className="response-logo">
-                                        {icon}
-                                    </div>
-                                    {message}
+                    <Modal.Header> <h2> {responseHeader} </h2> </Modal.Header>
+                    <Modal.Content>
+                        <Modal.Description>
+                            <div className="response-message">
+                                <div className="response-logo">
+                                    {icon}
                                 </div>
-                            </Modal.Description>
-                        </Modal.Content>
-                        <Modal.Actions>
-                            <div className="answer-bar">
-                                <Button onClick={this.props.handleClose} primary> Close </Button>
+                                {message}
                             </div>
-                        </Modal.Actions>
-                    </Modal>
+                        </Modal.Description>
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <div className="answer-bar">
+                            <Button onClick={this.handleClose} primary> Close </Button>
+                        </div>
+                    </Modal.Actions>
+                </Modal>
 
-                }
             </div>
 
         );

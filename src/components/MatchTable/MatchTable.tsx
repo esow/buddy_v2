@@ -4,13 +4,14 @@ import "./MatchTable.css";
 import MatchTileHeader from "./MatchTableTile/MatchTileHeader";
 import { Component } from "react";
 import * as React from "react";
+import { FortnitePlayerStats } from "../../models/FornitePlayerStats";
 
 export interface MatchTableProps {
-    matches: any[];
+    matches: FortnitePlayerStats[];
     requestMatch: (player: any) => void;
 }
 
-export default class MatchTable extends Component<MatchTableProps> {
+export default class MatchTable extends Component<MatchTableProps, any> {
 
     render() {
         const noMatches = (this.props.matches.length === 0);
@@ -20,7 +21,7 @@ export default class MatchTable extends Component<MatchTableProps> {
 
         return (
             <div className="match-table">
-                <Segment inverted>
+                <Segment inverted color={"yellow"}>
                     <MatchTileHeader />
                     <div className={noMatches ? "" : "hidden"} >
                         <div className="match-tile empty">
