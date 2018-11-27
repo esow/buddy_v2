@@ -28,7 +28,7 @@
 .match-tile.empty{
   height: 73.5px;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.096);
+  background-color: #db8d29
 }
 .no-margin{
     margin: 0 !important;

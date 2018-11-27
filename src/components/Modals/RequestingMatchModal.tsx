@@ -3,11 +3,24 @@ import RequestingPlayerInfo from "./RequestingPlayerInfo";
 import ReactCountdownClock from "react-countdown-clock";
 import { Component } from "react";
 import * as React from "react";
+import "./modal.css";
 
-export default class RequestingMatchModal extends Component<any, any> {
+interface RequestingMatchModalProps {
+    player: any;
+    open: boolean;
+    handleClose: () => void;
+    timeLeft: number;
+
+}
+export default class RequestingMatchModal extends Component<RequestingMatchModalProps, { open: boolean }> {
+
+    constructor(Props: RequestingMatchModalProps) {
+        super(Props);
+        this.state = { open: this.props.open };
+    }
 
     cancel = () => {
-        this.props.respondToRequest(this.props.player.id, "Request_Cancelled");
+        this.setState({ open: false });
         this.props.handleClose();
     }
 
@@ -15,39 +28,35 @@ export default class RequestingMatchModal extends Component<any, any> {
         const player = this.props.player;
         return (
             <div>
-                {player &&
+                <Modal
+                    dimmer={"blurring"}
+                    closeOnRootNodeClick={false}
+                    open={this.state.open}
+                    onClose={this.props.handleClose}
+                >
 
-                    <Modal
-                        dimmer={"blurring"}
-                        closeOnRootNodeClick={false}
-                        className="modal"
-                        open={this.props.open}
-                        onClose={this.props.handleClose}
-                    >
-
-                        <Modal.Header>Requesting match...</Modal.Header>
-                        <Modal.Content className="no-padding">
-                            <RequestingPlayerInfo match={player} />
-                        </Modal.Content>
-                        <Modal.Actions>
-                            <div className="answer-bar">
-                                <div className="button-box">
-                                    <Button negative onClick={this.cancel}> Cancel </Button>
-                                </div>
-                                <div className="countdown">
-                                    <ReactCountdownClock
-                                        seconds={this.props.timeLeft}
-                                        size="60"
-                                        color="black"
-                                        onComplete={this.props.reject}
-                                        showMilliseconds="false"
-                                    />
-                                </div>
+                    <Modal.Header>Requesting match...</Modal.Header>
+                    <Modal.Content className="no-padding">
+                        <RequestingPlayerInfo match={player} />
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <div className="answer-bar">
+                            <div className="button-box">
+                                <Button negative onClick={this.cancel}> Cancel </Button>
                             </div>
-                        </Modal.Actions>
-                    </Modal>
+                            <div className="countdown">
+                                <ReactCountdownClock
+                                    seconds={this.props.timeLeft}
+                                    size="60"
+                                    color="black"
+                                    onComplete={this.cancel}
+                                    showMilliseconds="false"
+                                />
+                            </div>
+                        </div>
+                    </Modal.Actions>
+                </Modal>
 
-                }
             </div>
 
         );

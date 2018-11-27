@@ -6,7 +6,7 @@ export default class RequestingPlayerInfo extends Component<any, any> {
     render() {
         return (
             <div>
-                <Segment inverted raised className="match-tile">
+                <Segment inverted color={"yellow"} raised className="match-tile">
                     <Grid className="grid" columns="equal" verticalAlign="middle" divided>
                         <Grid.Row className="no-padding bottom-border" textAlign="center">
                             <Grid.Column textAlign="center">
