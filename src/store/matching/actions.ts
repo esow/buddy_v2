@@ -20,6 +20,10 @@ export const leaveChannelAction = createAction("LEAVE_CHANNEL", resolve => {
 	return () => resolve();
 });
 
+export const removeMatch = createAction("REMOVE_MATCH", resolve => {
+	return (match: FortnitePlayerStats) => resolve(match);
+});
+
 export function leaveChannel(channel: any) {
 	return function (dispatch: any) {
 		channel.leave().receive("ok", () => {
@@ -81,7 +85,7 @@ export function connectToSocket(auth: AuthSessionDTO, player: FortnitePlayerStat
 		});
 
 		channel.on("remove_player", (response) => {
-			dispatch(initialMatch(response));
+			dispatch(removeMatch(response));
 		});
 
 		channel.on("match_requested", (response) => {
