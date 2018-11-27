@@ -18,8 +18,19 @@ const reducer: Reducer<MatchingState> =
 			case getType(channels.socketConnect.success):
 				return { ...state, socket: action.payload.socket, channel: action.payload.channel };
 			case getType(channels.initialMatch):
+				console.log(action.payload);
+				state.matches = action.payload;
 				return { ...state, matches: action.payload };
 			case getType(channels.leaveChannelAction):
+				return { ...state, channel: undefined };
+			case getType(channels.removeMatch):
+				if (state.matches !== undefined) {
+					const id = action.payload.id;
+					const index = state.matches.findIndex(d => d.id === id);
+					if (index > -1) {
+					   state.matches.splice(index, 1);
+					}
+				}
 				return { ...state, channel: undefined };
 			case getType(channels.newMatch):
 				if (state.matches !== undefined) {
