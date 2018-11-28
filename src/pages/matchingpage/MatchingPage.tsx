@@ -8,8 +8,8 @@ import "./MatchingPage.css";
 import MatchRequestModal from "../../components/Modals/MatchRequestModal";
 import MatchResponseModal from "../../components/Modals/MatchResponseModal";
 import { RootState } from "../../store/root-reducer";
-import { MatchingState } from "../../store/matching/reducer";
 import { connect } from "react-redux";
+import { FortnitePlayerStats } from "../../models/FornitePlayerStats";
 
 interface State {
     status?: string;
@@ -22,7 +22,7 @@ interface State {
 
 }
 interface ConnectedProps {
-    matching: MatchingState;
+    matches: FortnitePlayerStats[];
 }
 
 interface MatchingPageProps {
@@ -102,7 +102,7 @@ class MatchingPage extends Component<MatchingPageProps & ConnectedProps, State> 
             <div className="main-content2">
                 <div className="width-control2">
                     <CriteriaList onChangeCriteria={() => true} criteria={this.props.criteria} />
-                    <MatchTable matches={this.props.matching.matches} requestMatch={() => true} />
+                    <MatchTable matches={this.props.matches} requestMatch={() => true} />
 
                     <Notification
                         ignore={this.state.ignore && this.state.title !== ""}
@@ -145,7 +145,7 @@ class MatchingPage extends Component<MatchingPageProps & ConnectedProps, State> 
 }
 
 const mapStateToProps = (state: RootState) => ({
-    matching: state.matching
+    matches: state.matching.matches
 });
 
 export default connect(mapStateToProps, {})(MatchingPage);
