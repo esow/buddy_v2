@@ -28,10 +28,10 @@ const reducer: Reducer<MatchingState> =
 					const id = action.payload.id;
 					const index = state.matches.findIndex(d => d.id === id);
 					if (index > -1) {
-					   state.matches.splice(index, 1);
+						state.matches.splice(index, 1);
 					}
 				}
-				return { ...state, channel: undefined };
+				return { ...state, matches: state.matches };
 			case getType(channels.newMatch):
 				if (state.matches !== undefined) {
 					state.matches.push(action.payload);
