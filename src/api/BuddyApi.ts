@@ -5,7 +5,11 @@ class BuddyApi {
 	private static devServer: String = "https://lolbuddy.herokuapp.com/api";
 
 	// Get server statistics
-	static getStats(): Promise<{ [key: string]: number }> {
+	static getStats(): Promise<{
+		[key: string]: {
+			[key: string]: number
+		}
+	}> {
 		return BuddyApi.getRequest(`stats`);
 	}
 
