@@ -11,7 +11,7 @@ interface FortniteStatisticProps {
 
 const FortniteStatistics: React.SFC<FortniteStatisticProps> = (props) => {
 	return (
-		<Statistic.Group widths="one" size={"tiny"}>
+		<Statistic.Group widths="5" size={"tiny"}>
 			<Statistic>
 				<Statistic.Value>{(props.winRatio).toPrecision(2)}%</Statistic.Value>
 				<Statistic.Label><Icon name="winner" color="yellow" />Win Ratio</Statistic.Label>

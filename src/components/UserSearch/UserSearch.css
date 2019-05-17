@@ -32,12 +32,11 @@
       background: url("/dropdown_arrow.png") white no-repeat 110% !important;
 }
 
-.summoner-search button {
+.ui.button {
 	min-width: 215px;
 	margin-left: -1px;
 	border: 1px solid#444;
-	background-color: #496d89;
-	color: white;
+	background: #F15A29 !important;
 }
 .summoner-search button.loading {
 	background-color: #5a86a8;
