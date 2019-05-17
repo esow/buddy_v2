@@ -62,7 +62,7 @@ export default class UserSearch extends React.Component<UserSearchProps, UserSea
 					<option value="PS4">PS4</option>
 					<option value="XBOX">XBOX</option>
 				</select>
-                <Button primary loading={this.props.isLoading}> Lets find some friends! </Button>
+				<Button loading={this.props.isLoading}> Lets find some friends! </Button>
 			</form>
 		);
 	}
