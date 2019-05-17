@@ -2,7 +2,7 @@ import * as React from "react";
 import "./UserPane.css";
 import FortniteStatistics from "../../components/Statistics/FortniteStatistics";
 import UserCriteriaSelectorPane from "../../components/UserCriteriaSelector/UserCriteriaSelector";
-import { Button, } from "semantic-ui-react";
+import { Button, Container, Grid } from "semantic-ui-react";
 
 export interface UserPaneProps {
 	platform: string;
@@ -75,13 +75,13 @@ export default class UserPane extends React.Component<UserPaneProps, UserInputSt
 		}
 	};
 
-    calculateWinRatio = (won: number, played: number) => {
-        if (played === 0 || won === 0) {
-            return 0;
-        } else {
-            return 100 * won / played;
-        }
-    }
+	calculateWinRatio = (won: number, played: number) => {
+		if (played === 0 || won === 0) {
+			return 0;
+		} else {
+			return 100 * won / played;
+		}
+	}
 
 	handleInputChange = (from: string, value: any) => {
 
@@ -99,35 +99,37 @@ export default class UserPane extends React.Component<UserPaneProps, UserInputSt
 	render() {
 		const user = this.props;
 		return (
-            <div className="user-pane">
-                <div className="summoner-pane">
-                    <div className="column user-input">
-                        <div className="header">{user.username}</div>
-                        <div className="userCriteria">
-                            <UserCriteriaSelectorPane
-                                selectedAge={this.props.selectedAge}
-                                selectedLanguages={this.props.selectedLanguages}
-                                selectedComment={this.props.comment}
-                                selectedVoice={"yes"}
-                                handleChange={this.handleInputChange}
-                            />
-                        </div>
-                    </div>
-                    <div className="column statistics">
-                        <div className="header">Duo stats</div>
-                        <FortniteStatistics
-                            winRatio={this.calculateWinRatio(user.stats.duoGamesWon, user.stats.duoGamesPlayed)}
-                            played={user.stats.duoGamesPlayed}
-                            kdRatio={user.stats.duoKillDeathRatio}
-                            top5={user.stats.duoTop5Finishes}
-                            top12={user.stats.duoTop12Finishes}
-                        />
-                    </div>
-                </div>
-                <form className="find-friends" onSubmit={this.connectToSocket}>
-                    <Button primary>Find friends!</Button>
-                </form>
-            </div>
+			<Container className="user-pane summoner-pane user-input">
+				<Grid >
+					<Grid.Row>
+						<div className="header">{user.username}</div>
+					</Grid.Row>
+					<Grid.Row>
+						<div className="header">Duo stats</div>
+					</Grid.Row>
+					<Grid.Row centered>
+						<Grid.Column width={8} >
+							<FortniteStatistics
+								winRatio={this.calculateWinRatio(user.stats.duoGamesWon, user.stats.duoGamesPlayed)}
+								played={user.stats.duoGamesPlayed}
+								kdRatio={user.stats.duoKillDeathRatio}
+								top5={user.stats.duoTop5Finishes}
+								top12={user.stats.duoTop12Finishes}
+							/>
+						</Grid.Column>
+					</Grid.Row>
+					<UserCriteriaSelectorPane
+						selectedAge={this.props.selectedAge}
+						selectedLanguages={this.props.selectedLanguages}
+						selectedComment={this.props.comment}
+						selectedVoice={"yes"}
+						handleChange={this.handleInputChange}
+					/>
+					<form className="find-friends" onSubmit={this.connectToSocket}>
+						<Button primary>Find friends!</Button>
+					</form>
+				</Grid>
+			</Container>
 		);
 	}
 }
