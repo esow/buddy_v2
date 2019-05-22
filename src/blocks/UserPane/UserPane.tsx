@@ -83,11 +83,11 @@ export default class UserPane extends React.Component<UserPaneProps, UserInputSt
 		}
 	}
 
-	handleInputChange = (from: string, value: any) => {
+	handleInputChange = (from: String, value: any) => {
 
 		const nextState = {
 			...this.state,
-			[from]: value,
+			[from.toString()]: value,
 		};
 		this.setState(nextState);
 	}
