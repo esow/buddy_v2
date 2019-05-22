@@ -141,4 +141,3 @@ export default class MatchingPage extends Component<MatchingPageProps & Connecte
         );
     }
 }
-

@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { storiesOf } from "@storybook/react";
-import MatchingPage from '../src/pages/matchingpage/MatchingPage';
+import MatchingPage from "../src/pages/matchingpage/MatchingPage";
 
 const player = {
   username: "Trolleren",
