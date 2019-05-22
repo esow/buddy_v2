@@ -7,8 +7,6 @@ import RequestingMatchModal from "../../components/Modals/RequestingMatchModal";
 import "./MatchingPage.css";
 import MatchRequestModal from "../../components/Modals/MatchRequestModal";
 import MatchResponseModal from "../../components/Modals/MatchResponseModal";
-import { RootState } from "../../store/root-reducer";
-import { connect } from "react-redux";
 import { FortnitePlayerStats } from "../../models/FornitePlayerStats";
 
 interface State {
@@ -21,14 +19,14 @@ interface State {
     showModal: number;
 
 }
-interface ConnectedProps {
+export interface ConnectedProps {
     matches: FortnitePlayerStats[];
 }
 
-interface MatchingPageProps {
+export interface MatchingPageProps {
     criteria: any;
 }
-class MatchingPage extends Component<MatchingPageProps & ConnectedProps, State> {
+export default class MatchingPage extends Component<MatchingPageProps & ConnectedProps, State> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -144,8 +142,3 @@ class MatchingPage extends Component<MatchingPageProps & ConnectedProps, State> 
     }
 }
 
-const mapStateToProps = (state: RootState) => ({
-    matches: state.matching.matches
-});
-
-export default connect(mapStateToProps, {})(MatchingPage);

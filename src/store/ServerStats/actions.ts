@@ -2,7 +2,7 @@ import BuddyApi from "../../api/BuddyApi";
 import { createAsyncAction } from "typesafe-actions";
 
 export const fetchStats = createAsyncAction("FETCH_STATS_REQUEST", "FETCH_STATS_SUCCESS", "FETCH_STATS_ERROR")
-	<void, { [key: string]: { [key: string]: number } }, Error>();
+	<void, { players_online: { [key: string]: { [key: string]: number } } }, Error>();
 
 export function loadStats() {
 	return function (dispatch: any) {

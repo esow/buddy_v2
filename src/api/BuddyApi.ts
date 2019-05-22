@@ -6,8 +6,10 @@ class BuddyApi {
 
 	// Get server statistics
 	static getStats(): Promise<{
-		[key: string]: {
-			[key: string]: number
+		players_online: {
+			[key: string]: {
+				[key: string]: number
+			}
 		}
 	}> {
 		return BuddyApi.getRequest(`stats`);
