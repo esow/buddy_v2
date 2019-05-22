@@ -14,7 +14,7 @@ export interface ConnectedProps {
 	selectedVoice: string;
 	selectedAge: string;
 	selectedComment: string;
-	handleChange: (from: string, data: any) => void;
+	handleChange: (from: String, data: any) => void;
 }
 
 export default class UserCriteriaSelectorPane
