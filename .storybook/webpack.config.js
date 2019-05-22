@@ -1,9 +1,13 @@
-const path = require("path");
-module.exports = (baseConfig, env, config) => {
+module.exports = ({ config }) => {
 	config.module.rules.push({
 		test: /\.(ts|tsx)$/,
-		loader: 'babel-loader!ts-loader',
+		use: [
+			{
+				loader: require.resolve('awesome-typescript-loader'),
+			},
+			// Optional
+		],
 	});
-	config.resolve.extensions.push(".ts", ".tsx");
+	config.resolve.extensions.push('.ts', '.tsx');
 	return config;
 };
