@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { storiesOf } from "@storybook/react";
-import MatchTable from "../src/components/MatchTable/MatchTable";
+import MatchingPage from '../src/pages/matchingpage/MatchingPage';
 
 const player = {
   username: "Trolleren",
@@ -64,4 +64,4 @@ const player = {
 };
 
 storiesOf("Button", module)
-  .add("with text", () => <MatchTable matches={[player]} requestMatch={() => true} />);
+  .add("with text", () => <MatchingPage matches={[player]} criteria={true} />);
