@@ -7,7 +7,7 @@ import MatchingPage, { MatchingPageProps, ConnectedProps } from "./MatchingPage"
 
 class ConnectedMatchingPage extends Component<MatchingPageProps & ConnectedProps> {
 	render() {
-		return <MatchingPage matches={this.props.matches} criteria={this.props.criteria} />
+		return <MatchingPage matches={this.props.matches} criteria={this.props.criteria} />;
 	}
 
 }
