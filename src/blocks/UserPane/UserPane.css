@@ -19,8 +19,9 @@
 }
 
 .find-friends {
-    display: flex;
-	flex-direction: column;
+	display: flex;
+	justify-content: center;
+
 }
 .find-friends .ui.button{
 	width: 315px;

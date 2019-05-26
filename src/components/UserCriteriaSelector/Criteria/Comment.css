@@ -1,3 +1,18 @@
 .comment-form textarea {
 	width:100%;
 }
+
+.ui.small.header {
+	display:flex;
+	justify-content: space-between;
+}
+
+.ui.small.header.subheader {
+	margin: 0;
+}
+
+.ui.small.header.subheader.counter {
+	font-weight: 100;
+	color: #1F2041;
+	opacity: 0.75;
+}
