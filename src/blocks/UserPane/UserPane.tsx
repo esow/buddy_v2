@@ -116,7 +116,7 @@ export default class UserPane extends React.Component<UserPaneProps, UserInputSt
 						</Grid.Column>
 					</Grid.Row>
 					<Grid.Row centered>
-						<Grid.Column width={8}>
+						<Grid.Column computer={11} tablet={12} mobile={16}>
 							<UserCriteriaSelectorPane
 								selectedAge={this.props.selectedAge}
 								selectedLanguages={this.props.selectedLanguages}
@@ -126,9 +126,13 @@ export default class UserPane extends React.Component<UserPaneProps, UserInputSt
 							/>
 						</Grid.Column>
 					</Grid.Row>
-					<form className="find-friends" onSubmit={this.connectToSocket}>
-						<Button>Find friends!</Button>
-					</form>
+					<Grid.Row centered>
+						<Grid.Column computer={11} tablet={12} mobile={16}>
+							<form className="find-friends" onSubmit={this.connectToSocket}>
+								<Button>FIND SOME FRIENDS</Button>
+							</form>
+						</Grid.Column>
+					</Grid.Row>
 				</Grid>
 			</Container>
 		);

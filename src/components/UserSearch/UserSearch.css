@@ -1,5 +1,8 @@
 .summoner-search {
 	margin-top: 20px;
+	display:flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .summoner-search > *:first-child {
@@ -23,6 +26,8 @@
 	background-color: white;
 }
 .summoner-search select {
+	border-color: rgba(0,0,0,0);
+	border-radius: .28571429rem;
 	background-color: white;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -32,7 +37,6 @@
 
 .summoner-search .ui.button {
 	min-width: 150px;
-	margin-left: -1px;
 	background: #F15A29 !important;
 	color: white !important;
 }
