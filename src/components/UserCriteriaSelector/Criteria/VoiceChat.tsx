@@ -30,17 +30,17 @@ export default class VoiceChat extends Component<VoiceChatProps, State> {
                 <Header size="small">VOICE CHAT</Header>
                 <Form.Group inline className="centered-form-field">
                     <RadioGroup name="voiceChat" selectedValue={this.state.voicechat} onChange={this.handleChange}>
-                        <Form.Field>
+                        <Form.Field width={3}>
                             <Radio value="yes" />
                             <Header size="tiny">Yes</Header>
                         </Form.Field>
-                        <Form.Field>
+                        <Form.Field width={3}>
                             <Radio value="no" />
                             <Header size="tiny">No</Header>
                         </Form.Field>
-                        <Form.Field>
+                        <Form.Field width={3}>
                             <Radio value="w/e" />
-                            <Header size="tiny">I don't care</Header>
+                            <Header size="tiny">Don't care</Header>
                         </Form.Field>
                     </RadioGroup>
                 </Form.Group>
