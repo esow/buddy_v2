@@ -28,13 +28,13 @@ export default class UserCriteriaSelectorPane
 					selectedLanguages={this.props.selectedLanguages}
 					handleChange={this.props.handleChange}
 				/>
-				<VoiceChat
-					handleChange={this.props.handleChange}
-					voicechat={this.props.selectedVoice}
-				/>
 				<AgeGroup
 					handleChange={this.props.handleChange}
 					value={this.props.selectedAge}
+				/>
+				<VoiceChat
+					handleChange={this.props.handleChange}
+					voicechat={this.props.selectedVoice}
 				/>
 				<Comment
 					handleChange={this.props.handleChange}

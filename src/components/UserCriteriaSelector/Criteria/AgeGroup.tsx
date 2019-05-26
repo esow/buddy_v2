@@ -1,4 +1,4 @@
-import { Form, Divider } from "semantic-ui-react";
+import { Form, Header } from "semantic-ui-react";
 import * as React from "react";
 import { Component } from "react";
 import { RadioGroup, Radio } from "react-radio-group";
@@ -26,21 +26,21 @@ export default class AgeGroup extends Component<AgeGroupProps, State> {
   render() {
     return (
       <div>
-        <Divider inverted horizontal>Age group</Divider>
+        <Header size="small">AGE GROUP</Header>
         <Form.Group inline className="centered-form-field">
           <RadioGroup name="ageGroups" selectedValue={this.state.value} onChange={this.handleChange}>
             <Form.Field>
-              <Radio value="interval1" />
-              13-16
-                        </Form.Field>
+              <Radio value="interval1" label="13-16" />
+              <Header size="tiny">13-16</Header>
+            </Form.Field>
             <Form.Field>
-              <Radio value="interval2" />
-              16-21
-                    </Form.Field>
+              <Radio value="interval2" label="16-21" />
+              <Header size="tiny">16-21</Header>
+            </Form.Field>
             <Form.Field>
-              <Radio value="interval3" />
-              22+
-                    </Form.Field>
+              <Radio value="interval3" label="22+" />
+              <Header size="tiny">22+</Header>
+            </Form.Field>
           </RadioGroup>
         </Form.Group>
       </div>

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Component } from "react";
-import { Divider, Form, TextAreaProps } from "semantic-ui-react";
+import { Header, Form, TextAreaProps } from "semantic-ui-react";
+import "./Comment.css"
 
 interface CommentProps {
     handleChange: (from: string, data: any) => void;
@@ -28,13 +29,13 @@ export default class Comment extends Component<CommentProps, State> {
     render() {
         return (
             <div>
-                <Divider inverted horizontal>Comments</Divider>
+                <Header size="small">COMMENTS</Header>
                 <Form.TextArea
                     name="comment"
                     className="comment-form"
                     onChange={this.handleChange}
                     value={this.state.value}
-                    placeholder="Additional information (max. 100 characters)"
+                    placeholder="Type here..."
                 />
 
             </div>

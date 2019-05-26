@@ -1,3 +1,31 @@
 .userCriteria {
     width: 100%;
 }
+
+.centered-form-field {
+	margin: 10px 0 10px 0;
+}
+
+.centered-form-field input {
+	color:#F15A29;
+	width:20px;
+	height:20px;
+	margin:5px;
+}
+
+.centered-form-field div {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.centered-form-field .field {
+	align-items: center;
+	margin:5px;
+}
+
+.centered-form-field .ui.tiny.header {
+	margin: 0;
+	color: #1F2041;
+	opacity: 0.75;
+	font-weight:100;
+}
