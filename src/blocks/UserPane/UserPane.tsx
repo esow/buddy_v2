@@ -2,7 +2,7 @@ import * as React from "react";
 import "./UserPane.css";
 import FortniteStatistics from "../../components/Statistics/FortniteStatistics";
 import UserCriteriaSelectorPane from "../../components/UserCriteriaSelector/UserCriteriaSelector";
-import { Button, Container, Grid } from "semantic-ui-react";
+import { Button, Container, Grid, Header } from "semantic-ui-react";
 
 export interface UserPaneProps {
 	platform: string;
@@ -100,15 +100,12 @@ export default class UserPane extends React.Component<UserPaneProps, UserInputSt
 		const user = this.props;
 		return (
 			<Container className="user-pane summoner-pane user-input">
-				<Grid >
-					<Grid.Row>
-						<div className="header">{user.username}</div>
-					</Grid.Row>
-					<Grid.Row>
-						<div className="header">Duo stats</div>
+				<Grid centered>
+					<Grid.Row centered columns={1}>
+						<Header size="large">{user.username}</Header>
 					</Grid.Row>
 					<Grid.Row centered>
-						<Grid.Column width={8} >
+						<Grid.Column width={16} >
 							<FortniteStatistics
 								winRatio={this.calculateWinRatio(user.stats.duoGamesWon, user.stats.duoGamesPlayed)}
 								played={user.stats.duoGamesPlayed}
@@ -118,15 +115,19 @@ export default class UserPane extends React.Component<UserPaneProps, UserInputSt
 							/>
 						</Grid.Column>
 					</Grid.Row>
-					<UserCriteriaSelectorPane
-						selectedAge={this.props.selectedAge}
-						selectedLanguages={this.props.selectedLanguages}
-						selectedComment={this.props.comment}
-						selectedVoice={"yes"}
-						handleChange={this.handleInputChange}
-					/>
+					<Grid.Row centered>
+						<Grid.Column width={8}>
+							<UserCriteriaSelectorPane
+								selectedAge={this.props.selectedAge}
+								selectedLanguages={this.props.selectedLanguages}
+								selectedComment={this.props.comment}
+								selectedVoice={"yes"}
+								handleChange={this.handleInputChange}
+							/>
+						</Grid.Column>
+					</Grid.Row>
 					<form className="find-friends" onSubmit={this.connectToSocket}>
-						<Button primary>Find friends!</Button>
+						<Button>Find friends!</Button>
 					</form>
 				</Grid>
 			</Container>

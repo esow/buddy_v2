@@ -2,7 +2,7 @@ import * as React from "react";
 import "./UserSearch.css";
 import { FormEvent } from "react";
 import history from "../../utils/history";
-import { Button } from "semantic-ui-react";
+import { Button, Input } from "semantic-ui-react";
 
 export interface UserSearchProps {
 	onSubmit: (platform: string, username: string) => void;
@@ -46,12 +46,7 @@ export default class UserSearch extends React.Component<UserSearchProps, UserSea
 	render() {
 		return (
 			<form className="summoner-search" onSubmit={this.submit}>
-				<input
-					type="search"
-					placeholder="Insert your username"
-					value={this.state.username}
-					onChange={this.onChangeUsername}
-				/>
+				<Input icon="users" iconPosition="left" onChange={this.onChangeUsername} type="search" defaultValue={this.state.username} />
 				<select
 					name="region"
 					id="region-select"
@@ -62,7 +57,7 @@ export default class UserSearch extends React.Component<UserSearchProps, UserSea
 					<option value="PS4">PS4</option>
 					<option value="XBOX">XBOX</option>
 				</select>
-				<Button loading={this.props.isLoading}> Lets find some friends! </Button>
+				<Button loading={this.props.isLoading}> Search </Button>
 			</form>
 		);
 	}
