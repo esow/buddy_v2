@@ -1,7 +1,8 @@
-import { Form, Divider } from "semantic-ui-react";
+import { Form, Header } from "semantic-ui-react";
 import * as React from "react";
 import { Component } from "react";
 import { RadioGroup, Radio } from "react-radio-group";
+import "./VoiceChat.css";
 interface VoiceChatProps {
     handleChange: (event: any, data: any) => void;
     voicechat: String;
@@ -26,21 +27,21 @@ export default class VoiceChat extends Component<VoiceChatProps, State> {
     render() {
         return (
             <div>
-                <Divider inverted horizontal>Voice chat?</Divider>
+                <Header size="small">VOICE CHAT</Header>
                 <Form.Group inline className="centered-form-field">
                     <RadioGroup name="voiceChat" selectedValue={this.state.voicechat} onChange={this.handleChange}>
                         <Form.Field>
                             <Radio value="yes" />
-                            YES
+                            <Header size="tiny">Yes</Header>
                         </Form.Field>
                         <Form.Field>
                             <Radio value="no" />
-                            NO
-                    </Form.Field>
+                            <Header size="tiny">No</Header>
+                        </Form.Field>
                         <Form.Field>
                             <Radio value="w/e" />
-                            I don't care
-                    </Form.Field>
+                            <Header size="tiny">I don't care</Header>
+                        </Form.Field>
                     </RadioGroup>
                 </Form.Group>
 

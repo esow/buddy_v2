@@ -12,7 +12,6 @@
 }
 .summoner-search > * {
 	height: 45px;
-	border: 1px solid #444;
 	color: #444;
 	padding-left: 20px;
 	padding-right: 20px;
@@ -24,7 +23,6 @@
 	background-color: white;
 }
 .summoner-search select {
-	margin-left: -1px;
 	background-color: white;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -32,15 +30,28 @@
       background: url("/dropdown_arrow.png") white no-repeat 110% !important;
 }
 
-.ui.button {
-	min-width: 215px;
+.summoner-search .ui.button {
+	min-width: 150px;
 	margin-left: -1px;
-	border: 1px solid#444;
 	background: #F15A29 !important;
+	color: white !important;
 }
 .summoner-search button.loading {
 	background-color: #5a86a8;
 }
 .summoner-search button:hover {
+	background-color: #5a86a8;
+}
+
+.summoner-search .ui.input {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.summoner-search button.loading {
+	background-color: #5a86a8;
+}
+
+.summoner-search button.hover {
 	background-color: #5a86a8;
 }

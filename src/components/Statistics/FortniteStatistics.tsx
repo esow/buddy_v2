@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Icon, Statistic } from "semantic-ui-react";
+import "./FortniteStatistics.css"
 
 interface FortniteStatisticProps {
 	winRatio: Number;

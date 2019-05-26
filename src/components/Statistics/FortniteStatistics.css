@@ -1,0 +1,9 @@
+.ui.tiny.five.statistics {
+	display: flex;
+	justify-content: center !important;
+	align-items: center !important
+}
+
+.ui.five.statistics .statistic {
+	min-width: 100px !important;
+}
