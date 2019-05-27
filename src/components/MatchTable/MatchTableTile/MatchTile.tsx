@@ -23,7 +23,7 @@ export default class MatchTile extends Component<MatchTileProps, any> {
     openInNewTab = () => {
         const win =
             window.open(`http://${this.props.match.gameInfo.platform}.op.gg/summoner/userName=${this.props.match.name}`,
-                        "_blank");
+                "_blank");
         if (win != null) {
             win.focus();
         }
@@ -37,53 +37,51 @@ export default class MatchTile extends Component<MatchTileProps, any> {
         };
 
         return (
-            <div className="match-tile">
-                <Grid className="grid" columns="equal" verticalAlign="middle" divided>
-                    <Grid.Column width={2}>
-                        <h5> {this.props.match.name} </h5>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <div className="inline">
-                            {
-                                this.props.match.languages.map((language: any, index: any) => {
-                                    return <Popup
-                                        key={index}
-                                        position="top center"
-                                        style={style}
-                                        trigger={
-                                            <div>
-                                                {this.getFlagImage(language)}
-                                            </div>}
-                                        content={_.find(languages, x => x.value === language)}
-                                    />;
-                                })
-                            }
-                        </div>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <div className="language-box">
-                            {this.props.match.ageGroup}
-                        </div>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <h5 className="inline">
-                            {
-                                this.props.match.voiceChat &&
-                                this.props.match.voiceChat.map((bool: any, index: any) => {
-                                    const icon = bool ? "microphone" : "microphone slash";
-                                    return <Icon key={index} name={icon} size="large" />;
-                                })
-                            }
-                        </h5>
-                    </Grid.Column>
-                    <Grid.Column width={4}>
-                        <h5 className="comment-box"> {this.props.match.comment} </h5>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <div> <Button onClick={this.requestMatch} primary compact> Request </Button> </div>
-                    </Grid.Column>
-                </Grid>
-            </div>
+            <Grid className="grid" columns="equal" verticalAlign="middle" divided>
+                <Grid.Column width={2}>
+                    <h5> {this.props.match.name} </h5>
+                </Grid.Column>
+                <Grid.Column>
+                    <div className="inline">
+                        {
+                            this.props.match.languages.map((language: any, index: any) => {
+                                return <Popup
+                                    key={index}
+                                    position="top center"
+                                    style={style}
+                                    trigger={
+                                        <div>
+                                            {this.getFlagImage(language)}
+                                        </div>}
+                                    content={_.find(languages, x => x.value === language)}
+                                />;
+                            })
+                        }
+                    </div>
+                </Grid.Column>
+                <Grid.Column>
+                    <div className="language-box">
+                        {this.props.match.ageGroup}
+                    </div>
+                </Grid.Column>
+                <Grid.Column>
+                    <h5 className="inline">
+                        {
+                            this.props.match.voiceChat &&
+                            this.props.match.voiceChat.map((bool: any, index: any) => {
+                                const icon = bool ? "microphone" : "microphone slash";
+                                return <Icon key={index} name={icon} size="large" />;
+                            })
+                        }
+                    </h5>
+                </Grid.Column>
+                <Grid.Column width={4}>
+                    <h5 className="comment-box"> {this.props.match.comment} </h5>
+                </Grid.Column>
+                <Grid.Column>
+                    <div> <Button onClick={this.requestMatch} primary compact> Request </Button> </div>
+                </Grid.Column>
+            </Grid>
         );
     }
 }

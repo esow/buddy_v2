@@ -8,6 +8,7 @@ import "./MatchingPage.css";
 import MatchRequestModal from "../../components/Modals/MatchRequestModal";
 import MatchResponseModal from "../../components/Modals/MatchResponseModal";
 import { FortnitePlayerStats } from "../../models/FornitePlayerStats";
+import { Container, Grid } from 'semantic-ui-react';
 
 interface State {
     status?: string;
@@ -97,47 +98,55 @@ export default class MatchingPage extends Component<MatchingPageProps & Connecte
 
     render() {
         return (
-            <div className="main-content2">
-                <div className="width-control2">
-                    <CriteriaList onChangeCriteria={() => true} criteria={this.props.criteria} />
-                    <MatchTable matches={this.props.matches} requestMatch={() => true} />
+            <Container fluid center className="main-content2">
+                <Grid centered>
+                    <Grid.Row>
+                        <Grid.Column width={10}>
+                            <CriteriaList onChangeCriteria={() => true} criteria={this.props.criteria} />
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column width={10}>
+                            <MatchTable matches={this.props.matches} requestMatch={() => true} />
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
 
-                    <Notification
-                        ignore={this.state.ignore && this.state.title !== ""}
-                        title={this.state.title}
-                        options={this.state.options}
-                        // tslint:disable-next-line:jsx-no-bind
-                        notSupported={this.handleNotSupported.bind(this)}
-                        // tslint:disable-next-line:jsx-no-bind
-                        onPermissionGranted={this.handlePermissionGranted.bind(this)}
-                        // tslint:disable-next-line:jsx-no-bind
-                        onPermissionDenied={this.handlePermissionDenied.bind(this)}
-                        timeout={5000}
-                    />
+                <Notification
+                    ignore={this.state.ignore && this.state.title !== ""}
+                    title={this.state.title}
+                    options={this.state.options}
+                    // tslint:disable-next-line:jsx-no-bind
+                    notSupported={this.handleNotSupported.bind(this)}
+                    // tslint:disable-next-line:jsx-no-bind
+                    onPermissionGranted={this.handlePermissionGranted.bind(this)}
+                    // tslint:disable-next-line:jsx-no-bind
+                    onPermissionDenied={this.handlePermissionDenied.bind(this)}
+                    timeout={5000}
+                />
 
-                    <RequestingMatchModal
-                        open={this.state.showModal === 1}
-                        handleClose={() => true}
-                        player={this.state.otherPlayer}
-                        timeLeft={this.state.timeLeft}
-                    />
+                <RequestingMatchModal
+                    open={this.state.showModal === 1}
+                    handleClose={() => true}
+                    player={this.state.otherPlayer}
+                    timeLeft={this.state.timeLeft}
+                />
 
-                    <MatchRequestModal
-                        open={this.state.showModal === 2}
-                        handleClose={() => true}
-                        handleAccept={() => true}
-                        player={this.state.otherPlayer}
-                        timeLeft={this.state.timeLeft}
-                    />
+                <MatchRequestModal
+                    open={this.state.showModal === 2}
+                    handleClose={() => true}
+                    handleAccept={() => true}
+                    player={this.state.otherPlayer}
+                    timeLeft={this.state.timeLeft}
+                />
 
-                    <MatchResponseModal
-                        open={this.state.showModal === 3}
-                        handleClose={() => true}
-                        player={this.state.otherPlayer}
-                        response="Request_Rejected"
-                    />
-                </div>
-            </div>
+                <MatchResponseModal
+                    open={this.state.showModal === 3}
+                    handleClose={() => true}
+                    player={this.state.otherPlayer}
+                    response="Request_Rejected"
+                />
+            </Container >
         );
     }
 }

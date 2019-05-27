@@ -27,7 +27,7 @@ export default class VoiceChat extends Component<VoiceChatsProps, State> {
     render() {
         return (
             <div className="criteria">
-                <Divider className="criteria-header" inverted horizontal>Voice Chat</Divider>
+                <Divider className="criteria-header" horizontal>Voice Chat</Divider>
 
                 <Form.Group className="no-margin criteria-content" inline>
                     <Form.Field inline>

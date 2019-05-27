@@ -1,27 +1,38 @@
-import { Grid } from "semantic-ui-react";
+import { Grid, Header } from "semantic-ui-react";
 import * as React from "react";
 import "../MatchTable.css";
 
 export default function MatchTileHeader() {
     return (
         <div className="match-tile">
-            <Grid className="grid match-tile-header" columns="equal" verticalAlign="middle" divided>
+            <Grid columns="equal" textAlign="center">
                 <Grid.Column width={2}>
-                    <h4> Player name </h4>
+                    <Header> Player name </Header>
                 </Grid.Column>
                 <Grid.Column>
-                    <h4> Languages </h4>
+                    <Header> Languages </Header>
                 </Grid.Column>
                 <Grid.Column>
-                    <h4> Age Group </h4>
+                    <Header> Age Group </Header>
                 </Grid.Column>
                 <Grid.Column>
-                    <h4> Voice chat? </h4>
+                    <Header> Voice chat? </Header>
+                </Grid.Column>
+                <Grid.Column>
+                    <Header> Top 5 </Header>
+                </Grid.Column>
+                <Grid.Column>
+                    <Header> PLayed </Header>
+                </Grid.Column>
+                <Grid.Column>
+                    <Header> % Win </Header>
                 </Grid.Column>
                 <Grid.Column width={4}>
-                    <h4> Comment </h4>
+                    <Header> Comment </Header>
                 </Grid.Column>
-                <Grid.Column />
+                <Grid.Column width={2}>
+                    <Header> Send request </Header>
+                </Grid.Column>
             </Grid>
         </div>
     );
