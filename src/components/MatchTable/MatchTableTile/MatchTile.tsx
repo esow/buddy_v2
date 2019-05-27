@@ -1,11 +1,12 @@
-import { Grid, Button, Popup, Icon } from "semantic-ui-react";
+import { Grid, Button, Popup, Icon, Header } from "semantic-ui-react";
 import { Component } from "react";
 import * as React from "react";
-import "../MatchTable.css";
 import { FortnitePlayerStats } from "../../../models/FornitePlayerStats";
 import * as _ from "lodash";
-import { languages } from "../../../resources/Languages";
 import { Flag } from "semantic-ui-react";
+import { languages } from "../../../resources/Languages";
+import { ageGroups } from '../../../resources/AgeGroups';
+import { number } from "prop-types";
 interface MatchTileProps {
     match: FortnitePlayerStats;
     requestMatch: (match: FortnitePlayerStats) => void;
@@ -31,57 +32,61 @@ export default class MatchTile extends Component<MatchTileProps, any> {
     }
 
     render() {
-        const style = {
-            paddingTop: "2px",
-            paddingBottom: "2px",
-        };
-
         return (
-            <Grid className="grid" columns="equal" verticalAlign="middle" divided>
+
+            <Grid columns="equal" textAlign="center" verticalAlign="middle">
                 <Grid.Column width={2}>
-                    <h5> {this.props.match.name} </h5>
+                    <Header > {this.props.match.name} </Header>
                 </Grid.Column>
                 <Grid.Column>
-                    <div className="inline">
-                        {
-                            this.props.match.languages.map((language: any, index: any) => {
-                                return <Popup
-                                    key={index}
-                                    position="top center"
-                                    style={style}
-                                    trigger={
-                                        <div>
-                                            {this.getFlagImage(language)}
-                                        </div>}
-                                    content={_.find(languages, x => x.value === language)}
-                                />;
-                            })
-                        }
-                    </div>
+                    <Header> {
+                        this.props.match.languages.map((language: any, index: any) => {
+                            return <Popup
+                                key={index}
+                                position="top center"
+                                trigger={
+                                    <div>
+                                        {this.getFlagImage(language)}
+                                    </div>}
+                                content={_.find(languages, x => x.value === language)}
+                            />;
+                        })
+                    } </Header>
                 </Grid.Column>
                 <Grid.Column>
-                    <div className="language-box">
-                        {this.props.match.ageGroup}
-                    </div>
+                    <Header> {ageGroups[this.props.match.ageGroup]} </Header>
                 </Grid.Column>
                 <Grid.Column>
-                    <h5 className="inline">
-                        {
-                            this.props.match.voiceChat &&
-                            this.props.match.voiceChat.map((bool: any, index: any) => {
-                                const icon = bool ? "microphone" : "microphone slash";
-                                return <Icon key={index} name={icon} size="large" />;
-                            })
-                        }
-                    </h5>
-                </Grid.Column>
-                <Grid.Column width={4}>
-                    <h5 className="comment-box"> {this.props.match.comment} </h5>
+                    {
+                        this.props.match.voiceChat &&
+                        this.props.match.voiceChat.map((bool: any, index: any) => {
+                            const icon = bool ? "microphone" : "microphone slash";
+                            return <Icon key={index} name={icon} size="large" color={"black"} />;
+                        })
+                    }
                 </Grid.Column>
                 <Grid.Column>
-                    <div> <Button onClick={this.requestMatch} primary compact> Request </Button> </div>
+                    <Header> {this.props.match.duo.top5finishes} </Header>
+                </Grid.Column>
+                <Grid.Column>
+                    <Header> {this.props.match.duo.gamesPlayed} </Header>
+                </Grid.Column>
+                <Grid.Column>
+                    <Header> {this.props.match.duo.killDeathRatio.toFixed(1)} </Header>
+                </Grid.Column>
+                <Grid.Column>
+                    <Header> {
+                        Math.round(this.props.match.duo.gamesWon
+                            / this.props.match.duo.gamesPlayed * 100) + "%"} </Header>
+                </Grid.Column>
+                <Grid.Column width={3}>
+                    <Header> {this.props.match.comment} </Header>
+                </Grid.Column>
+                <Grid.Column width={2}>
+                    <Button color={"orange"} onClick={this.requestMatch} compact> Request </Button>
                 </Grid.Column>
             </Grid>
+
         );
     }
 }
