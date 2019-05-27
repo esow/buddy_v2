@@ -10,7 +10,7 @@ export default class AgeGroups extends Component<any, any> {
                 <Header size="small">AGE GROUP</Header>
                 <Form>
 
-                    <Form.Group className="criteria-content no-margin" inline>
+                    <Form.Group widths='equal' inline>
                         <Form.Field>
                             <Checkbox
                                 label={"13-16"}

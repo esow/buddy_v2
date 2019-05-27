@@ -1,4 +1,4 @@
-import { Segment, Label, Grid, GridColumn } from "semantic-ui-react";
+import { Segment, Label, Grid } from "semantic-ui-react";
 import VoiceChat from "./CriteriaListSection/VoiceChat";
 // import AgeGroups from './CriteriaListSection/AgeGroups';
 import AllLanguages from "./CriteriaListSection/AllLanguages";
@@ -100,14 +100,14 @@ class CriteriaList extends React.Component<CriteriaListProps, any> {
         return (
             <Segment inverted color={"yellow"} id="criteria-bar" raised>
                 <Label id="criteria-header" color="orange" floating>Filters</Label>
-                <Grid centered>
-                    <Grid.Column width={4}>
+                <Grid centered columns="4">
+                    <Grid.Column >
                         <AgeGroups onChange={this.onChangeAgeGroup} ageGroups={ageGroups} />
                     </Grid.Column>
-                    <Grid.Column width={4}>
+                    <Grid.Column >
                         <VoiceChat onChange={this.onChangeVoiceChat} checked={true} />
                     </Grid.Column>
-                    <Grid.Column width={4}>
+                    <Grid.Column >
                         <AllLanguages onChange={this.onChangeAllLanguages} ignoreLanguage={false} />
                     </Grid.Column>
 
