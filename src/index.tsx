@@ -5,7 +5,7 @@ import { Router } from "react-router-dom";
 import store from "./store";
 import { Provider } from "react-redux";
 import history from "./utils/history";
-import "semantic-ui-css/semantic.min.css";
+import "semantic-ui-less/semantic.less";
 import "./index.css";
 
 ReactDOM.render(

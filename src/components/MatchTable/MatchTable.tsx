@@ -1,4 +1,4 @@
-import { Segment, Transition, List } from "semantic-ui-react";
+import { Segment, Transition, List, Header } from "semantic-ui-react";
 import MatchTile from "./MatchTableTile/MatchTile";
 import "./MatchTable.css";
 import MatchTileHeader from "./MatchTableTile/MatchTileHeader";
@@ -20,35 +20,33 @@ export default class MatchTable extends Component<MatchTableProps, any> {
         const { hide, show } = state;
 
         return (
-            <div className="match-table">
-                <Segment inverted color={"yellow"}>
-                    <MatchTileHeader />
-                    <div className={noMatches ? "" : "hidden"} >
-                        <div className="match-tile empty">
-                            <h4>You don't have any matches yet!</h4>
-                        </div>
+            <Segment inverted color={"yellow"}>
+                <MatchTileHeader />
+                <div className={noMatches ? "" : "hidden"} >
+                    <div className="match-tile empty">
+                        <Header>You don't have any matches yet!</Header>
                     </div>
+                </div>
 
-                    <Transition.Group
-                        as={List}
-                        duration={{ hide, show }}
-                        divided
-                        size="huge"
-                        verticalAlign="middle"
-                        animation="vertical flip"
-                        className="no-margin"
-                    >
+                <Transition.Group
+                    as={List}
+                    duration={{ hide, show }}
+                    divided
+                    size="huge"
+                    verticalAlign="middle"
+                    animation="vertical flip"
+                    className="no-margin"
+                >
 
-                        {this.props.matches && this.props.matches.map((match: any) =>
-                            <List.Item key={match.id}>
-                                <MatchTile requestMatch={this.props.requestMatch} match={match} />
-                            </List.Item>
-                        )}
+                    {this.props.matches && this.props.matches.map((match: any) =>
+                        <List.Item key={match.id}>
+                            <MatchTile requestMatch={this.props.requestMatch} match={match} />
+                        </List.Item>
+                    )}
 
-                    </Transition.Group>
+                </Transition.Group>
 
-                </Segment>
-            </div>
+            </Segment>
         );
     }
 }

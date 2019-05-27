@@ -11,7 +11,7 @@ interface DispatchEvents {
 interface ConnectedProps {
 }
 
-type AllProps = ConnectedProps & RouteComponentProps & DispatchEvents;
+type AllProps = ConnectedProps & RouteComponentProps<any> & DispatchEvents;
 
 export default class FortnitePage extends React.Component<AllProps, any> {
 

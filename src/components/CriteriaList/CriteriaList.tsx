@@ -96,16 +96,14 @@ class CriteriaList extends React.Component<CriteriaListProps, any> {
 
     render() {
         return (
-            <div style={{ width: "100%" }}>
-                <Form>
-                    <Segment inverted color={"yellow"} id="criteria-bar" raised>
-                        <Label id="criteria-header" color="orange" floating>Filters</Label>
-                        {/* <AgeGroups onChange={this.onChangeAgeGroup} ageGroups={this.state.ageGroups} /> */}
-                        <AllLanguages onChange={this.onChangeAllLanguages} ignoreLanguage={false} />
-                        <VoiceChat onChange={this.onChangeVoiceChat} checked={true} />
-                    </Segment>
-                </Form>
-            </div>
+            <Form >
+                <Segment inverted color={"yellow"} id="criteria-bar" raised>
+                    <Label id="criteria-header" color="orange" floating>Filters</Label>
+                    {/* <AgeGroups onChange={this.onChangeAgeGroup} ageGroups={this.state.ageGroups} /> */}
+                    <AllLanguages onChange={this.onChangeAllLanguages} ignoreLanguage={false} />
+                    <VoiceChat onChange={this.onChangeVoiceChat} checked={true} />
+                </Segment>
+            </Form>
         );
     }
 }

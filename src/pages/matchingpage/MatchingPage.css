@@ -1,8 +1,5 @@
   .main-content2{
-	background: #ecca5c; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #ecca5c 0%, #db8d29 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg, #ecca5c 0%, #db8d29 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(45deg, #ecca5c 0%, #db8d29 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: #DBD3D0; /* Old browsers */
     height: 100vh;
     padding-top: 10vh;
     display: flex;

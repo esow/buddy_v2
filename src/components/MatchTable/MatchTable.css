@@ -1,5 +1,4 @@
 .match-table{
-  margin: 10px;
   width: 100%;
   text-align: center;
   margin-bottom: 60px;
@@ -18,17 +17,10 @@
 .full-width{
   width: 100%;
 }
-.match-tile-header{
-  margin: 0;
-  padding: 0;
-}
-.match-tile-header > .column{
-  padding-top: 0px !important;
-}
 .match-tile.empty{
   height: 73.5px;
   align-items: center;
-  background-color: #db8d29
+  background-color: #FEDAA9;
 }
 .no-margin{
     margin: 0 !important;

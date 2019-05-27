@@ -1,25 +1,4 @@
-#criteria-bar{
-  display: flex;
-  min-height: 150px;
-}
-.criteria{ 
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-.criteria-content{
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.criteria-positions {
-  max-width: 400px;
-}
 #criteria-header {
   border: solid black;
   left: 0%;
 }
-.no-margin{
-    margin: 0 !important;
-  }

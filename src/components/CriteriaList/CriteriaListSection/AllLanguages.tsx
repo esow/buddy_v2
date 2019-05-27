@@ -8,7 +8,7 @@ export default class AllLanguages extends Component<any, any> {
     render() {
         return (
             <div className="criteria">
-                <Divider className="criteria-header" inverted horizontal>Show all languages</Divider>
+                <Divider className="criteria-header" horizontal>Show all languages</Divider>
 
                 <Form.Group className="no-margin criteria-content" inline>
                     <Form.Field inline>
