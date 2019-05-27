@@ -2,7 +2,7 @@ import * as React from "react";
 import "./UserSearch.css";
 import { FormEvent } from "react";
 import history from "../../utils/history";
-import { Button, Input } from "semantic-ui-react";
+import { Button, Input, Form, Select } from "semantic-ui-react";
 
 export interface UserSearchProps {
 	onSubmit: (platform: string, username: string) => void;
@@ -24,6 +24,7 @@ export default class UserSearch extends React.Component<UserSearchProps, UserSea
 
 	submit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		console.log(e)
 		const username = this.state.username;
 		const platform = this.state.platform.toLowerCase();
 		if (!username) { return; }
@@ -31,34 +32,45 @@ export default class UserSearch extends React.Component<UserSearchProps, UserSea
 		history.replace(`/fortnitebr/${platform}/${username}`);
 	}
 
-	onChangeUsername = (event: any) => {
+	onChangeUsername = (_: any, { value }: any) => {
 		this.setState({
-			username: event.target.value
+			username: value
 		});
 	}
 
-	onChangePlatform = (event: any) => {
+	onChangePlatform = (_: any, { value }: any) => {
 		this.setState({
-			platform: event.target.value
+			platform: value
 		});
 	}
 
 	render() {
 		return (
-			<form className="summoner-search" onSubmit={this.submit}>
-				<Input icon="users" iconPosition="left" onChange={this.onChangeUsername} type="search" defaultValue={this.state.username} />
-				<select
-					name="region"
-					id="region-select"
-					value={this.state.platform}
-					onChange={this.onChangePlatform}
-				>
-					<option value="PC">PC</option>
-					<option value="PS4">PS4</option>
-					<option value="XBOX">XBOX</option>
-				</select>
-				<Button loading={this.props.isLoading}> Search </Button>
-			</form>
+			<Form fluid className="summoner-search" onSubmit={this.submit} inline>
+				<Form.Group>
+					<Form.Field style={styles} width={8} control={Input} icon="users" iconPosition="left" onChange={this.onChangeUsername} type="search" defaultValue={this.state.username} />
+					<Form.Field width={2} fluid control={Select}
+						value={this.state.platform}
+						onChange={this.onChangePlatform}
+						options={
+							[
+								{ key: 'pc', text: 'PC', value: 'PC' },
+								{ key: 'xb', text: 'XBOX', value: 'XBOX' },
+								{ key: 'ps', text: 'PS', value: 'PS' },
+							]
+
+						}
+					>
+					</Form.Field>
+					<Form.Field width={6} fluid control={Button} loading={this.props.isLoading} > Search
+					</Form.Field>
+				</Form.Group>
+			</Form >
 		);
 	}
+}
+
+const styles = {
+	paddingLeft: "0px",
+	paddingRight: "0px"
 }
