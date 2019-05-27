@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { loadUser } from "../store/user/actions";
 import UserSearch from "../components/UserSearch/UserSearch";
 import { RootState } from "../store/root-reducer";
-import "./FindUserContainer.css";
+//import "./FindUserContainer.css";
 
 export interface DispatchProps {
 	loadUser: typeof loadUser;
