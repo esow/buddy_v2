@@ -6,7 +6,6 @@ import * as _ from "lodash";
 import { Flag } from "semantic-ui-react";
 import { languages } from "../../../resources/Languages";
 import { ageGroups } from '../../../resources/AgeGroups';
-import { number } from "prop-types";
 interface MatchTileProps {
     match: FortnitePlayerStats;
     requestMatch: (match: FortnitePlayerStats) => void;
