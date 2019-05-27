@@ -1,4 +1,5 @@
 html, body {
+    background: #DBD3D0 !important;
     font-family: 'Roboto', sans-serif;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ecca5c+0,db8d29+100 */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecca5c', endColorstr='#db8d29',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */

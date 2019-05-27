@@ -21,7 +21,6 @@ module.exports = ({ config, mode }) => {
 		loaders: ["style-loader", "css-loader", "less-loader"]
 	})
 
-	console.log(config.resolve)
 	config.resolve.extensions.push('.ts', '.tsx', '.less');
 	return config;
 };

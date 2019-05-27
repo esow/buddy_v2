@@ -1,9 +1,11 @@
-import { Segment, Form, Label } from "semantic-ui-react";
+import { Segment, Label, Grid, GridColumn } from "semantic-ui-react";
 import VoiceChat from "./CriteriaListSection/VoiceChat";
 // import AgeGroups from './CriteriaListSection/AgeGroups';
 import AllLanguages from "./CriteriaListSection/AllLanguages";
 import "./CriteriaList.css";
 import * as React from "react";
+import AgeGroups from "./CriteriaListSection/AgeGroups";
+import { ageGroups } from '../../resources/AgeGroups';
 
 export interface CriteriaListProps {
     criteria: any;
@@ -96,14 +98,21 @@ class CriteriaList extends React.Component<CriteriaListProps, any> {
 
     render() {
         return (
-            <Form >
-                <Segment inverted color={"yellow"} id="criteria-bar" raised>
-                    <Label id="criteria-header" color="orange" floating>Filters</Label>
-                    {/* <AgeGroups onChange={this.onChangeAgeGroup} ageGroups={this.state.ageGroups} /> */}
-                    <AllLanguages onChange={this.onChangeAllLanguages} ignoreLanguage={false} />
-                    <VoiceChat onChange={this.onChangeVoiceChat} checked={true} />
-                </Segment>
-            </Form>
+            <Segment inverted color={"yellow"} id="criteria-bar" raised>
+                <Label id="criteria-header" color="orange" floating>Filters</Label>
+                <Grid centered>
+                    <Grid.Column width={4}>
+                        <AgeGroups onChange={this.onChangeAgeGroup} ageGroups={ageGroups} />
+                    </Grid.Column>
+                    <Grid.Column width={4}>
+                        <VoiceChat onChange={this.onChangeVoiceChat} checked={true} />
+                    </Grid.Column>
+                    <Grid.Column width={4}>
+                        <AllLanguages onChange={this.onChangeAllLanguages} ignoreLanguage={false} />
+                    </Grid.Column>
+
+                </Grid>
+            </Segment>
         );
     }
 }

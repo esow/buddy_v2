@@ -1,4 +1,4 @@
-import { Divider, CheckboxProps } from "semantic-ui-react";
+import { Divider, CheckboxProps, Header } from "semantic-ui-react";
 import { Form, Checkbox } from "semantic-ui-react";
 import { Component } from "react";
 import * as React from "react";
@@ -26,27 +26,28 @@ export default class VoiceChat extends Component<VoiceChatsProps, State> {
 
     render() {
         return (
-            <div className="criteria">
-                <Divider className="criteria-header" horizontal>Voice Chat</Divider>
+            <>
+                <Header size="tiny">VOICE CHAT</Header>
+                <Form>
+                    <Form.Group className="no-margin criteria-content" inline>
+                        <Form.Field inline>
+                            <Checkbox
+                                label="YES"
+                                checked={this.props.checked}
+                                onChange={this.prettyOnchange}
+                            />
+                        </Form.Field>
 
-                <Form.Group className="no-margin criteria-content" inline>
-                    <Form.Field inline>
-                        <Checkbox
-                            label="YES"
-                            checked={this.props.checked}
-                            onChange={this.prettyOnchange}
-                        />
-                    </Form.Field>
-
-                    <Form.Field>
-                        <Checkbox
-                            label="NO"
-                            checked={!this.props.checked}
-                            onChange={this.prettyOnchange}
-                        />
-                    </Form.Field>
-                </Form.Group>
-            </div>
+                        <Form.Field>
+                            <Checkbox
+                                label="NO"
+                                checked={!this.props.checked}
+                                onChange={this.prettyOnchange}
+                            />
+                        </Form.Field>
+                    </Form.Group>
+                </Form>
+            </>
         );
     }
 }

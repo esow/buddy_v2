@@ -8,7 +8,7 @@ import "./MatchingPage.css";
 import MatchRequestModal from "../../components/Modals/MatchRequestModal";
 import MatchResponseModal from "../../components/Modals/MatchResponseModal";
 import { FortnitePlayerStats } from "../../models/FornitePlayerStats";
-import { Container, Grid } from 'semantic-ui-react';
+import { Container, Grid, Divider } from 'semantic-ui-react';
 
 interface State {
     status?: string;
@@ -98,15 +98,16 @@ export default class MatchingPage extends Component<MatchingPageProps & Connecte
 
     render() {
         return (
-            <Container fluid center className="main-content2">
+            <Container center className="main-content2" >
                 <Grid centered>
-                    <Grid.Row>
-                        <Grid.Column width={10}>
+                    <Grid.Row style={{ padding: "0px" }}>
+                        <Grid.Column >
                             <CriteriaList onChangeCriteria={() => true} criteria={this.props.criteria} />
                         </Grid.Column>
                     </Grid.Row>
-                    <Grid.Row>
-                        <Grid.Column width={10}>
+                    <Divider horizontal>Matches</Divider>
+                    <Grid.Row style={{ padding: "0px" }}>
+                        <Grid.Column>
                             <MatchTable matches={this.props.matches} requestMatch={() => true} />
                         </Grid.Column>
                     </Grid.Row>
