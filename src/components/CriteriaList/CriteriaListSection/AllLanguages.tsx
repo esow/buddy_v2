@@ -1,5 +1,5 @@
-import { Divider, Grid, Header } from "semantic-ui-react";
-import { Form, Checkbox } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
+import { Checkbox } from "semantic-ui-react";
 import { Component } from "react";
 import * as React from "react";
 

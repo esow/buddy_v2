@@ -1,4 +1,4 @@
-import { Divider, CheckboxProps, Header } from "semantic-ui-react";
+import { CheckboxProps, Header } from "semantic-ui-react";
 import { Form, Checkbox } from "semantic-ui-react";
 import { Component } from "react";
 import * as React from "react";
@@ -29,8 +29,8 @@ export default class VoiceChat extends Component<VoiceChatsProps, State> {
             <>
                 <Header size="tiny">VOICE CHAT</Header>
                 <Form>
-                    <Form.Group className="no-margin criteria-content" inline>
-                        <Form.Field inline>
+                    <Form.Group inline>
+                        <Form.Field inline width={5}>
                             <Checkbox
                                 label="YES"
                                 checked={this.props.checked}
