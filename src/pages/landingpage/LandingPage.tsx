@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./LandingPage.css";
 import GameSelector from "../../components/GameSelector/GameSelector";
-import { Image } from "semantic-ui-react";
+import { Image, Grid, Header } from "semantic-ui-react";
 import { ServerStatsState } from "../../store/ServerStats/reducer";
 import { RootState } from "../../store/root-reducer";
 import { connect } from "react-redux";
@@ -44,8 +44,17 @@ class LandingPage extends React.Component<LandingPageProps & ServerStatsState, a
 		return (
 			<div className="landing-page">
 				<div className="page-content">
-					<Image centered style={{ width: 460, height: 230 }} src="/BUDDYGG-LOGO-3.png" />
-					<GameSelector listOfGames={listOfGames} />
+					<Grid container centered>
+						<Grid.Row>
+							<Image centered style={{ height: 200, marginTop: 20 }} src="/BUDDYGG-LOGO-3-Fortnite.png" />
+						</Grid.Row>
+						<Grid.Row>
+							<Header style={{ fontSize: 96, fontFamily: "Roboto", color: "#FFF" }}>Buddy.GG</Header>
+						</Grid.Row>
+						<Grid.Row>
+							<GameSelector listOfGames={listOfGames} />
+						</Grid.Row>
+					</Grid>
 				</div>
 			</div>
 		);
