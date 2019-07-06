@@ -1,13 +1,14 @@
-import { Button, Modal, Icon } from "semantic-ui-react";
+import { Button, Modal, Icon, Header, Grid, Flag } from "semantic-ui-react";
 import { Component } from "react";
 import * as React from "react";
-import { FortnitePlayerStats } from "../../models/FornitePlayerStats";
+import "./modal.css";
+import RequestingPlayerInfo from "./RequestingPlayerInfo";
 
 interface MatchResponseModalProps {
     open: boolean;
     handleClose: () => void;
     response: string;
-    player: FortnitePlayerStats;
+    player: any;
 }
 
 export default class MatchResponseModal extends Component<MatchResponseModalProps, { open: boolean }> {
@@ -23,6 +24,7 @@ export default class MatchResponseModal extends Component<MatchResponseModalProp
     }
 
     render() {
+        const player = this.props.player;
         let responseHeader;
         let icon;
         let message;
@@ -30,17 +32,10 @@ export default class MatchResponseModal extends Component<MatchResponseModalProp
         switch (this.props.response) {
 
             case "Request_Rejected":
-                responseHeader = "I don't know how to tell you this, but...";
+                responseHeader = "Request denied";
                 icon = <Icon size="huge" color="red" name="remove circle" />;
                 message = (
-                    <div>
-                        <h4>
-                            {this.props.player.name} has denied your request. :(
-                        </h4>
-                        <h4>
-                            Click close to return to your list of matches.
-                        </h4>
-                    </div>
+                    <span><span style={{ color: '#F15A29' }}>{this.props.player.name}</span> has denied your Buddy request. Click on the button below to close this window and return to your list of matches.</span>
                 );
                 break;
 
@@ -79,35 +74,31 @@ export default class MatchResponseModal extends Component<MatchResponseModalProp
         }
 
         return (
-            <div>
-                <Modal
-                    size="small"
-                    closeOnRootNodeClick={false}
-                    dimmer={"blurring"}
-                    className="modal"
-                    open={this.state.open}
-                    onClose={this.props.handleClose}
-                >
-
-                    <Modal.Header> <h2> {responseHeader} </h2> </Modal.Header>
-                    <Modal.Content>
-                        <Modal.Description>
-                            <div className="response-message">
-                                <div className="response-logo">
-                                    {icon}
-                                </div>
-                                {message}
-                            </div>
-                        </Modal.Description>
-                    </Modal.Content>
-                    <Modal.Actions>
-                        <div className="answer-bar">
-                            <Button onClick={this.handleClose} primary> Close </Button>
-                        </div>
-                    </Modal.Actions>
-                </Modal>
-
-            </div>
+            <Modal
+                size="small"
+                closeOnRootNodeClick={false}
+                dimmer={"blurring"}
+                className="modal"
+                open={this.state.open}
+                onClose={this.props.handleClose}
+            >
+                <Grid centered>
+                    <Grid.Row centered><Header> {responseHeader} </Header></Grid.Row>
+                    <Grid.Row centered>
+                        <Grid.Column width={10}><Header size={'medium'} style={{ color: '#334D6E', textAlign: 'center' }}>{message}</Header></Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row centered>
+                        {player.languages.map((element: any) => {
+                            return <Flag name={element} />
+                        })}
+                    </Grid.Row>
+                    <RequestingPlayerInfo player={player} />
+                    <Grid.Row centered>
+                        {player.comment}
+                    </Grid.Row>
+                    <Grid.Row><Button className='cancel-button confirm' onClick={this.handleClose}>CLOSE</Button></Grid.Row>
+                </Grid>
+            </Modal>
 
         );
     }

@@ -1,9 +1,10 @@
 import { Modal, Button } from "semantic-ui-react";
-import RequestingPlayerInfo from "./RequestingPlayerInfo";
 import ReactCountdownClock from "react-countdown-clock";
 import { Component } from "react";
 import * as React from "react";
+import { Grid, Header, Flag } from "semantic-ui-react";
 import "./modal.css";
+import RequestingPlayerInfo from "./RequestingPlayerInfo";
 
 interface RequestingMatchModalProps {
     player: any;
@@ -33,28 +34,35 @@ export default class RequestingMatchModal extends Component<RequestingMatchModal
                     closeOnRootNodeClick={false}
                     open={this.state.open}
                     onClose={this.props.handleClose}
+                    size={"small"}
                 >
-
-                    <Modal.Header>Requesting match...</Modal.Header>
-                    <Modal.Content className="no-padding">
-                        <RequestingPlayerInfo match={player} />
-                    </Modal.Content>
-                    <Modal.Actions>
-                        <div className="answer-bar">
-                            <div className="button-box">
-                                <Button negative onClick={this.cancel}> Cancel </Button>
-                            </div>
-                            <div className="countdown">
-                                <ReactCountdownClock
-                                    seconds={this.props.timeLeft}
-                                    size="60"
-                                    color="black"
-                                    onComplete={this.cancel}
-                                    showMilliseconds="false"
-                                />
-                            </div>
-                        </div>
-                    </Modal.Actions>
+                    <Grid centered>
+                        <Grid.Row><Header>Requesting Buddy...</Header></Grid.Row>
+                        <Grid.Row centered columns={1}>
+                            <Header size="medium">{player.username}</Header>
+                        </Grid.Row>
+                        <Grid.Row centered>
+                            {player.languages.map((element: any) => {
+                                return <Flag name={element} />
+                            })}
+                        </Grid.Row>
+                        <RequestingPlayerInfo player={player} />
+                        <Grid.Row centered>
+                            {player.comment}
+                        </Grid.Row>
+                        <Grid.Row centered className="countdown">
+                            <ReactCountdownClock
+                                seconds={this.props.timeLeft}
+                                size="60"
+                                color="#334D6E"
+                                onComplete={this.cancel}
+                                showMilliseconds="false"
+                            />
+                        </Grid.Row>
+                        <Grid.Row centered>
+                            <Button className="cancel-button" onClick={this.cancel} content='CANCEL' />
+                        </Grid.Row>
+                    </Grid>
                 </Modal>
 
             </div>

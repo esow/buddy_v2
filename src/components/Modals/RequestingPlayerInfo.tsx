@@ -1,62 +1,48 @@
-import { Grid, Segment } from "semantic-ui-react";
+import { Grid, Statistic, Icon } from "semantic-ui-react";
 import { Component } from "react";
 import * as React from "react";
 
-export default class RequestingPlayerInfo extends Component<any, any> {
+export interface RequestingPlayerInfoProps {
+    player: any;
+}
+
+export default class RequestingPlayerInfo extends Component<RequestingPlayerInfoProps> {
     render() {
+        const player = this.props.player;
         return (
-            <div>
-                <Segment inverted color={"yellow"} raised className="match-tile">
-                    <Grid className="grid" columns="equal" verticalAlign="middle" divided>
-                        <Grid.Row className="no-padding bottom-border" textAlign="center">
-                            <Grid.Column textAlign="center">
-                                <h4 >Name </h4>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <h4> Most played </h4>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <h4> Positions </h4>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <h4> Languages </h4>
-                            </Grid.Column>
-                        </Grid.Row>
-                        <Grid.Row className="match-found-player-bar" textAlign="center">
-                            <Grid.Column >
-                                <div> {this.props.match.name} </div>
-                            </Grid.Column>                           {/* <Grid.Column>
-                                <div className="inline">
-                                    {this.props.match.champions.map(
-                                        (champ) =>
-                                            <div key={champ} className="icon"> {getChampImage(champ)} </div>)}
-                                </div>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <div className="inline">
-                                    // tslint:disable-next-line:max-line-length
-                                    {this.props.match.positions.map((position) => 
-                                        
-                                        <div key={position} className="icon"> {getRoleImage(position)} </div>)}
-                                </div>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <div className="inline">
-                                    // tslint:disable-next-line:max-line-length
-                                    {this.props.match.languages.map((language) => 
-                                        
-                                        <div key={language}> {getFlagImage(language)} </div>)}
-                                </div>
-                            </Grid.Column> */}
-                        </Grid.Row>
-                        <Grid.Row textAlign="center">
-                            <Grid.Column>
-                                <h4 className="comment-header">Comment:</h4> {this.props.match.comment}
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-                </Segment>
-            </div>
+            <Grid.Row centered>
+                <Statistic.Group widths="5" size={"tiny"}>
+                    <Statistic>
+                        <Statistic.Value>{player.criteria.ageGroups.age}</Statistic.Value>
+                        <Statistic.Label><Icon name="users" color="blue" />Age</Statistic.Label>
+                    </Statistic>
+
+                    <Statistic>
+                        <Statistic.Value>{player.criteria.voiceChat.voice}</Statistic.Value>
+                        <Statistic.Label><Icon name="microphone" color="black" />Voice</Statistic.Label>
+                    </Statistic>
+
+                    <Statistic>
+                        <Statistic.Value>{(player.duo.gamesWon / player.duo.gamesPlayed * 100).toPrecision(2)}%</Statistic.Value>
+                        <Statistic.Label><Icon name="winner" color="orange" />Win %</Statistic.Label>
+                    </Statistic>
+
+                    <Statistic>
+                        <Statistic.Value>{player.duo.top5finishes}</Statistic.Value>
+                        <Statistic.Label><Icon name="angle double up" color="green" />Top5</Statistic.Label>
+                    </Statistic>
+
+                    <Statistic>
+                        <Statistic.Value>{player.duo.gamesPlayed}</Statistic.Value>
+                        <Statistic.Label><Icon name="game" color="violet" />Played</Statistic.Label>
+                    </Statistic>
+
+                    <Statistic>
+                        <Statistic.Value>{(player.duo.killDeathRatio).toPrecision(2)}</Statistic.Value>
+                        <Statistic.Label><Icon name="bullseye" color="red" />K/D-Ratio</Statistic.Label>
+                    </Statistic>
+                </Statistic.Group>
+            </Grid.Row>
         );
     }
 }
