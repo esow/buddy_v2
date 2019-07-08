@@ -1,7 +1,6 @@
-import { Form, Header } from "semantic-ui-react";
+import { Form, Header, Radio, Checkbox } from 'semantic-ui-react';
 import * as React from "react";
 import { Component } from "react";
-import { RadioGroup, Radio } from "react-radio-group";
 
 interface AgeGroupProps {
   handleChange: (from: String, data: String) => void;
@@ -18,7 +17,7 @@ export default class AgeGroup extends Component<AgeGroupProps, State> {
     this.state = { value: this.props.value };
   }
 
-  handleChange = (value: String) => {
+  handleChange = (_e: any, { value }: any) => {
     this.setState({ value: value });
     this.props.handleChange("age", value);
   }
@@ -27,21 +26,31 @@ export default class AgeGroup extends Component<AgeGroupProps, State> {
     return (
       <div>
         <Header size="small">AGE GROUP</Header>
-        <Form.Group inline className="centered-form-field">
-          <RadioGroup name="ageGroups" selectedValue={this.state.value} onChange={this.handleChange}>
-            <Form.Field>
-              <Radio value="interval1" label="13-16" />
-              <Header size="tiny">13-16</Header>
-            </Form.Field>
-            <Form.Field>
-              <Radio value="interval2" label="16-21" />
-              <Header size="tiny">16-21</Header>
-            </Form.Field>
-            <Form.Field>
-              <Radio value="interval3" label="22+" />
-              <Header size="tiny">22+</Header>
-            </Form.Field>
-          </RadioGroup>
+        <Form.Group widths={"equal"} inline >
+          <Form.Field>
+            <Checkbox
+              value="interval1"
+              label="13-16"
+              checked={this.state.value === "interval1"}
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+          <Form.Field >
+            <Radio
+              value="interval2"
+              label="16-21"
+              checked={this.state.value === "interval2"}
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+          <Form.Field width={1}>
+            <Radio
+              value="interval3"
+              label="22+"
+              checked={this.state.value === "interval3"}
+              onChange={this.handleChange}
+            />
+          </Form.Field>
         </Form.Group>
       </div>
     );

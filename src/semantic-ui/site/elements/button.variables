@@ -2,5 +2,3 @@
     User Variable Overrides
 *******************************/
 
-@textColor: rgba(0, 0, 0, 0.6);
-@invertedTextColor: rgba(0, 0, 0, 0.6);;
