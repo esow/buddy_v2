@@ -1,4 +1,5 @@
-import { Button, Modal, Icon, Header, Grid, Flag } from "semantic-ui-react";
+import { Button, Modal, Header, Grid } from "semantic-ui-react";
+import ReactCountryFlag from "react-country-flag";
 import { Component } from "react";
 import * as React from "react";
 import "./modal.css";
@@ -26,46 +27,35 @@ export default class MatchResponseModal extends Component<MatchResponseModalProp
     render() {
         const player = this.props.player;
         let responseHeader;
-        let icon;
         let message;
-
+        let post_message = "Click on the button below to close this window and return to your list of matches."
         switch (this.props.response) {
+
+            case "Request_Accepted":
+                responseHeader = "Congratulations!";
+                message = (
+                    <span>You are now buddies with <span style={{ color: '#F15A29' }}>{this.props.player.name}</span>.<br />Add your new Buddy in the game client and say hi!<br />Good luck and have fun.</span>
+                );
+                break;
 
             case "Request_Rejected":
                 responseHeader = "Request denied";
-                icon = <Icon size="huge" color="red" name="remove circle" />;
                 message = (
-                    <span><span style={{ color: '#F15A29' }}>{this.props.player.name}</span> has denied your Buddy request. Click on the button below to close this window and return to your list of matches.</span>
+                    <span><span style={{ color: '#F15A29' }}>{this.props.player.name}</span> has denied your Buddy request.<br />{post_message}</span>
                 );
                 break;
 
             case "Request_Cancelled":
-                responseHeader = "Ooops...";
-                icon = <Icon size="huge" color="red" name="remove circle" />;
+                responseHeader = "Oops...";
                 message = (
-                    <div>
-                        <h4>
-                            {this.props.player.name} has canceled his request!
-                    </h4>
-                        <h4>
-                            Click close to return to your list of matches.
-                    </h4>
-                    </div>
+                    <span><span style={{ color: '#F15A29' }}>{this.props.player.name}</span> has cancelled their request.<br />{post_message}</span>
                 );
                 break;
 
             case "Requested_Player_Busy":
                 responseHeader = "Hold on...";
-                icon = <Icon size="huge" color="blue" name="warning circle" />;
                 message = (
-                    <div>
-                        <h4>
-                            {this.props.player.name} is responding to another request!
-                    </h4>
-                        <h4>
-                            Click close to return to your list of matches.
-                    </h4>
-                    </div>
+                    <span><span style={{ color: '#F15A29' }}>{this.props.player.name}</span> is responding to another request.<br />{post_message}</span>
                 );
                 break;
 
@@ -89,7 +79,7 @@ export default class MatchResponseModal extends Component<MatchResponseModalProp
                     </Grid.Row>
                     <Grid.Row centered>
                         {player.languages.map((element: any) => {
-                            return <Flag name={element} />
+                            return <ReactCountryFlag code={element} styleProps={{ margin: "5px", width: "31.5px", height: "21.5px" }} svg />
                         })}
                     </Grid.Row>
                     <RequestingPlayerInfo player={player} />
