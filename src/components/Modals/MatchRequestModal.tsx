@@ -1,5 +1,6 @@
 import { Modal, Grid } from "semantic-ui-react";
-import { Button, Header, Flag } from "semantic-ui-react";
+import { Button, Header } from "semantic-ui-react";
+import ReactCountryFlag from "react-country-flag";
 import ReactCountdownClock from "react-countdown-clock";
 import * as React from "react";
 import { Component } from "react";
@@ -49,7 +50,7 @@ export default class MatchRequestModal extends Component<MatchRequestModalProps,
                     </Grid.Row>
                     <Grid.Row centered>
                         {player.languages.map((element: any) => {
-                            return <Flag name={element} />
+                            return <ReactCountryFlag code={element} styleProps={{ margin: "5px", width: "31.5px", height: "21.5px" }} svg />
                         })}
                     </Grid.Row>
                     <RequestingPlayerInfo player={player} />
@@ -67,8 +68,8 @@ export default class MatchRequestModal extends Component<MatchRequestModalProps,
                         />
                     </Grid.Row>
                     <Grid.Row centered>
-                        <Button className='cancel-button confirm' onClick={this.accept}> CONFIRM </Button>
-                        <Button className='cancel-button cancel' onClick={this.reject}> CANCEL </Button>
+                        <Button className='cancel-button confirm' onClick={this.accept} style={{ margin: "0 10px" }}> CONFIRM </Button>
+                        <Button className='cancel-button cancel' onClick={this.reject} style={{ margin: "0 10px" }}> CANCEL </Button>
                     </Grid.Row>
                 </Grid>
             </Modal>
