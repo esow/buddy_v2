@@ -82,7 +82,7 @@ export default class MatchTile extends Component<MatchTileProps, any> {
                     <Header> {this.props.match.comment} </Header>
                 </Grid.Column>
                 <Grid.Column width={2}>
-                    <Button color={"orange"} onClick={this.requestMatch} compact> Request </Button>
+                    <Button className="cancel-button confirm" onClick={this.requestMatch}> REQUEST </Button>
                 </Grid.Column>
             </Grid>
 

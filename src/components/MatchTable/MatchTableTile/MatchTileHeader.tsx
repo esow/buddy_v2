@@ -8,7 +8,7 @@ export default function MatchTileHeader() {
                 <Header size='small'> Player name </Header>
             </Grid.Column>
             <Grid.Column>
-                <Header size='small'> Languages </Header>
+                <Header size='small'> Language </Header>
             </Grid.Column>
             <Grid.Column>
                 <Header size='small'> Age Group </Header>
