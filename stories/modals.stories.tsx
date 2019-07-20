@@ -74,11 +74,29 @@ storiesOf("Modals", module)
 		<MatchRequestModal player={player} open={true} timeLeft={200} handleClose={() => { }} handleAccept={() => { }} />)
 	)
 
-	.add("MatchResponseModal with example data", () => (
+	.add("MatchResponseModal with rejected example data", () => (
 		<MatchResponseModal
 			open={true}
 			handleClose={() => { }}
 			response={"Request_Rejected"}
+			player={player}
+		/>)
+	)
+
+	.add("MatchResponseModal with cancelled example data", () => (
+		<MatchResponseModal
+			open={true}
+			handleClose={() => { }}
+			response={"Request_Cancelled"}
+			player={player}
+		/>)
+	)
+
+	.add("MatchResponseModal with accepted example data", () => (
+		<MatchResponseModal
+			open={true}
+			handleClose={() => { }}
+			response={"Request_Accepted"}
 			player={player}
 		/>)
 	)

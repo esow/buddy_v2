@@ -2,7 +2,8 @@ import { Modal, Button } from "semantic-ui-react";
 import ReactCountdownClock from "react-countdown-clock";
 import { Component } from "react";
 import * as React from "react";
-import { Grid, Header, Flag } from "semantic-ui-react";
+import { Grid, Header } from "semantic-ui-react";
+import ReactCountryFlag from "react-country-flag";
 import "./modal.css";
 import RequestingPlayerInfo from "./RequestingPlayerInfo";
 
@@ -43,7 +44,7 @@ export default class RequestingMatchModal extends Component<RequestingMatchModal
                         </Grid.Row>
                         <Grid.Row centered>
                             {player.languages.map((element: any) => {
-                                return <Flag name={element} />
+                                return <ReactCountryFlag code={element} styleProps={{ margin: "5px", width: "31.5px", height: "21.5px" }} svg />
                             })}
                         </Grid.Row>
                         <RequestingPlayerInfo player={player} />

@@ -41,6 +41,7 @@
 	padding: 0;
 	margin: auto;
 	display: flex;
+	justify-content: center;
 	width: 30px;
   }
   .response-message{
@@ -110,6 +111,11 @@
   .summoner-segment {
 	width: 100%;
 	margin-bottom: 50px !important;
+  }
+
+  .react-countdown-clock {
+	  width: 30px;
+	  height: 30px;
   }
   
   @media (max-width: 600px) {
