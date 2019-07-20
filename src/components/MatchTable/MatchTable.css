@@ -5,7 +5,6 @@ body .ui.inverted::-webkit-scrollbar-track {
 	border-style: solid;
 	border-width: 1px;
 	border-color: #F15A29;
-	box-shadow: inset 0 0 1px #F15A29; 
 	border-radius: 10px;
 }
 
@@ -22,7 +21,6 @@ body .ui.inverted::-webkit-scrollbar-thumb {
 /* Handle on hover */
 body .ui.inverted::-webkit-scrollbar-thumb:hover {
 	background: #F15A29;
-<<<<<<< HEAD
 }
 
 /* Request button */
@@ -45,6 +43,4 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.button.cancel-button.confirm:hover{
 	background-color: rgba(241, 90, 41, 0.1);
-=======
->>>>>>> scroll on matches and styling of scrollbar
 }
