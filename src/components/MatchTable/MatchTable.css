@@ -5,7 +5,6 @@ body .ui.inverted::-webkit-scrollbar-track {
 	border-style: solid;
 	border-width: 1px;
 	border-color: #F15A29;
-	box-shadow: inset 0 0 1px #F15A29; 
 	border-radius: 10px;
 }
 
@@ -22,4 +21,26 @@ body .ui.inverted::-webkit-scrollbar-thumb {
 /* Handle on hover */
 body .ui.inverted::-webkit-scrollbar-thumb:hover {
 	background: #F15A29;
+}
+
+/* Request button */
+.ui.button.cancel-button{
+	width: 84px;
+	height:24px;
+	font-size: x-small;
+	border-radius: 12px;
+	border: 2px solid#8D29F1;
+	background-color: rgba(0,0,0,0);
+	color: #8D29F1;
+	padding: 0px;
+	align-items: center;
+}
+
+.ui.button.cancel-button.confirm{
+	border: 1px solid#F15A29;
+	color: #F15A29;
+}
+
+.ui.button.cancel-button.confirm:hover{
+	background-color: rgba(241, 90, 41, 0.1);
 }
