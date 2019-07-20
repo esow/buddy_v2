@@ -4,6 +4,7 @@ import MatchTileHeader from "./MatchTableTile/MatchTileHeader";
 import { Component } from "react";
 import * as React from "react";
 import { FortnitePlayerStats } from "../../models/FornitePlayerStats";
+import "./MatchTable.css";
 
 export interface MatchTableProps {
     matches?: FortnitePlayerStats[];
@@ -19,7 +20,7 @@ export default class MatchTable extends Component<MatchTableProps, any> {
         const { hide, show } = state;
 
         return (
-            <Segment inverted color={"yellow"}>
+            <Segment inverted color={"yellow"} style={{ overflow: 'auto', maxHeight: '80%' }}>
                 <MatchTileHeader />
                 <div className={noMatches ? "" : "hidden"} >
                     <div className="match-tile empty">
@@ -45,3 +46,6 @@ export default class MatchTable extends Component<MatchTableProps, any> {
         );
     }
 }
+
+
+
