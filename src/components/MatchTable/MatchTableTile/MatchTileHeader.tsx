@@ -1,4 +1,4 @@
-import { Grid, Header } from "semantic-ui-react";
+import { Grid, Header, Icon } from "semantic-ui-react";
 import * as React from "react";
 
 export default function MatchTileHeader() {
@@ -16,17 +16,17 @@ export default function MatchTileHeader() {
             <Grid.Column>
                 <Header size='small'> Voice chat? </Header>
             </Grid.Column>
-            <Grid.Column>
-                <Header size='small'> Top 5 </Header>
+            <Grid.Column style={columnStyle}>
+                <Header size='small'><Icon name="winner" color="orange" size="mini" style={iconStyle} /> % Win </Header>
             </Grid.Column>
-            <Grid.Column>
-                <Header size='small'> Played </Header>
+            <Grid.Column style={columnStyle}>
+                <Header size='small'><Icon name="angle double up" color="green" size="mini" style={iconStyle} /> Top 5 </Header>
             </Grid.Column>
-            <Grid.Column>
-                <Header size='small'> K/D </Header>
+            <Grid.Column style={columnStyle}>
+                <Header size='small'><Icon name="game" color="violet" size="mini" style={iconStyle} /> Played </Header>
             </Grid.Column>
-            <Grid.Column>
-                <Header size='small'> % Win </Header>
+            <Grid.Column style={columnStyle}>
+                <Header size='small'><Icon name="bullseye" color="red" size="mini" style={iconStyle} /> K/D </Header>
             </Grid.Column>
             <Grid.Column width={3}>
                 <Header size='small'> Comment </Header>
@@ -36,4 +36,12 @@ export default function MatchTileHeader() {
             </Grid.Column>
         </Grid>
     );
+}
+
+const columnStyle = {
+    padding: "1px"
+}
+
+const iconStyle = {
+    margin: "1px"
 }
