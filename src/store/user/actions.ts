@@ -7,7 +7,7 @@ export const fetchUser = createAsyncAction("FETCH_USER_REQUEST", "FETCH_USER_SUC
 
 export const editUserInput = createAction("EDIT_USER_INPUT", resolve => {
 	return (data: {
-		voiceChat: boolean[];
+		voiceChat: string;
 		ageGroup: string;
 		comment: string;
 		languages: string[];
