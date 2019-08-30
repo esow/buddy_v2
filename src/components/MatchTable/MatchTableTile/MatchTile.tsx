@@ -56,13 +56,10 @@ export default class MatchTile extends Component<MatchTileProps, any> {
                     <Header> {ageGroups[this.props.match.ageGroup]} </Header>
                 </Grid.Column>
                 <Grid.Column>
-                    {
-                        this.props.match.voiceChat &&
-                        this.props.match.voiceChat.map((bool: any, index: any) => {
-                            const icon = bool ? "microphone" : "microphone slash";
-                            return <Icon key={index} name={icon} size="large" color={"black"} />;
-                        })
-                    }
+
+                    <Icon name={this.props.match.voiceChat === "yes" ? "microphone" : "microphone slash"} size="large" color={"black"} />;
+
+
                 </Grid.Column>
                 <Grid.Column>
                     <Header> {this.props.match.duo.top5finishes} </Header>

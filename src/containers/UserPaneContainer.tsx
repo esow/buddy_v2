@@ -79,7 +79,7 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 		e.preventDefault();
 
 		const data = {
-			voiceChat: [true],
+			voiceChat: player.voice,
 			ageGroup: player.age,
 			comment: player.comment,
 			languages: player.language

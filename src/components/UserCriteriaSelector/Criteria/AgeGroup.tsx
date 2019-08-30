@@ -1,4 +1,4 @@
-import { Form, Header, Radio, Checkbox } from 'semantic-ui-react';
+import { Form, Header } from 'semantic-ui-react';
 import * as React from "react";
 import { Component } from "react";
 
@@ -26,32 +26,28 @@ export default class AgeGroup extends Component<AgeGroupProps, State> {
     return (
       <div>
         <Header size="small">AGE GROUP</Header>
-        <Form.Group widths={"equal"} inline >
-          <Form.Field>
-            <Checkbox
+        <Form>
+          <Form.Group inline >
+            <Form.Radio
               value="interval1"
               label="13-16"
               checked={this.state.value === "interval1"}
               onChange={this.handleChange}
             />
-          </Form.Field>
-          <Form.Field >
-            <Radio
+            <Form.Radio
               value="interval2"
               label="16-21"
               checked={this.state.value === "interval2"}
               onChange={this.handleChange}
             />
-          </Form.Field>
-          <Form.Field width={1}>
-            <Radio
+            <Form.Radio
               value="interval3"
               label="22+"
               checked={this.state.value === "interval3"}
               onChange={this.handleChange}
             />
-          </Form.Field>
-        </Form.Group>
+          </Form.Group>
+        </Form>
       </div>
     );
   }

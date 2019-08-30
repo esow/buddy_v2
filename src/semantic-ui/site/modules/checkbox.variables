@@ -2,3 +2,7 @@
     User Variable Overrides
 *******************************/
 
+/* Radio */
+@radioActiveBackground: @white;
+@radioActiveBorderColor: #F15A29;
+@radioActiveBulletColor: #F15A29;
