@@ -27,7 +27,7 @@ export interface UserPaneProps {
 		squadTop6Finishes: number;
 	};
 	selectedLanguages: string[];
-	selectedVoice: boolean[];
+	selectedVoice: string;
 	selectedAge: string;
 	comment: string;
 	connectToSocket: any;
@@ -121,7 +121,7 @@ export default class UserPane extends React.Component<UserPaneProps, UserInputSt
 								selectedAge={this.props.selectedAge}
 								selectedLanguages={this.props.selectedLanguages}
 								selectedComment={this.props.comment}
-								selectedVoice={"yes"}
+								selectedVoice={this.props.selectedVoice}
 								handleChange={this.handleInputChange}
 							/>
 						</Grid.Column>
