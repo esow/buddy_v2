@@ -27,7 +27,7 @@ export interface UserPaneProps {
 		squadTop6Finishes: number;
 	};
 	selectedLanguages: string[];
-	selectedVoice: string;
+	selectedVoice: boolean;
 	selectedAge: string;
 	comment: string;
 	connectToSocket: any;
@@ -36,7 +36,7 @@ export interface UserPaneProps {
 export interface UserInputState {
 	language: string[];
 	comment: string;
-	voice: string;
+	voice: boolean;
 	age: string;
 }
 
@@ -48,7 +48,7 @@ export default class UserPane extends React.Component<UserPaneProps, UserInputSt
 		this.state = {
 			age: this.props.selectedAge,
 			language: this.props.selectedLanguages,
-			voice: "yes",
+			voice: true,
 			comment: this.props.comment
 		};
 	}

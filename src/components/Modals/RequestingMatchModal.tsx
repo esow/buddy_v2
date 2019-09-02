@@ -43,7 +43,7 @@ export default class RequestingMatchModal extends Component<RequestingMatchModal
                             <Header size="medium">{player.username}</Header>
                         </Grid.Row>
                         <Grid.Row centered>
-                            {player.languages.map((element: any) => {
+                            {player.languages && player.languages.map((element: any) => {
                                 return <ReactCountryFlag code={element} styleProps={{ margin: "5px", width: "31.5px", height: "21.5px" }} svg />
                             })}
                         </Grid.Row>

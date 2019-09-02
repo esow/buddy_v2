@@ -57,7 +57,7 @@ export default class MatchTile extends Component<MatchTileProps, any> {
                 </Grid.Column>
                 <Grid.Column>
 
-                    <Icon name={this.props.match.voiceChat === "yes" ? "microphone" : "microphone slash"} size="large" color={"black"} />;
+                    <Icon name={this.props.match.voiceChat ? "microphone" : "microphone slash"} size="large" color={"black"} />;
 
 
                 </Grid.Column>
