@@ -11,7 +11,7 @@ export interface UserCriteriaSelectorPaneProps {
 
 export interface ConnectedProps {
 	selectedLanguages: string[];
-	selectedVoice: string;
+	selectedVoice: boolean;
 	selectedAge: string;
 	selectedComment: string;
 	handleChange: (from: String, data: any) => void;

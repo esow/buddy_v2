@@ -78,7 +78,7 @@ export default class MatchResponseModal extends Component<MatchResponseModalProp
                         <Grid.Column width={10}><Header size={'medium'} style={{ color: '#334D6E', textAlign: 'center' }}>{message}</Header></Grid.Column>
                     </Grid.Row>
                     <Grid.Row centered>
-                        {player.languages.map((element: any) => {
+                        {player.languages && player.languages.map((element: any) => {
                             return <ReactCountryFlag code={element} styleProps={{ margin: "5px", width: "31.5px", height: "21.5px" }} svg />
                         })}
                     </Grid.Row>

@@ -55,7 +55,7 @@ export interface FortnitePlayerStats {
 		gamesWon: number,
 		gamesPlayed: number
 	};
-	voiceChat: string;
+	voiceChat: boolean;
 	ageGroup: string;
 	comment: string;
 	languages: string[];

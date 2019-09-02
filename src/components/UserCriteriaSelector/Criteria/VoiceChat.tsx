@@ -4,11 +4,11 @@ import { Component } from "react";
 import "./VoiceChat.css";
 interface VoiceChatProps {
     handleChange: (event: any, data: any) => void;
-    voicechat: String;
+    voicechat: boolean;
 }
 
 interface State {
-    voicechat: String;
+    voicechat: boolean;
 }
 
 export default class VoiceChat extends Component<VoiceChatProps, State> {
@@ -20,8 +20,8 @@ export default class VoiceChat extends Component<VoiceChatProps, State> {
 
 
     handleChange = (_e: any, { value }: any) => {
-        this.setState({ voicechat: value });
-        this.props.handleChange("voice", value);
+        this.setState({ voicechat: value === "yes" });
+        this.props.handleChange("voice", value === "yes");
     }
 
     render() {
@@ -33,13 +33,13 @@ export default class VoiceChat extends Component<VoiceChatProps, State> {
                         <Form.Radio
                             value="yes"
                             label="Yes"
-                            checked={this.state.voicechat === "yes"}
+                            checked={this.state.voicechat}
                             onChange={this.handleChange}
                         />
                         <Form.Radio
                             value="no"
                             label="No"
-                            checked={this.state.voicechat === "no"}
+                            checked={!this.state.voicechat}
                             onChange={this.handleChange}
                         />
                     </Form.Group>

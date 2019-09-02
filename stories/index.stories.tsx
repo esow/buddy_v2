@@ -2,6 +2,8 @@ import * as React from "react";
 
 import { storiesOf } from "@storybook/react";
 import MatchingPage from "../src/pages/matchingpage/MatchingPage";
+import MatchTileHeader from "../src/components/MatchTable/MatchTableTile/MatchTileHeader";
+import { Grid, Header, Segment } from "semantic-ui-react";
 
 const player = {
   username: "Trolloo",
@@ -371,4 +373,27 @@ const player6 = {
 };
 
 storiesOf("Matching page", module)
-  .add("with text", () => <MatchingPage matches={[player, player2, player3, player4, player5, player6]} criteria={true} />);
+  .add("with text", () => <MatchingPage matches={[player, player2, player3, player4, player5, player6]} criteria={true} />)
+  .add("Header", () => <MatchTileHeader></MatchTileHeader>)
+  .add("header basic", () => <Grid columns="equal" textAlign="center">
+    <Grid.Row>
+      <Grid.Column width={4}>
+        <Segment size="small"> Player name </Segment>
+      </Grid.Column>
+      <Grid.Column>
+        <Header size="small"> Language </Header>
+      </Grid.Column>
+      <Grid.Column>
+        <Header size="small"> Age Group </Header>
+      </Grid.Column>
+      <Grid.Column>
+        <Header size="small"> Voice chat? </Header>
+      </Grid.Column>
+      <Grid.Column textAlign={"center"} width={3}>
+        <Header size="small"> Send request </Header>
+      </Grid.Column>
+      <Grid.Column width={2}>
+        <Header size="small"> Send request </Header>
+      </Grid.Column>
+    </Grid.Row>
+  </Grid>)
