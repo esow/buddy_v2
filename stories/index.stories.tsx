@@ -372,8 +372,21 @@ const player6 = {
   }
 };
 
+const myCriteria = {
+  ageGroups: {
+    interval1: true,
+    interval2: true,
+    interval3: true
+  },
+  voiceChat: {
+    YES: true,
+    NO: false
+  },
+  ignoreLanguage: false
+}
+
 storiesOf("Matching page", module)
-  .add("with text", () => <MatchingPage matches={[player, player2, player3, player4, player5, player6]} criteria={true} />)
+  .add("with text", () => <MatchingPage matches={[player, player2, player3, player4, player5, player6]} criteria={myCriteria} />)
   .add("Header", () => <MatchTileHeader></MatchTileHeader>)
   .add("header basic", () => <Grid columns="equal" textAlign="center">
     <Grid.Row>

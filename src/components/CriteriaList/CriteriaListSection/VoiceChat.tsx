@@ -4,25 +4,15 @@ import { Component } from "react";
 import * as React from "react";
 
 interface VoiceChatsProps {
-    onChange: (state: boolean) => void;
-    checked: boolean;
+    onChange: (event: any, data: any) => void;
+    checked: any;
 }
 
 interface State {
-    checked: boolean;
+    checked: any;
 }
 
 export default class VoiceChat extends Component<VoiceChatsProps, State> {
-
-    prettyOnchange(_: React.FormEvent<HTMLInputElement>, data: CheckboxProps) {
-
-        if (data.label === "YES") {
-            this.props.onChange(true);
-        } else if (data.label === "NO") {
-            this.props.onChange(false);
-
-        }
-    }
 
     render() {
         return (
@@ -33,16 +23,16 @@ export default class VoiceChat extends Component<VoiceChatsProps, State> {
                         <Form.Field inline width={5}>
                             <Checkbox
                                 label="YES"
-                                checked={this.props.checked}
-                                onChange={this.prettyOnchange}
+                                checked={this.props.checked.YES}
+                                onChange={this.props.onChange}
                             />
                         </Form.Field>
 
                         <Form.Field>
                             <Checkbox
                                 label="NO"
-                                checked={!this.props.checked}
-                                onChange={this.prettyOnchange}
+                                checked={this.props.checked.NO}
+                                onChange={this.props.onChange}
                             />
                         </Form.Field>
                     </Form.Group>
