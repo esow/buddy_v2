@@ -9,22 +9,30 @@ import { ageGroups } from '../../resources/AgeGroups';
 
 export interface CriteriaListProps {
     criteria: any;
-    onChangeCriteria: any;
+    onChange: any;
 }
 
 class CriteriaList extends React.Component<CriteriaListProps, any> {
 
-    componentDidMount() {
-        if (!this.props.criteria) {
-            // history.pushState("/");
-        } else {
-            this.setState({
-                positions: this.props.criteria.positions,
-                ageGroups: this.props.criteria.ageGroups,
-                voiceChat: this.props.criteria.voiceChat,
+    constructor(props: any) {
+        super(props)
+        if (props.criteria) {
+            this.state = {
+                positions: props.criteria.positions,
+                ageGroups: props.criteria.ageGroups,
+                voiceChat: props.criteria.voiceChat,
                 ignoreLanguage: true
-            });
+            }
         }
+        else {
+            this.state = {
+                positions: [],
+                ageGrounds: this.setInitialAgeGroup({ userInfo: { agegroup: "13-19" } }),
+                voiceChat: this.setInitialVoiceChat({ userInfo: { voiceChat: true } }),
+                ignoreLanguage: true,
+            }
+        }
+
     }
 
     shouldComponentUpdate(nextState: any) {
@@ -32,7 +40,7 @@ class CriteriaList extends React.Component<CriteriaListProps, any> {
     }
 
     componentDidUpdate() {
-        this.props.onChangeCriteria(this.state);
+        this.props.onChange(this.state);
     }
 
     setInitialAgeGroup = (player: any) => {
@@ -72,18 +80,19 @@ class CriteriaList extends React.Component<CriteriaListProps, any> {
         });
     }
 
-    onChangeAgeGroup = ({ name }: any) => {
+    onChangeAgeGroup = (_: any, data: any) => {
         let ageGroups = { ...this.state.ageGroups };
-        ageGroups[name] = !ageGroups[name];
+        ageGroups[data.name] = !ageGroups[data.name];
 
         this.setState({
             ageGroups: ageGroups
         });
+
     }
 
-    onChangeVoiceChat = ({ label }: any) => {
+    onChangeVoiceChat = (_: any, data: any) => {
         let voiceChat = { ...this.state.voiceChat };
-        voiceChat[label] = !voiceChat[label];
+        voiceChat[data.label] = !voiceChat[data.label];
 
         this.setState({
             voiceChat: voiceChat
@@ -102,13 +111,13 @@ class CriteriaList extends React.Component<CriteriaListProps, any> {
                 <Label id="criteria-header" color="orange" floating>Filters</Label>
                 <Grid centered columns="4">
                     <Grid.Column >
-                        <AgeGroups onChange={this.onChangeAgeGroup} ageGroups={ageGroups} />
+                        <AgeGroups onChange={this.onChangeAgeGroup} ageGroups={this.state.ageGroups} />
                     </Grid.Column>
                     <Grid.Column >
-                        <VoiceChat onChange={this.onChangeVoiceChat} checked={true} />
+                        <VoiceChat onChange={this.onChangeVoiceChat} checked={this.state.voiceChat} />
                     </Grid.Column>
                     <Grid.Column >
-                        <AllLanguages onChange={this.onChangeAllLanguages} ignoreLanguage={false} />
+                        <AllLanguages onChange={this.onChangeAllLanguages} ignoreLanguage={this.state.ignoreLanguage} />
                     </Grid.Column>
 
                 </Grid>

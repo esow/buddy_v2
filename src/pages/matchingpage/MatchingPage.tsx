@@ -18,6 +18,7 @@ interface State {
     title: string;
     otherPlayer: any;
     showModal: number;
+    criteria: any;
 
 }
 export interface ConnectedProps {
@@ -36,7 +37,8 @@ export default class MatchingPage extends Component<MatchingPageProps & Connecte
             timeLeft: 50,
             ignore: true,
             title: "asd",
-            otherPlayer: ""
+            otherPlayer: "",
+            criteria: this.props.criteria
         };
     }
 
@@ -96,13 +98,17 @@ export default class MatchingPage extends Component<MatchingPageProps & Connecte
         });
     }
 
+    criteriaChange = (event: any) => {
+        console.log('refresh matches?')
+    }
+
     render() {
         return (
             <Container center className="main-content2" >
                 <Grid centered>
                     <Grid.Row style={{ padding: "0px" }}>
                         <Grid.Column >
-                            <CriteriaList onChangeCriteria={() => true} criteria={this.props.criteria} />
+                            <CriteriaList onChange={this.criteriaChange} criteria={this.state.criteria} />
                         </Grid.Column>
                     </Grid.Row>
                     <Divider horizontal>Matches</Divider>
