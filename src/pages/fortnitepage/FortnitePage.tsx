@@ -15,6 +15,10 @@ type AllProps = ConnectedProps & RouteComponentProps<any> & DispatchEvents;
 
 export default class FortnitePage extends React.Component<AllProps, any> {
 
+	componentDidMount() {
+		document.title = 'BuddyGG - Fortnite'
+	}
+
 	render() {
 		return (
 			<div className="fortnite-page">

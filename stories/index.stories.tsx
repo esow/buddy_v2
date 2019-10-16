@@ -29,12 +29,12 @@ const player = {
   duo: {
     top5finishes: 1,
     top12finishes: 2,
-    killDeathRatio: 0.7142857142857143,
-    gamesWon: 0,
-    gamesPlayed: 14
+    killDeathRatio: 0.3,
+    gamesWon: 1,
+    gamesPlayed: 10
   },
   comment: "asdopdfkop skdf",
-  name: "Trolloo",
+  name: "Lewoo",
   languages: [
     "za",
     "dk",
@@ -59,7 +59,7 @@ const player = {
   },
   gameInfo: {
     platform: "pc",
-    gamesPlayed: 1,
+    gamesPlayed: 34,
     gameCriteria: {
       minGamesPlayed: 1
     }
@@ -67,16 +67,16 @@ const player = {
 };
 
 const player2 = {
-  username: "Ninja",
+  username: "Ninjaz",
   total: {
-    gamesWon: 0,
-    gamesPlayed: 22
+    gamesWon: 2,
+    gamesPlayed: 236
   },
   squad: {
     top6finishes: 3,
     top3finishes: 1,
     killDeathRatio: 0.6111111111111112,
-    gamesWon: 0,
+    gamesWon: 10,
     gamesPlayed: 18
   },
   solo: {
@@ -88,14 +88,14 @@ const player2 = {
   },
   platform: "pc",
   duo: {
-    top5finishes: 1,
+    top5finishes: 2,
     top12finishes: 2,
-    killDeathRatio: 0.7142857142857143,
-    gamesWon: 0,
-    gamesPlayed: 14
+    killDeathRatio: 0.1,
+    gamesWon: 2,
+    gamesPlayed: 657
   },
   comment: "asd asidjcwsopdfkop skdf",
-  name: "Ninja",
+  name: "Ninjaz",
   languages: [
     "za",
     "dk",
@@ -129,10 +129,10 @@ const player2 = {
 
 
 const player3 = {
-  username: "Ninjo",
+  username: "jsinjo",
   total: {
-    gamesWon: 0,
-    gamesPlayed: 22
+    gamesWon: 6,
+    gamesPlayed: 43
   },
   squad: {
     top6finishes: 3,
@@ -150,14 +150,14 @@ const player3 = {
   },
   platform: "pc",
   duo: {
-    top5finishes: 1,
+    top5finishes: 7,
     top12finishes: 2,
-    killDeathRatio: 0.7142857142857143,
-    gamesWon: 0,
-    gamesPlayed: 14
+    killDeathRatio: 0.9,
+    gamesWon: 5,
+    gamesPlayed: 36
   },
   comment: "asd asidjcwsopdfkop skdf",
-  name: "Ninjo",
+  name: "jsinjo",
   languages: [
     "za",
     "dk",
@@ -190,10 +190,10 @@ const player3 = {
 };
 
 const player4 = {
-  username: "Troll",
+  username: "Peter",
   total: {
-    gamesWon: 0,
-    gamesPlayed: 22
+    gamesWon: 7,
+    gamesPlayed: 233
   },
   squad: {
     top6finishes: 3,
@@ -211,14 +211,14 @@ const player4 = {
   },
   platform: "pc",
   duo: {
-    top5finishes: 1,
+    top5finishes: 6,
     top12finishes: 2,
-    killDeathRatio: 0.7142857142857143,
+    killDeathRatio: 0.2,
     gamesWon: 0,
-    gamesPlayed: 14
+    gamesPlayed: 90
   },
-  comment: "asd asidjcwsopdfkop skdf",
-  name: "Troll",
+  comment: "Wooo skdf",
+  name: "Peter",
   languages: [
     "za",
     "dk",
@@ -251,10 +251,10 @@ const player4 = {
 };
 
 const player5 = {
-  username: "Troll",
+  username: "Killbotz",
   total: {
-    gamesWon: 0,
-    gamesPlayed: 22
+    gamesWon: 76,
+    gamesPlayed: 456
   },
   squad: {
     top6finishes: 3,
@@ -272,14 +272,14 @@ const player5 = {
   },
   platform: "pc",
   duo: {
-    top5finishes: 1,
+    top5finishes: 5,
     top12finishes: 2,
-    killDeathRatio: 0.7142857142857143,
-    gamesWon: 0,
-    gamesPlayed: 14
+    killDeathRatio: 0.8,
+    gamesWon: 50,
+    gamesPlayed: 98
   },
   comment: "asd asidjcwsopdfkop skdf",
-  name: "Troll",
+  name: "Killbotz",
   languages: [
     "za",
     "dk",
@@ -312,10 +312,10 @@ const player5 = {
 };
 
 const player6 = {
-  username: "Troll",
+  username: "Vicki",
   total: {
-    gamesWon: 0,
-    gamesPlayed: 22
+    gamesWon: 4,
+    gamesPlayed: 900
   },
   squad: {
     top6finishes: 3,
@@ -333,14 +333,14 @@ const player6 = {
   },
   platform: "pc",
   duo: {
-    top5finishes: 1,
+    top5finishes: 4,
     top12finishes: 2,
-    killDeathRatio: 0.7142857142857143,
-    gamesWon: 0,
-    gamesPlayed: 14
+    killDeathRatio: 0.95,
+    gamesWon: 23,
+    gamesPlayed: 25
   },
   comment: "asd asidjcwsopdfkop skdf",
-  name: "Troll",
+  name: "Vicki",
   languages: [
     "za",
     "dk",

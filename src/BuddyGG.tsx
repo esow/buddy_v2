@@ -14,8 +14,8 @@ export default class BuddyGG extends React.Component<BuddyGGProps, any> {
 	render() {
 		return (
 			<div className="buddygg" >
-				<Route exact path="/" component={ComingSoon} />
-				<Route exact path="/demo" component={LandingPage} />
+				<Route exact path="/demo" component={ComingSoon} />
+				<Route exact path="/" component={LandingPage} />
 				<Route path="/fortnitebr" component={FortnitePage} />
 				<Route path="/leagueoflegends" component={LandingPage} />
 				<Route path="/matching/*" component={Matching} />
