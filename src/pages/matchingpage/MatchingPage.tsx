@@ -42,6 +42,10 @@ export default class MatchingPage extends Component<MatchingPageProps & Connecte
         };
     }
 
+    componentDidMount() {
+        document.title = 'BuddyGG - Matches'
+    }
+
     componentWillMount() {
         // Go to frontpage if you don't have channel or criteria
         // if (!this.state.channel) {

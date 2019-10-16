@@ -1,4 +1,4 @@
-import { Grid, Button, Popup, Icon, Header } from "semantic-ui-react";
+import { Button, Popup, Icon, Table } from "semantic-ui-react";
 import { Component } from "react";
 import * as React from "react";
 import { FortnitePlayerStats } from "../../../models/FornitePlayerStats";
@@ -6,6 +6,8 @@ import * as _ from "lodash";
 import { Flag } from "semantic-ui-react";
 import { languages } from "../../../resources/Languages";
 import { ageGroups } from '../../../resources/AgeGroups';
+import "../MatchTable.css"
+
 interface MatchTileProps {
     match: FortnitePlayerStats;
     requestMatch: (match: FortnitePlayerStats) => void;
@@ -32,56 +34,31 @@ export default class MatchTile extends Component<MatchTileProps, any> {
 
     render() {
         return (
-
-            <Grid columns="equal" textAlign="center" verticalAlign="middle">
-                <Grid.Column width={2}>
-                    <Header > {this.props.match.name} </Header>
-                </Grid.Column>
-                <Grid.Column>
-                    <Header> {
-                        this.props.match.languages.map((language: any, index: any) => {
-                            return <Popup
-                                key={index}
-                                position="top center"
-                                trigger={
-                                    <div>
-                                        {this.getFlagImage(language)}
-                                    </div>}
-                                content={_.find(languages, x => x.value === language)}
-                            />;
-                        })
-                    } </Header>
-                </Grid.Column>
-                <Grid.Column>
-                    <Header> {ageGroups[this.props.match.ageGroup]} </Header>
-                </Grid.Column>
-                <Grid.Column>
-
-                    <Icon name={this.props.match.voiceChat ? "microphone" : "microphone slash"} size="large" color={"black"} />;
-
-
-                </Grid.Column>
-                <Grid.Column>
-                    <Header> {this.props.match.duo.top5finishes} </Header>
-                </Grid.Column>
-                <Grid.Column>
-                    <Header> {this.props.match.duo.gamesPlayed} </Header>
-                </Grid.Column>
-                <Grid.Column>
-                    <Header> {this.props.match.duo.killDeathRatio.toFixed(1)} </Header>
-                </Grid.Column>
-                <Grid.Column>
-                    <Header> {
-                        Math.round(this.props.match.duo.gamesWon
-                            / this.props.match.duo.gamesPlayed * 100) + "%"} </Header>
-                </Grid.Column>
-                <Grid.Column width={3}>
-                    <Header> {this.props.match.comment} </Header>
-                </Grid.Column>
-                <Grid.Column width={2}>
-                    <Button className="cancel-button confirm" onClick={this.requestMatch}> REQUEST </Button>
-                </Grid.Column>
-            </Grid>
+            <Table.Row>
+                <Table.Cell>{this.props.match.name}</Table.Cell>
+                <Table.Cell>{
+                    this.props.match.languages.map((language: any, index: any) => {
+                        return <Popup
+                            key={index}
+                            position="top center"
+                            trigger={
+                                <div>
+                                    {this.getFlagImage(language)}
+                                </div>}
+                            content={_.find(languages, x => x.value === language)}
+                        />;
+                    })
+                }</Table.Cell>
+                <Table.Cell>{ageGroups[this.props.match.ageGroup]}</Table.Cell>
+                <Table.Cell><Icon name={this.props.match.voiceChat ? "microphone" : "microphone slash"} size="large" color={"black"} /></Table.Cell>
+                <Table.Cell>{this.props.match.duo.top5finishes}</Table.Cell>
+                <Table.Cell>{this.props.match.duo.gamesPlayed}</Table.Cell>
+                <Table.Cell>{this.props.match.duo.killDeathRatio.toFixed(1)}</Table.Cell>
+                <Table.Cell>{Math.round(this.props.match.duo.gamesWon
+                    / this.props.match.duo.gamesPlayed * 100) + "%"}</Table.Cell>
+                <Table.Cell>{this.props.match.comment}</Table.Cell>
+                <Table.Cell><Button className="cancel-button confirm" onClick={this.requestMatch}> REQUEST </Button></Table.Cell>
+            </Table.Row>
 
         );
     }
