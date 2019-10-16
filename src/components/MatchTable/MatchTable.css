@@ -1,26 +1,36 @@
 
 /* Track */
-body .ui.inverted::-webkit-scrollbar-track {
-	background: rgba(255, 255, 255, 0);
+body ::-webkit-scrollbar-track {
+	background: #FEDAA9 ;
 	border-style: solid;
 	border-width: 1px;
 	border-color: #F15A29;
 	border-radius: 10px;
 }
 
-/* Track on hover */
-body .ui.inverted::-webkit-scrollbar-track:hover {
-	background: rgba(255,255,255,0.1); 
-}
-
 /* Handle */
-body .ui.inverted::-webkit-scrollbar-thumb {
+body ::-webkit-scrollbar-thumb {
 	background: #F15A29;
 }
 
 /* Handle on hover */
-body .ui.inverted::-webkit-scrollbar-thumb:hover {
+body ::-webkit-scrollbar-thumb:hover {
 	background: #F15A29;
+}
+
+.tableWrapper {
+	max-height: 90%;
+	overflow: auto;
+}
+
+.ui.table, th {
+	background: #FEDAA9 !important;
+	border-left: 0 !important;
+	border-bottom: 0 !important;
+}
+
+.ui.table tr td {
+	border-top: 0 !important;
 }
 
 /* Request button */
@@ -37,8 +47,8 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.button.cancel-button.confirm{
-	border: 1px solid#F15A29;
-	color: #F15A29;
+	border: 1px solid#F15A29 !important;
+	color: #F15A29 !important;
 }
 
 .ui.button.cancel-button.confirm:hover{

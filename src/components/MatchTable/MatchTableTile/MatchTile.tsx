@@ -57,9 +57,17 @@ export default class MatchTile extends Component<MatchTileProps, any> {
                 <Table.Cell>{Math.round(this.props.match.duo.gamesWon
                     / this.props.match.duo.gamesPlayed * 100) + "%"}</Table.Cell>
                 <Table.Cell>{this.props.match.comment}</Table.Cell>
-                <Table.Cell><Button className="cancel-button confirm" onClick={this.requestMatch}> REQUEST </Button></Table.Cell>
+                <Table.Cell style={cell}><Button className="cancel-button confirm" onClick={this.requestMatch}> REQUEST </Button></Table.Cell>
             </Table.Row>
 
         );
     }
+}
+
+const cell = {
+    margin: 0,
+    height: 61,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
 }

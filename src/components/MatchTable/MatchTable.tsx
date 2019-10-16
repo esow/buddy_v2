@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { Segment, Table, Icon } from "semantic-ui-react";
+import { Table, Icon } from "semantic-ui-react";
 import MatchTile from "./MatchTableTile/MatchTile";
 // import MatchTileHeader from "./MatchTableTile/MatchTileHeader";
 import { Component } from "react";
@@ -59,44 +59,46 @@ export default class MatchTable extends Component<MatchTableProps, any> {
         const { column, data, direction } = this.state
 
         return (
-            < Table celled sortable textAlign="center" >
-                <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell
-                            sorted={column === 'name' ? direction : null}
-                            onClick={this.handleSort('name')}
-                        >Name</Table.HeaderCell>
-                        <Table.HeaderCell>Language</Table.HeaderCell>
-                        <Table.HeaderCell>Age Group</Table.HeaderCell>
-                        <Table.HeaderCell>Voice</Table.HeaderCell>
-                        <Table.HeaderCell
-                            sorted={column === 'top5finishes' ? direction : null}
-                            onClick={this.handleSort('top5finishes')}
-                        ><Icon name="angle double up" color="green" size="small" style={iconStyle} /> Top 5</Table.HeaderCell>
-                        <Table.HeaderCell
-                            sorted={column === 'gamesPlayed' ? direction : null}
-                            onClick={this.handleSort('gamesPlayed')}
-                        ><Icon name="game" color="violet" size="small" style={iconStyle} /> Played</Table.HeaderCell>
-                        <Table.HeaderCell
-                            sorted={column === 'killDeathRatio' ? direction : null}
-                            onClick={this.handleSort('killDeathRatio')}
-                        ><Icon name="bullseye" color="red" size="small" style={iconStyle} /> K/D</Table.HeaderCell>
-                        <Table.HeaderCell
-                            sorted={column === 'gamesWon' ? direction : null}
-                            onClick={this.handleSort('gamesWon')}
-                        ><Icon name="winner" color="orange" size="small" style={iconStyle} /> % Win</Table.HeaderCell>
-                        <Table.HeaderCell>Comment</Table.HeaderCell>
-                        <Table.HeaderCell>Send Request</Table.HeaderCell>
-                    </Table.Row>
-                </Table.Header>
+            <div className='tableWrapper'>
+                < Table selectable sortable textAlign="center">
+                    <Table.Header>
+                        <Table.Row>
+                            <Table.HeaderCell
+                                sorted={column === 'name' ? direction : null}
+                                onClick={this.handleSort('name')}
+                            >Name</Table.HeaderCell>
+                            <Table.HeaderCell>Language</Table.HeaderCell>
+                            <Table.HeaderCell>Age Group</Table.HeaderCell>
+                            <Table.HeaderCell>Voice</Table.HeaderCell>
+                            <Table.HeaderCell
+                                sorted={column === 'top5finishes' ? direction : null}
+                                onClick={this.handleSort('top5finishes')}
+                            ><Icon name="angle double up" color="green" size="small" style={iconStyle} /> Top 5</Table.HeaderCell>
+                            <Table.HeaderCell
+                                sorted={column === 'gamesPlayed' ? direction : null}
+                                onClick={this.handleSort('gamesPlayed')}
+                            ><Icon name="game" color="violet" size="small" style={iconStyle} /> Played</Table.HeaderCell>
+                            <Table.HeaderCell
+                                sorted={column === 'killDeathRatio' ? direction : null}
+                                onClick={this.handleSort('killDeathRatio')}
+                            ><Icon name="bullseye" color="red" size="small" style={iconStyle} /> K/D</Table.HeaderCell>
+                            <Table.HeaderCell
+                                sorted={column === 'gamesWon' ? direction : null}
+                                onClick={this.handleSort('gamesWon')}
+                            ><Icon name="winner" color="orange" size="small" style={iconStyle} /> % Win</Table.HeaderCell>
+                            <Table.HeaderCell>Comment</Table.HeaderCell>
+                            <Table.HeaderCell>Send Request</Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
 
-                <Table.Body>
-                    <Table.Row className={noMatches ? "" : "hidden"}>You don't have any matches yet!</Table.Row>
-                    {this.state.data && this.state.data.map((match: any) =>
-                        <MatchTile requestMatch={this.props.requestMatch} match={match} />
-                    )}
-                </Table.Body>
-            </Table >
+                    <Table.Body>
+                        <Table.Row className={noMatches ? "" : "hidden"}>You don't have any matches yet!</Table.Row>
+                        {this.state.data && this.state.data.map((match: any) =>
+                            <MatchTile requestMatch={this.props.requestMatch} match={match} />
+                        )}
+                    </Table.Body>
+                </Table >
+            </div>
         );
     }
 }
@@ -104,4 +106,5 @@ export default class MatchTable extends Component<MatchTableProps, any> {
 const iconStyle = {
     margin: "1px"
 }
+
 
