@@ -1,5 +1,6 @@
 import { AuthSessionDTO } from "../store/auth/types";
 
+
 class BuddyApi {
 
 	private static devServer: String = "https://lolbuddy.herokuapp.com/api";

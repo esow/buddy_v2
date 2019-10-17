@@ -4,8 +4,8 @@ import { Route } from "react-router-dom";
 import "./BuddyGG.css";
 import Footer from "./blocks/Footer/Footer";
 import FortnitePage from "./pages/fortnitepage/FortnitePage";
-import Matching from "./pages/matchingpage/MatchingPage";
 import ComingSoon from "./pages/coming_soon/ComingSoon";
+import ConnectedMatchingPage from "./pages/matchingpage/ConnectedMatchingPage";
 
 export interface BuddyGGProps {
 }
@@ -18,7 +18,7 @@ export default class BuddyGG extends React.Component<BuddyGGProps, any> {
 				<Route exact path="/demo" component={LandingPage} />
 				<Route path="/fortnitebr" component={FortnitePage} />
 				<Route path="/leagueoflegends" component={LandingPage} />
-				<Route path="/matching/*" component={Matching} />
+				<Route path="/matching/*" component={ConnectedMatchingPage} />
 				<Footer />
 			</div>
 		);

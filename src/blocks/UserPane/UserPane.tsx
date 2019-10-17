@@ -6,7 +6,7 @@ import { Button, Container, Grid, Header } from "semantic-ui-react";
 
 export interface UserPaneProps {
 	platform: string;
-	username: string;
+	username: String;
 	stats: {
 		totalGamesWon: number;
 		totalGamesPlayed: number;

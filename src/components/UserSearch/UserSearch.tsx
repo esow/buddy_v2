@@ -24,7 +24,6 @@ export default class UserSearch extends React.Component<UserSearchProps, UserSea
 
 	submit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		console.log(e)
 		const username = this.state.username;
 		const platform = this.state.platform.toLowerCase();
 		if (!username) { return; }

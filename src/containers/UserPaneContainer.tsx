@@ -87,14 +87,14 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 
 		this.props.editUserInput(data);
 		if (this.props.auth.auth && this.props.matching.channel === undefined && this.props.user.stats) {
-			console.log(this.props.user.stats);
+			this.props.user.stats.id = this.props.auth.auth.session_id
 			this.props.connectToSocket(this.props.auth.auth, this.props.user.stats, this.props.matching.socket);
 		}
 	}
 
 	render() {
 
-		const { platform, username } = this.props.match.params;
+		const { platform } = this.props.match.params;
 
 		if (this.props.user && this.props.user.stats) {
 			const userStats = this.getUserStats(this.props.user.stats);
@@ -103,7 +103,7 @@ class UserPaneContainer extends React.Component<AllProps, any> {
 				<div>
 					<UserPane
 						platform={platform}
-						username={username}
+						username={this.props.user.stats.name}
 						stats={userStats}
 						selectedLanguages={this.props.user.stats.languages}
 						selectedVoice={this.props.user.stats.voiceChat}

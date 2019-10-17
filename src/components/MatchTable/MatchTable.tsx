@@ -8,7 +8,7 @@ import "./MatchTable.css";
 
 export interface MatchTableProps {
     matches?: FortnitePlayerStats[];
-    requestMatch: (player: any) => void;
+    requestMatch: (player: FortnitePlayerStats) => void;
 }
 
 export default class MatchTable extends Component<MatchTableProps, any> {
@@ -34,7 +34,8 @@ export default class MatchTable extends Component<MatchTableProps, any> {
                     animation="vertical flip"
                 >
 
-                    {this.props.matches && this.props.matches.map((match: any) =>
+                    {this.props.matches && this.props.matches.map((match: FortnitePlayerStats) =>
+
                         <List.Item key={match.id} style={{ paddingTop: "20px", paddingBottom: "20px" }}>
                             <MatchTile requestMatch={this.props.requestMatch} match={match} />
                         </List.Item>

@@ -10,10 +10,12 @@ export function configureChannel(session: AuthSessionDTO) {
 		}
 	});
 
+	socket.onMessage = (message) => {
+		console.log(message)
+	}
 	socket.onError = (reason) => {
 		console.log(reason);
 	};
-	console.log("asd");
 	socket.connect();
 
 	return socket;

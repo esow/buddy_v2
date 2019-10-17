@@ -19,6 +19,7 @@ export function loadUser(platform: string, username: string) {
 		dispatch(fetchUser.request());
 		return BuddyApi.getUser(platform, username)
 			.then(user => {
+				console.log(user)
 				user.data.name = user.data.username;
 				dispatch(fetchUser.success(user.data));
 

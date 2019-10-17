@@ -6,41 +6,40 @@ import { Grid, Header } from "semantic-ui-react";
 import ReactCountryFlag from "react-country-flag";
 import "./modal.css";
 import RequestingPlayerInfo from "./RequestingPlayerInfo";
+import { FortnitePlayerStats } from '../../models/FornitePlayerStats';
 
 interface RequestingMatchModalProps {
-    player: any;
+    player?: FortnitePlayerStats;
     open: boolean;
     handleClose: () => void;
     timeLeft: number;
 
 }
-export default class RequestingMatchModal extends Component<RequestingMatchModalProps, { open: boolean }> {
+export default class RequestingMatchModal extends Component<RequestingMatchModalProps, {}> {
 
     constructor(Props: RequestingMatchModalProps) {
         super(Props);
-        this.state = { open: this.props.open };
     }
 
     cancel = () => {
-        this.setState({ open: false });
         this.props.handleClose();
     }
 
     render() {
         const player = this.props.player;
         return (
-            <div>
+            player ? <div>
                 <Modal
                     dimmer={"blurring"}
                     closeOnRootNodeClick={false}
-                    open={this.state.open}
+                    open={this.props.open}
                     onClose={this.props.handleClose}
                     size={"small"}
                 >
                     <Grid centered>
                         <Grid.Row><Header>Requesting Buddy...</Header></Grid.Row>
                         <Grid.Row centered columns={1}>
-                            <Header size="medium">{player.username}</Header>
+                            <Header size="medium">{player.name}</Header>
                         </Grid.Row>
                         <Grid.Row centered>
                             {player.languages && player.languages.map((element: any) => {
@@ -67,7 +66,7 @@ export default class RequestingMatchModal extends Component<RequestingMatchModal
                 </Modal>
 
             </div>
-
+                : <div></div>
         );
     }
 }

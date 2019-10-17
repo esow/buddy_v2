@@ -2,17 +2,38 @@ import { configureChannel } from "../../api/Channel";
 import { createAsyncAction, createAction } from "typesafe-actions";
 import { Channel, Socket } from "phoenix";
 import { AuthSessionDTO } from "../auth/types";
-import { FortnitePlayerStats } from "../../models/FornitePlayerStats";
+import { FortnitePlayerStats, Criteria } from "../../models/FornitePlayerStats";
 import history from "../../utils/history";
+import { back_user } from './reducer';
 
 export const socketConnect = createAsyncAction("SOCKET_CONNECT", "SOCKET_CONNECT_SUCCESS", "SOCKET_CONNECT_FAILURE")
 	<void, { socket: Socket, channel: Channel }, Error>();
 
 export const initialMatch = createAction("INITIAL_MATCHES", resolve => {
-	return (initialMatches: FortnitePlayerStats[]) => resolve(initialMatches);
+	return (initialMatches: back_user[]) => resolve(initialMatches);
 });
 
 export const newMatch = createAction("NEW_MATCH", resolve => {
+	return (match: back_user) => resolve(match);
+});
+
+export const newMatchRequest = createAction("NEW_MATCH_REQUEST", resolve => {
+	return (match: FortnitePlayerStats) => resolve(match);
+});
+
+export const playerIsBusy = createAction("PLAYER_IS_BUSY", resolve => {
+	return (prevPlayer: FortnitePlayerStats) => resolve(prevPlayer);
+});
+
+export const matchResponse = createAction("MATCH_RESPONSE", resolve => {
+	return (response: string) => resolve(response);
+});
+
+export const resetMatch = createAction("MATCH_RESET", resolve => {
+	return () => resolve();
+});
+
+export const localRequestedMatch = createAction("REQUEST_MATCH", resolve => {
 	return (match: FortnitePlayerStats) => resolve(match);
 });
 
@@ -21,52 +42,50 @@ export const leaveChannelAction = createAction("LEAVE_CHANNEL", resolve => {
 });
 
 export const removeMatch = createAction("REMOVE_MATCH", resolve => {
-	return (match: FortnitePlayerStats) => resolve(match);
+	return (match: back_user) => resolve(match);
 });
 
-export function requestMatch(channel: any, player: any) {
-	return function () {
-		channel.push("request_match", player);
+export function requestMatch(channel: any, player: FortnitePlayerStats) {
+	return function (dispatch: any) {
+		channel.push("request_match", { "player": player })
+		dispatch(localRequestedMatch(player))
+	}
+}
+
+export function answerMatchRequest(channel: any, id: string, answer: string) {
+	return function (dispatch: any) {
+		channel.push("respond_to_request", { "id": id, response: answer });
+		if (answer !== "Requested_Player_Busy") {
+			dispatch(matchResponse(answer))
+		} 
+		if (answer !== "Request_Cancelled") {
+			
+		}
 	};
 }
+
+export function resetMatchRequest() {
+	return function (dispatch: any) {
+		dispatch(resetMatchRequest())
+	};
+};
 
 export function leaveChannel(channel: any) {
 	return function (dispatch: any) {
 		channel.leave().receive("ok", () => {
 			dispatch(leaveChannelAction());
-			console.log("left!");
 		});
 	};
+}
+
+export function updateCriteria(channel: any, criteria: Criteria) {
+	channel.push('update_criteria', criteria)
 }
 
 export function connectToSocket(auth: AuthSessionDTO, player: FortnitePlayerStats, socketDefault?: Socket) {
 	return function (dispatch: any) {
 		dispatch(socketConnect.request());
 		let socket = socketDefault === undefined ? configureChannel(auth) : socketDefault;
-
-		player.id = auth.session_id;
-		player.game = "fortnite";
-		player.criteria = {
-			"ageGroups": {
-				"interval1": true,
-				"interval2": true,
-				"interval3": true
-			},
-			"voiceChat": {
-				"YES": true,
-				"NO": true
-			},
-			"ignoreLanguage": false
-		};
-		player.gameInfo = {
-			"platform": "pc",
-			"gamesPlayed": 1,
-			"gameCriteria": {
-				"minGamesPlayed": 1
-			}
-		};
-
-		console.log(player);
 
 		let channel = socket.channel(`players:${auth.session_id}`, {
 			payload: player
@@ -82,24 +101,24 @@ export function connectToSocket(auth: AuthSessionDTO, player: FortnitePlayerStat
 				dispatch(socketConnect.failure(reason));
 			});
 
-		channel.on("initial_matches", (response: { players: FortnitePlayerStats[] }) => {
+		channel.on("initial_matches", (response: { players: back_user[] }) => {
 			dispatch(initialMatch(response.players));
 		});
 
-		channel.on("new_match", (response) => {
-			dispatch(newMatch(response));
+		channel.on("new_match", (player: back_user) => {
+			dispatch(newMatch(player));
 		});
 
 		channel.on("remove_player", (response) => {
 			dispatch(removeMatch(response));
 		});
 
-		channel.on("match_requested", (response) => {
-			dispatch(initialMatch(response));
+		channel.on("match_requested", (player: FortnitePlayerStats) => {
+			dispatch(newMatchRequest(player));
 		});
 
 		channel.on("request_response", (response) => {
-			dispatch(initialMatch(response));
+			dispatch(matchResponse(response.response));
 		});
 
 	};

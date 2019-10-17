@@ -61,17 +61,18 @@ export default class MatchTile extends Component<MatchTileProps, any> {
 
 
                 </Grid.Column>
+
                 <Grid.Column>
-                    <Header> {this.props.match.duo.top5finishes} </Header>
+                    <Header> {this.props.match.duo.top5finishes && this.props.match.duo.top5finishes} </Header>
                 </Grid.Column>
                 <Grid.Column>
-                    <Header> {this.props.match.duo.gamesPlayed} </Header>
+                    <Header> {this.props.match.duo.gamesPlayed && this.props.match.duo.gamesPlayed} </Header>
                 </Grid.Column>
                 <Grid.Column>
-                    <Header> {this.props.match.duo.killDeathRatio.toFixed(1)} </Header>
+                    <Header> {this.props.match.duo.killDeathRatio && this.props.match.duo.killDeathRatio.toFixed(1)} </Header>
                 </Grid.Column>
                 <Grid.Column>
-                    <Header> {
+                    <Header> {this.props.match.duo &&
                         Math.round(this.props.match.duo.gamesWon
                             / this.props.match.duo.gamesPlayed * 100) + "%"} </Header>
                 </Grid.Column>

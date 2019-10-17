@@ -6,9 +6,10 @@ import "./CriteriaList.css";
 import * as React from "react";
 import AgeGroups from "./CriteriaListSection/AgeGroups";
 import { ageGroups } from '../../resources/AgeGroups';
+import { Criteria } from "../../models/FornitePlayerStats";
 
 export interface CriteriaListProps {
-    criteria: any;
+    criteria: Criteria;
     onChangeCriteria: any;
 }
 
@@ -19,7 +20,6 @@ class CriteriaList extends React.Component<CriteriaListProps, any> {
             // history.pushState("/");
         } else {
             this.setState({
-                positions: this.props.criteria.positions,
                 ageGroups: this.props.criteria.ageGroups,
                 voiceChat: this.props.criteria.voiceChat,
                 ignoreLanguage: true
@@ -35,19 +35,7 @@ class CriteriaList extends React.Component<CriteriaListProps, any> {
         this.props.onChangeCriteria(this.state);
     }
 
-    setInitialAgeGroup = (player: any) => {
-        const ageGroups = {
-            interval1: false,
-            interval2: false,
-            interval3: false
-        };
 
-        if (player.userInfo.agegroup === "13-19") { ageGroups.interval1 = true; }
-        if (player.userInfo.agegroup === "20-29") { ageGroups.interval2 = true; }
-        if (player.userInfo.agegroup === "29+") { ageGroups.interval3 = true; }
-
-        return ageGroups;
-    }
 
     setInitialVoiceChat = (player: any) => {
         const voiceChat = {
@@ -59,17 +47,6 @@ class CriteriaList extends React.Component<CriteriaListProps, any> {
         if (!player.userInfo.voicechat) { voiceChat.NO = true; }
 
         return voiceChat;
-    }
-
-    onChangePositions = (event: any) => {
-        const pos = event.target.name;
-
-        let positions = { ...this.state.positions };
-        positions[pos] = !positions[pos];
-
-        this.setState({
-            positions: positions
-        });
     }
 
     onChangeAgeGroup = ({ name }: any) => {
@@ -105,7 +82,7 @@ class CriteriaList extends React.Component<CriteriaListProps, any> {
                         <AgeGroups onChange={this.onChangeAgeGroup} ageGroups={ageGroups} />
                     </Grid.Column>
                     <Grid.Column >
-                        <VoiceChat onChange={this.onChangeVoiceChat} checked={true} />
+                        <VoiceChat onChange={this.onChangeVoiceChat} checked={this.props.criteria.voiceChat.YES} />
                     </Grid.Column>
                     <Grid.Column >
                         <AllLanguages onChange={this.onChangeAllLanguages} ignoreLanguage={false} />

@@ -27,7 +27,7 @@ export interface GameInfo {
 
 export interface FortnitePlayerStats {
 	name: String;
-	id: String;
+	id: string;
 	game: String;
 
 	total: {

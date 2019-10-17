@@ -68,7 +68,7 @@
         "semantic-ui-less": "^2.4.1",
         "tslint-react": "^3.6.0"
     },
-    "homepage": "https://esow.github.io/buddy_v2",
+    "homepage": "https://buddy.gg",
     "browserslist": {
         "production": [
             ">0.2%",
